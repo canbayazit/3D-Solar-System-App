@@ -14,31 +14,42 @@ const Header = () => {
       </div>
       <div className={style.right_header}>
         <div className={style.orrery}>
-          <div className={style.outer_circle}>
-            <div className={style.outer_dot}>
-              <div className={style.inner_circle}>
-              <div className={style.innet_dot}>
-              <div className={style.sun}></div>
-              </div>
-              </div>
-            </div>
+        <div className={style.outmost_circle}>
+            <div className={style.outmost_dot}></div>
           </div>
+          <div className={style.outer_circle}>
+            <div className={style.outer_dot}></div>
+          </div>
+          <div className={style.inner_circle}>
+            <div className={style.inner_dot}></div>
+          </div>
+          <div className={style.sun}></div>
         </div>
         <ul>
           <li>
-            <Link to={"/solarsystem"} className="link">Solar System</Link>{" "}
+            <Link to={"/solarsystem"} className="link">
+              Solar System
+            </Link>{" "}
           </li>
           <li>
-            <Link to={"/planets"} className="link">Planets</Link>
+            <Link to={"/planets"} className="link">
+              Planets
+            </Link>
           </li>
           <li>
-            <Link to={"/moons"} className="link">Moons</Link>
+            <Link to={"/moons"} className="link">
+              Moons
+            </Link>
           </li>
           <li>
-            <Link to={"/asteroidsandcomets"} className="link">Asteroids & Comets</Link>
+            <Link to={"/asteroidsandcomets"} className="link">
+              Asteroids & Comets
+            </Link>
           </li>
           <li>
-            <Link to={"/store"} className="link">Store</Link>
+            <Link to={"/store"} className="link">
+              Store
+            </Link>
           </li>
           <li>
             <div className={style.search_container}>
@@ -48,13 +59,13 @@ const Header = () => {
                 value={value}
                 onChange={(e) => setText(e.target.value)}
               />
-              <div className={style.search_icon}>
-
-              </div>
+              <div className={style.search_icon}></div>
             </div>
           </li>
           <li>
-            <Link to={"/user"} className="link">User</Link>
+            <Link to={"/user"} className="link">
+              User
+            </Link>
           </li>
         </ul>
       </div>
