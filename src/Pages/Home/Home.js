@@ -7,10 +7,15 @@ const Home = () => {
     <div className={style.container}>
       <Header />
       <section className={style.section}>
-        <div>
-          <img src={earth} className={style.earth}></img>
+        <div className={style.earthDiv}>
+          {/* <img src={earth} className={style.earth}></img> */}
         </div>
       </section>
+      <div className={style.main}>
+        <div className={style.info}>
+          <h2>Solar System</h2>           
+        </div>
+      </div>
     </div>
   );
 };
