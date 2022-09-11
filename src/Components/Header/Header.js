@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import style from "./style.module.scss";
 const Header = () => {
   const [value, setText] = useState("");
+  const [isScrolling, setScrolling] = useState(false);
+  window.addEventListener("scroll", () => {
+    console.log(window.scrollY);
+    window.scrollY >= 80 ? setScrolling(true) : setScrolling(false);
+  });
 
   return (
-    <div className={style.container}>
+    <header className={style.container } style={isScrolling  ?{backgroundColor:'#000' , borderBottom:' 1px solid #3b3b3b', transitionDuration:'1s'} :{backgroundColor:'#00000000', transitionDuration:'1s'}}>
       <div className={style.left_header}>
         <div className={style.page_logo}></div>
         <div className={style.heading}>
@@ -46,13 +51,9 @@ const Header = () => {
               Asteroids & Comets
             </Link>
           </li>
+        
           <li>
-            <Link to={"/store"} className="link">
-              Store
-            </Link>
-          </li>
-          <li>
-            <div className={style.search_container}>
+            <div className={style.container_search}>
               <input
                 type={"text"}
                 className={style.search}
@@ -61,15 +62,10 @@ const Header = () => {
               />
               <div className={style.search_icon}></div>
             </div>
-          </li>
-          <li>
-            <Link to={"/user"} className="link">
-              User
-            </Link>
-          </li>
+          </li>         
         </ul>
       </div>
-    </div>
+    </header>
   );
 };
 
