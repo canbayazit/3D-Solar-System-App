@@ -156,25 +156,47 @@ width: 100%;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 100px 450px 50px 450px;
+        padding: 100px 400px 50px 400px;
         width: 100%;
-
+        background-color: #e0e7ef;
         .content{
-            
+            line-height: 1.5;   
             .fieldset{
                 padding: 15px 10px 15px 30px;
                 width: 100%;
+                border: 3px solid #202020;
                 legend{
                     margin-left: 30px; // kenar çizgisi bozulmadan kaydırmak için margin kullandık
                     font-weight: 600;
                     padding: 0 10px;
                 }
                 h2{
-                    margin-bottom:15px ;
+                    // margin-bottom:-20px ;
                 }
-                .description{
-                  line-height: 1.5;
+                .fieldset_description{
+                    margin-top: 10px;
                 }
+            }
+            .solar_system_description{
+               margin-top: 40px;
+               font-size: 20px;
+            //    display: flex;
+               .solar_system_img{
+                    width: 440px;
+                    height: 350px;
+                    border-radius: 50%;
+                    border: 2px solid black; 
+                    // background-image: url("../../Assets/img/solarsystemm.png");  
+                    // background-size: cover;
+                    //  shape-outside: url("../../Assets/img/solarsystemm.png");
+                    shape-outside: circle();                    
+                    shape-margin: 55px;
+                    margin-right: 55px;
+                    float: left;
+               }
+               .description{
+                text-align: justify;
+               }
             }
         }
     }
