@@ -1,20 +1,24 @@
 .container{
 display: flex;
 justify-content: center;
-position: relative;
-
+align-items: center;
+flex-direction: column;
+width: 100%;
     .section{
-        position: absolute;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        height: 210vh;
-        top: 0;
+        height: 160vh;
         left: 0;
+        right: 0;
         // background:  radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-       background-image: url("../../Assets/img/tabs_background.jpg");
+        // background-image: url("../../Assets/img/tabs_background.jpg");
         // background-size: cover;
         // background-repeat: no-repeat;
         // background-position: center;
-        // background-color: black;
+        background-color: black;
         overflow: hidden;
         &::after{
             content: '';
@@ -22,45 +26,156 @@ position: relative;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 400px;
+            height: 500px;
             background: linear-gradient(to top,rgb(0, 0, 0), transparent);
             z-index: 998;
         }
-    .earthDiv{
-        display: flex;
-        justify-content: center;
-        align-items: center;     
-        width: 1519.2px;
-        height: 1519.2px; 
-        border-radius: 50%;       
-        background-image: url("../../Assets/img/earthtext.png");
-        position: absolute;
-        background-size: cover;
-        background-position: -1200px 15px;
-        bottom: -800px;  
-        left: 0;
-        transform: rotate(90deg);
-        // filter: drop-shadow( 0 0px 20px  #4069ff);
-        box-shadow: inset -812px 0px 80px rgb(0, 0, 0,0.92),
-    
-        -5px 0 10px #28335b,
-        -10px 0 500px 10px #28335b;
-        .earth{
+      
+        .sun{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 350px;
+            left: 50%;
+            background-color: #ffffd5;
+            border-radius: 50%;
+            box-shadow: 
+            inset 0 0 8px #feffd3 , 
+            0 0 25px 6px #699cdd11,
+            0 0 50px 8px #699cdd55,
+           0 0 10px 10px #699cdd44,
+           0 0 20px 12px #699cdd33,
+           0 0 40px 14px #699cdd22,
+           0 0 80px 16px #699cdd11,
+           0 0 160px 18px #699cdd14,
+           0 0 320px 20px #699cdd13,
+
+           0 0 100px 40px #2d528299,
+           0 0 40px 50px #2d528211,
+        //    0 0 16px 80px #2a4c7a20,
+        //    0 0 80px 110px #2a4c7a19,
+        //    0 0 8px 140px #2a4c7a18,
+        //    0 0 16px 240px #2a4c7a17,
+        //    0 0 16px 320px #2a4c7a16,
+        // //    0 0 16px 400px #2a4c7a15,
+        // //    0 0 16px 480px #2a4c7a14,
+        //    0 0 16px 540px #2a4c7a13,
+        // //    0 0 16px 620px #2a4c7a12,
+        // //    0 0 16px 700px #2a4c7a11,
+        //    0 0 16px 780px #2a4c7a10,
+           0 0 10px #699cdd,
+           0 0 50px #699cdd;
+           z-index: 995;
+            
+         
+        }
+        .moon{
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            top: 400px;
+            left: 80%;
+            background-image: url("../../Assets/img/moonmap1k.jpg");
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -500px 0;
+            box-shadow: inset -40px 0 18px #000,
+            -12px 0 20px #90909055;
+            z-index: 995;
+             animation: rotateMoon 65s linear infinite;
+        }
+        @keyframes rotateMoon {
+            100%{
+                background-position: -1000px 0;
+            }
+        }
+        .earthDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;     
+            width: 1719.2px;
+            height: 1719.2px; 
+            border-radius: 50%;       
+            background-image: url("../../Assets/img/earthtext.png");
+            position: absolute;
+            background-size: cover;
+            background-position: -1280px 15px;
+            bottom: -1200px;  
+            left:-7%;
+            transform: rotate(90deg);
+            // filter: drop-shadow( 0 0px 20px  #4069ff);
+            box-shadow: inset -812px 0px 80px rgb(0, 0, 0,0.92),
+        
+            -5px 0 10px #28335b,
+            -10px 0 500px 10px #28335b;
+            z-index: 996;
+            .earth{
+            }
+        
         }
        
     }
-       
+    .dashboard{
+        top: 160vh;
+        width: 100%;
+        height: 100px;
+        padding: 0 60px;
+        background-color: #272727;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: CooperHewitt,Helvetica,Arial,sans-serif;
+        .title{
+           width: 30%;   
+           font-size: 20px;    
+       }
+        .stats{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            .info{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: column;
+                margin-left: -80px;
+                h4{
+                color: #a9d3ee;
+                font-weight: 800;
+                }
+                span{
+                    font-size: 20px;
+                }
+            }
+        }
     }
     .main{
-        padding: 200px;
-    
-        position:absolute;
-        top: 210vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 100px 450px 50px 450px;
         width: 100%;
-        height: 200vh;
-        background-color: #e0e7ef;
-        h2{
-            font-size: 56px;
+
+        .content{
+            
+            .fieldset{
+                padding: 15px 10px 15px 30px;
+                width: 100%;
+                legend{
+                    margin-left: 30px; // kenar çizgisi bozulmadan kaydırmak için margin kullandık
+                    font-weight: 600;
+                    padding: 0 10px;
+                }
+                h2{
+                    margin-bottom:15px ;
+                }
+                .description{
+                  line-height: 1.5;
+                }
+            }
         }
     }
 }

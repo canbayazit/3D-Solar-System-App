@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.module.scss';
 import AsteroidsAndComets from './Pages/Asteroids&Comets/AsteroidsAndComets';
 import Home from './Pages/Home/Home';
 import Moons from './Pages/Moons/Moons';
