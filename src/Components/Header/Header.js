@@ -34,7 +34,7 @@ const Header = () => {
           <li>
             <Link to={"/solarsystem"} className="link">
               Solar System
-            </Link>{" "}
+            </Link>
           </li>
           <li>
             <Link to={"/planets"} className="link">
