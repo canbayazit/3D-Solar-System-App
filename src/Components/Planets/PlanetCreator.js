@@ -1,10 +1,5 @@
 /* eslint-disable no-undef */
-import {
-  OrbitControls,
-  OrthographicCamera,
-  PerspectiveCamera,
-  Stars,
-} from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -29,18 +24,18 @@ const PlanetCreator = () => {
   //       0.1, //?
   //       1000 //?
   //     );
-  var axis = new THREE.Vector3(2, 2, 2);
-  const RadiansX = (90 * Math.PI) / 180;
-  const RadiansY = (45 * Math.PI) / 180;
-  const RadiansZ = (180 * Math.PI) / 180;
+
+  const earthOrbitRef = useRef();
   const earthRef = useRef();
   const sunhRef = useRef();
+  
   // const Ref = UseUpdate(group => {
   //     Group.rotateX(props.angle)
   //   }, [])
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     earthRef.current.rotation.y = elapsedTime / 6;
+    earthOrbitRef.current.rotation.y += 0.001;
     // earthRef.current.position.z= elapsedTime;
 
     sunhRef.current.rotation.y += 0.001;
@@ -52,7 +47,7 @@ const PlanetCreator = () => {
       {/* <OrbitControls
          camera={PerspectiveCamera}
         /> */}
-      <ambientLight intensity={0.5} />
+
       <OrbitControls
         enableZooms={true}
         enablePan={true}
@@ -75,20 +70,17 @@ const PlanetCreator = () => {
 
       <mesh ref={sunhRef}>
         <sphereGeometry args={[1, 32, 16]} />
-        <meshStandardMaterial map={map} />
+        <meshBasicMaterial map={map} />
         <PerspectiveCamera />
-        <group
-          ref={earthRef}
-          position={[20, 0, 0]}
-          object={Object3D}
-          rotateY={500}
-        >
-          <mesh>
-            <sphereGeometry args={[1, 32, 16]} />
-            <meshStandardMaterial map={map} />
-            <PerspectiveCamera />
-          </mesh>
-        </group>
+        <ambientLight intensity={0} position={[0, 0, 0]} />
+        <pointLight position={[0, 0, 0]} intensity={2} distance={500} />
+      </mesh>
+      <mesh ref={earthOrbitRef} >    
+        <mesh ref={earthRef} position={[20, 0, 0]}>
+          <sphereGeometry args={[1, 32, 16]} />
+          <meshStandardMaterial map={map} />
+          <PerspectiveCamera />
+        </mesh>
       </mesh>
     </>
   );
