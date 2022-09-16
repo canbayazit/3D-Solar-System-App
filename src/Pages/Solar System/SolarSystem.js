@@ -9,7 +9,7 @@ const SolarSystem = () => {
   const height=window.innerHeight;
   return (
     <div className={style.container}>
-      <Canvas className={style.Canvas} camera={{fov:95 ,aspect:(width / height), near:1 ,far:1000, position: [-10, 45, 20]}}>
+      <Canvas className={style.Canvas} camera={{fov:45 ,aspect:(width / height), near:1 ,far:1000, position: [-10, 45, 20]}}>
           <Suspense fallback={null}>
             <PlanetCreator />    
           </Suspense> 
