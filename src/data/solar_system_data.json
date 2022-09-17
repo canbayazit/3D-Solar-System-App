@@ -1,6 +1,34 @@
 {
   "planets": [
     {
+      "id": 0,
+      "name": "Sun",
+      "moons": {
+        "units": 0,
+        "items": []
+      },
+      "namesake": "Latin Word for Sun: 'SOL'",
+      "color": "#ffd900",
+      "radius": 695500,
+      "distance": 0,
+      "lengthYear": 230,
+      "temperature": "5500 °C",
+      "gravity": 274,
+      "axialTilt": 7.25,
+      "mass": {
+        "number": 1.9885,
+        "exponent": 30
+      },
+      "volume": {
+        "number": 1.41,
+        "exponent": 18
+      },
+      "surfaceArea": {
+        "number": 6.09,
+        "exponent": 12
+      }
+    },
+    {
       "id": 1,
       "name": "Mercury",
       "moons": {
