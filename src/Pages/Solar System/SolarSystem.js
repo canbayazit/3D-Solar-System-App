@@ -27,17 +27,11 @@ const SolarSystem = () => {
       >
         <axesHelper args={[25, 25, 25]} />
         <Suspense fallback={null}>
-          <Bounds fit clip observe margin={0.5}>
+          <Bounds fit clip observe margin={0.2}>
             <PlanetCreator />
           </Bounds>
         </Suspense>
-        <OrbitControls
-          enableZooms={true}
-          enablePan={true}
-          enableRotate={true}
-          autoRotate={false}
-          screenSpacePanning={false}
-        />
+        
       </Canvas>
     </div>
   );

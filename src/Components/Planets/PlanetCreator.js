@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { OrbitControls, Shadow, Stars, Text, useBounds } from "@react-three/drei";
+import { Bounds, OrbitControls, Shadow, Stars, Text, useBounds } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -11,6 +11,7 @@ import * as THREE from "three";
 // import CameraControls from 'camera-controls';
 const PlanetCreator = () => {
   const [isClicked,setClicked]=useState(null);
+  const [position,setPosition]=useState(0);
   const [focus,setFocus]=useState({});
   const earthMap = useLoader(TextureLoader, earthTexture);
   const saturnMap = useLoader(TextureLoader, saturnTexture);
@@ -41,6 +42,11 @@ const PlanetCreator = () => {
    
    
   })
+
+  const handleClick = ()=>{
+    api.refresh(earthRef.current).fit();
+    api.refresh().fit();
+  }
 
   useFrame(({ clock, camera, state , delta}) => {
     const elapsedTime = clock.getElapsedTime();
@@ -133,7 +139,8 @@ const PlanetCreator = () => {
         <meshBasicMaterial map={sunMap}  color="#fff53d"/>
         <ambientLight intensity={0} position={[0, 0, 0]} />
         <pointLight 
-        castShadow position={[0, 0, 0]} 
+        castShadow 
+        position={[0, 0, 0]} 
         intensity={0.5} 
         distance={1000} 
         shadow-mapSize-height={512}
@@ -149,12 +156,22 @@ const PlanetCreator = () => {
           {text}
         </Text>
       </mesh>
-      <group  onPointerMissed={(e) => (e.button === 0 && api.refresh().fit(), setClicked(false))} >
+      <group  onPointerMissed={(e) => (e.button === 0 && api.refresh().clip().fit(), setPosition(0),setClicked(false))} >
         <group    ref={earthOrbitRef}>
+        <OrbitControls
+          enableZooms={true}
+          enablePan={true}
+          enableRotate={true}
+          autoRotate={false}
+          screenSpacePanning={false}
+          target={[position,0,0]}
+        />
           <mesh  
             castShadow
-            onDoubleClick={(e)=>(e.stopPropagation(), e.delta <= 2 && api.refresh(earthRef.current).fit())}  ref={earthRef} position={[200, 0, 0]}>
-            <sphereGeometry args={[5, 32, 16]} />
+            onDoubleClick={(e)=>(e.stopPropagation(), e.delta <= 2 && api.refresh(deneme2Ref.current).fit(),setPosition(200))}  
+            ref={earthRef} 
+            position={[200, 0, 0]}>
+            <sphereGeometry args={[5, 50, 50]} />
             <meshStandardMaterial map={saturnMap} />
 
           </mesh>
@@ -173,7 +190,7 @@ const PlanetCreator = () => {
           <mesh  position={[200, 0, 0]} ref={targetRef}>
             <mesh ref={deneme2Ref}>
               <mesh ref={denemeRef}>
-                <ringGeometry args={[13.2, 14.5, 55]}></ringGeometry>
+                <ringGeometry args={[22.2, 23.5, 55]}></ringGeometry>
                 <meshBasicMaterial
                   ref={opacityRef}
                   color="#fff"
@@ -182,10 +199,20 @@ const PlanetCreator = () => {
                   side={THREE.DoubleSide}
                 ></meshBasicMaterial>
               </mesh>
+              <mesh ref={deneme2Ref}>
+                <ringGeometry args={[34.2, 34.5, 55]}></ringGeometry>
+                <meshBasicMaterial
+                  ref={opacityRef}
+                  color="#fff"
+                  opacity={0}
+                  transparent
+                  side={THREE.DoubleSide}
+                ></meshBasicMaterial>
+              </mesh>
               <mesh position={[20, 14, 0]}>
                 <Text
-                  position={[-20, 8, 0]}
-                  fontSize={8.75}
+                  position={[-20, 20, 0]}
+                  fontSize={10.75}
                   letterSpacing={-0.05}
                   color="white"
                   ref={textRef}
