@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { Bounds, OrbitControls } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import PlanetCreator from "../../Components/Planets/PlanetCreator";
@@ -15,6 +15,7 @@ const SolarSystem = () => {
   return (
     <div className={style.container}>
       <Canvas
+        shadows
         className={style.Canvas}
         camera={{
           fov: 45,
@@ -26,8 +27,17 @@ const SolarSystem = () => {
       >
         <axesHelper args={[25, 25, 25]} />
         <Suspense fallback={null}>
-          <PlanetCreator />
+          <Bounds fit clip observe margin={0.5}>
+            <PlanetCreator />
+          </Bounds>
         </Suspense>
+        <OrbitControls
+          enableZooms={true}
+          enablePan={true}
+          enableRotate={true}
+          autoRotate={false}
+          screenSpacePanning={false}
+        />
       </Canvas>
     </div>
   );
