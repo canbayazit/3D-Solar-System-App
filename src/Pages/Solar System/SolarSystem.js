@@ -5,15 +5,13 @@ import PlanetCreator from "../../Components/Planets/PlanetCreator";
 import style from "./style.module.scss";
 // import texture from "../../Assets/img/stars.jpg";
 // import { TextureLoader } from "three/src/loaders/TextureLoader";
-import Background from "../../Components/Background/Background";
-
 const SolarSystem = () => {
   // const map = useLoader(TextureLoader, texture);
   const width = window.innerHeight;
   console.log();
   const height = window.innerHeight;
   return (
-    <div className={style.container}>
+    <div className={style.container}>    
       <Canvas
         shadows
         className={style.Canvas}
@@ -26,9 +24,11 @@ const SolarSystem = () => {
         }}
       >
         <axesHelper args={[25, 25, 25]} />
+    
         <Suspense fallback={null}>
           <Bounds fit clip observe margin={0.2}>
             <PlanetCreator />
+     
           </Bounds>
         </Suspense>
         

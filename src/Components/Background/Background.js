@@ -5,14 +5,11 @@ import React from 'react'
 
 const Background = () => {
     const map = useLoader(TextureLoader, texture);
+    let x =5;
+    console.log(x);
     // const [cubeMap] = useLoader(CubeTextureLoader, [['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr']])
   return (
-   <mesh>
-    <cubeGeometry/>
-    <meshStandardMaterial map={map}/>
-
-   
-   </mesh>
+  x
   )
 }
 

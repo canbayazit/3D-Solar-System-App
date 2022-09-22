@@ -136,7 +136,7 @@ const PlanetCreator = () => {
 
       <mesh  ref={sunhRef} rotation={[0, 0, obliquity]}>
         <sphereGeometry args={[16, 32, 16]} />
-        <meshBasicMaterial map={sunMap}  color="#fff53d"/>
+        <meshBasicMaterial  map={sunMap}  color="#fff53d"/>
         <ambientLight intensity={0} position={[0, 0, 0]} />
         <pointLight 
         castShadow 
