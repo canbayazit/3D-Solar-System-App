@@ -43,7 +43,9 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <div className={style.planets}></div>
+      <div className={style.planets}>
+          
+      </div>
     </div>
   );
 };

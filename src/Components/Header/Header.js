@@ -5,7 +5,6 @@ const Header = () => {
   const [value, setText] = useState("");
   const [isScrolling, setScrolling] = useState(false);
   window.addEventListener("scroll", () => {
-    console.log(window.scrollY);
     window.scrollY >= 80 ? setScrolling(true) : setScrolling(false);
   });
 
