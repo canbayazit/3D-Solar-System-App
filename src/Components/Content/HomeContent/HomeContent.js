@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
-import {  useSelector } from "react-redux";
-
+import { useSelector } from "react-redux";
+import { textures } from "../../../Constant/image";
 
 const HomeContent = () => {
-
-const {planets} = useSelector(
-  (store) => store.planets);  
+  const { planets } = useSelector((store) => store.planets);
 
   console.log("store planet", planets);
-
-
 
   return (
     <div className={style.main}>
@@ -37,11 +33,25 @@ const {planets} = useSelector(
         </div>
       </div>
       <div className={style.planets}>
-          <div className={style.card_container}>
-              {
-
-              }
-          </div>
+        <div>
+          <h1 className={style.main_heading}>Planets in Our Solar System</h1>
+        </div>
+        <div className={style.card_container}>
+          {planets.map((item, index) => {
+            const image = textures[index].image;
+            return (
+              <div key={index} className={style.card}>
+                <div className={style.image_container}>
+                  <img src={image} className={style.image}></img>
+                </div>
+                <h2 className={style.heading} style={{ color: item.color }}>
+                  {item.name}
+                </h2>
+                <p></p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

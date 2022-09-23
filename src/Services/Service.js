@@ -16,18 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// export const data = ()=>{
-//   client.get('/planets.json')
-//   .then(response=>{
-//     console.log("asd",response.data);
-//     const planet = [];  
-//     for (let key in response.data) {
-//         planet.push(response.data[key]);
-        
-//     }
-//     store.dispatch(setPlanet(planet));
-//   })
-// }
 
 export default db;
 
