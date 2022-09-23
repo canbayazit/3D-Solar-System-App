@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
-import { client } from "../../../Services/axios";
+import {  useSelector } from "react-redux";
+
 
 const HomeContent = () => {
-const [planet, setPlanet] = useState([]);
-console.log("planets",planet)
 
-useEffect(() => {
-  
-  client.get('/planets.json')
-  .then(response=>{
-    console.log(response.data);
-    for (let key in response.data) {
-        planet.push(response.data[key]);
-        
-    }
-  })
+const {planets} = useSelector(
+  (store) => store.planets);  
 
-}, [])
+  console.log("store planet", planets);
+
+
 
   return (
     <div className={style.main}>
@@ -44,7 +37,11 @@ useEffect(() => {
         </div>
       </div>
       <div className={style.planets}>
-          
+          <div className={style.card_container}>
+              {
+
+              }
+          </div>
       </div>
     </div>
   );

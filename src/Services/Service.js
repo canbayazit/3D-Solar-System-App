@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref } from "firebase/database";
-import  {client}  from './axios';
+import { getDatabase } from "firebase/database";
+
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,26 +15,20 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-export default db;
-// const starCountRef = ref(db, 'planets');
-// onValue(starCountRef, (snapshot) => {
-//   const data = snapshot.val();
-//   console.log(data);
-// });
 
-
-// export const abcde =  ()=>{
-
-    // const { data } = await client.get('planets.json');
-    // console.log(process.env.REACT_APP_PROJECT_ID);
-
-    //     console.log("data",data);
-
-    // const starCountRef = ref(db, '/planets');
-    // onValue(starCountRef, (snapshot) => {
-    //     const data2 = snapshot.val();
-        // return process.env.REACT_APP_PROJECT_ID;
-    //   });
+// export const data = ()=>{
+//   client.get('/planets.json')
+//   .then(response=>{
+//     console.log("asd",response.data);
+//     const planet = [];  
+//     for (let key in response.data) {
+//         planet.push(response.data[key]);
+        
+//     }
+//     store.dispatch(setPlanet(planet));
+//   })
 // }
+
+export default db;
 
 

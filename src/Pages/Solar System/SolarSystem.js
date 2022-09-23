@@ -1,14 +1,17 @@
 import { Bounds, OrbitControls } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
 import React, { Suspense } from "react";
+import { useSelector } from "react-redux";
 import PlanetCreator from "../../Components/Planets/PlanetCreator";
 import style from "./style.module.scss";
 // import texture from "../../Assets/img/stars.jpg";
 // import { TextureLoader } from "three/src/loaders/TextureLoader";
 const SolarSystem = () => {
   // const map = useLoader(TextureLoader, texture);
+  const { planets} = useSelector(
+    (store) => store.planets); 
   const width = window.innerHeight;
-  console.log();
+  console.log("solar system",planets);
   const height = window.innerHeight;
   return (
     <div className={style.container}>    

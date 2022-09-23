@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import style from "./App.module.scss";
+import FirebaseFunction from "./Components/Function/FirebaseFunction";
 import AsteroidsAndComets from "./Pages/Asteroids&Comets/AsteroidsAndComets";
 import Home from "./Pages/Home/Home";
 import Moons from "./Pages/Moons/Moons";
@@ -7,6 +8,7 @@ import Planets from "./Pages/Planets/Planets";
 import SolarSystem from "./Pages/Solar System/SolarSystem";
 
 function App() {
+  FirebaseFunction();
   return (
     <div className={style.App}>
       <Routes>
