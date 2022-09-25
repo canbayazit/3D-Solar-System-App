@@ -8,8 +8,10 @@ import saturnTexture from "../../Assets/img/PlanetsTexture/saturnmap.jpg";
 import saturnRingTexture from "../../Assets/img/PlanetsTexture/saturnRing.png";
 import sunTexture from "../../Assets/img/PlanetsTexture/sunmap2.png";
 import * as THREE from "three";
+
 // import CameraControls from 'camera-controls';
-const PlanetCreator = () => {
+const PlanetCreator = (planets) => {
+  console.log("solar system redux planet",planets.planets[0].axialTilt)
   const [isClicked,setClicked]=useState(null);
   const [position,setPosition]=useState(0);
   const [focus,setFocus]=useState({});

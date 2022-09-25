@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
 import { useSelector } from "react-redux";
-import { textures } from "../../Constant/planet_image/image";
+import { textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
-import { button } from "../../Assets/svg/svg";
+import { button } from "../../../Assets/svg/svg";
 const HomeContent = () => {
   const [id, setID] = useState();
 

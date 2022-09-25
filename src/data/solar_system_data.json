@@ -1,5 +1,5 @@
 {
-  "planets": [    
+  "planets": [
     {
       "id": 1,
       "name": "Mercury",
@@ -7,6 +7,7 @@
         "units": 0,
         "items": []
       },
+      "description": "Mercury—the smallest planet in our solar system and closest to the Sun—is only slightly larger than Earth's Moon. Mercury is the fastest planet, zipping around the Sun every 88 Earth days.",
       "namesake": "ROMAN GOD OF SPEED",
       "color": "#7973dc",
       "radius": 2439.4,
@@ -35,6 +36,7 @@
         "units": 0,
         "items": []
       },
+      "description": "Venus spins slowly in the opposite direction from most planets. A thick atmosphere traps heat in a runaway greenhouse effect, making it the hottest planet in our solar system.",
       "namesake": "ROMAN GODDESS OF LOVE",
       "color": "#d67a19",
       "radius": 6051.8,
@@ -68,6 +70,7 @@
           }
         ]
       },
+      "description": "Earth—our home planet—is the only place we know of so far that’s inhabited by living things. It's also the only planet in our solar system with liquid water on the surface.",
       "namesake": "VARIATION OF 'THE GROUND' IN MANY LANGUAGES",
       "color": "#5592c6",
       "radius": 6378.1,
@@ -105,6 +108,7 @@
           }
         ]
       },
+      "description": "Mars is a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was—billions of years ago—wetter and warmer, with a thicker atmosphere.",
       "namesake": "ROMAN GOD OF WAR",
       "color": "#f9825d",
       "radius": 3396.2,
@@ -450,6 +454,7 @@
           }
         ]
       },
+      "description": "Jupiter is more than twice as massive than the other planets of our solar system combined. The giant planet's Great Red spot is a centuries-old storm bigger than Earth.",
       "namesake": "KING OF THE ROMAN GODS",
       "color": "#e96a76",
       "radius": 71492.0,
@@ -807,6 +812,7 @@
           }
         ]
       },
+      "description": "Adorned with a dazzling, complex system of icy rings, Saturn is unique in our solar system. The other giant planets have rings, but none are as spectacular as Saturn's.",
       "namesake": "FATHER OF JUPITER",
       "color": "#eba357",
       "radius": 60268.0,
@@ -944,6 +950,7 @@
           }
         ]
       },
+      "description": "Uranus—seventh planet from the Sun—rotates at a nearly 90-degree angle from the plane of its orbit. This unique tilt makes Uranus appear to spin on its side.",
       "namesake": "GREEK GOD OF THE SKY",
       "color": "#89ebff",
       "radius": 25559.0,
@@ -1029,6 +1036,7 @@
           }
         ]
       },
+      "description": "Neptune—the eighth and most distant major planet orbiting our Sun—is dark, cold and whipped by supersonic winds. It was the first planet located through mathematical calculations, rather than by telescope.",
       "namesake": "ROMAN GOD OF THE SEA",
       "color": "#97b7ff",
       "radius": 24764.0,
@@ -1051,13 +1059,22 @@
       }
     }
   ],
-  "stars":[
+  "stars": [
     {
       "id": 1,
       "name": "Sun",
       "planets": {
         "units": 8,
-        "items": ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"]
+        "items": [
+          "Mercury",
+          "Venus",
+          "Earth",
+          "Mars",
+          "Jupiter",
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
       },
       "namesake": "Latin Word for Sun: 'SOL'",
       "color": "#ffd900",
@@ -1149,158 +1166,158 @@
       "image": ""
     }
   ],
-  "Comets":[
+  "Comets": [
     {
-        "id": 1,
-        "name": "103P/Hartley (Hartley 2)",
-        "description": "Hartley 2 was discovered by Malcolm Hartley on Mar. 15, 1986 using the Schmidt Telescope at the Siding Spring Observatory in Australia.",
-        "image": ""
-      },
-      {
-        "id": 2,
-        "name": "109P/Swift-Tuttle",
-        "description": "It takes comet Swift-Tuttle 133 years to orbit the sun once.",
-        "image": ""
-      },
-      {
-        "id": 3,
-        "name": "19P/Borrelly",
-        "description": "Resembling a chicken leg, the nucleus of comet 19P/Borrelly is small and measures approximately 2.98 miles (4.8 kilometers) in diameter.",
-        "image": ""
-      },
-      {
-        "id": 4,
-        "name": "1P/Halley",
-        "description": "Comet Halley is perhaps the most famous comet.",
-        "image": ""
-      },
-      {
-        "id": 5,
-        "name": "21P/Giacobini-Zinner",
-        "description": "It takes comet 21P/Giacobini-Zinner 6.59 years to orbit the sun once.",
-        "image": ""
-      },
-      {
-        "id": 6,
-        "name": "2I/Borisov",
-        "description": "Comet 2I/Borisov is the first confirmed interstellar comet. It was discovered by Crimean amateur astronomer Gennady Borisov on Aug. 30, 2019, and quickly became a global phenomenon.",
-        "image": ""
-      },
-      {
-        "id": 7,
-        "name": "2P/Encke",
-        "description": "Comet 2P/Encke is a small comet. Its nucleus measures approximately 2.98 miles (4.8 kilometers) in diameter, which is about a third of the size of the object hypothesized to have led to the demise of the dinosaurs.",
-        "image": ""
-      },
-      {
-        "id": 8,
-        "name": "55P/Tempel-Tuttle",
-        "description": "It takes comet Tempel-Tuttle 33 years to orbit the sun once.",
-        "image": ""
-      },
-      {
-        "id": 9,
-        "name": "67P/Churyumov-Gerasimenko",
-        "description": "It takes comet Churyumov-Gerasimenko 6.5 years to orbit the sun once.",
-        "image": ""
-      },
-      {
-        "id": 10,
-        "name": "81P/Wild (Wild 2)",
-        "description": "81P/Wild (Wild 2) is a small comet with the shape of a flattened sphere.",
-        "image": ""
-      },
-      {
-        "id": 11,
-        "name": "9P/Tempel 1",
-        "description": "Comet 9P/Tempel 1 orbits the sun within the asteroid belt, which lies between the orbits of Mars and Jupiter. Tempel 1 last reached perihelion (closest approach to the sun) in 2016.",
-        "image": ""
-      },
-      {
-        "id": 12,
-        "name": "C/1861 G1 (Thatcher)",
-        "description": "It takes 415 years for comet C/1861 G1 Thatcher to orbit the sun once.",
-        "image": ""
-      },
-      {
-        "id": 13,
-        "name": "C/1995 O1 (Hale-Bopp)",
-        "description": "Also called the Great Comet of 1997, comet C/1995 O1 (Hale-Bopp) is a large comet with a nucleus measuring approximately 37 miles (60 kilometers) in diameter.",
-        "image": ""
-      },
-      {
-        "id": 14,
-        "name": "C/2013 A1 Siding Spring",
-        "description": "Comet C/2013 A1 Siding Spring is en route to buzz Mars in October 2014.",
-        "image": ""
-      },
-      {
-        "id": 15,
-        "name": "ISON",
-        "description": "Comet ISON came from the Oort cloud region of our solar system.",
-        "image": ""
-      },
-      {
-        "id": 16,
-        "name": "Oumuamua",
-        "description": "The first confirmed object from another star to visit our solar system.",
-        "image": ""
-      },
-      {
-        "id": 17,
-        "name": "P/Shoemaker-Levy 9",
-        "description": "Comet Shoemaker-Levy 9 was captured by the gravity of Jupiter, torn apart and then crashed into the giant planet in July 1994.",
-        "image": ""
-      }
+      "id": 1,
+      "name": "103P/Hartley (Hartley 2)",
+      "description": "Hartley 2 was discovered by Malcolm Hartley on Mar. 15, 1986 using the Schmidt Telescope at the Siding Spring Observatory in Australia.",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "109P/Swift-Tuttle",
+      "description": "It takes comet Swift-Tuttle 133 years to orbit the sun once.",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "19P/Borrelly",
+      "description": "Resembling a chicken leg, the nucleus of comet 19P/Borrelly is small and measures approximately 2.98 miles (4.8 kilometers) in diameter.",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "1P/Halley",
+      "description": "Comet Halley is perhaps the most famous comet.",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "name": "21P/Giacobini-Zinner",
+      "description": "It takes comet 21P/Giacobini-Zinner 6.59 years to orbit the sun once.",
+      "image": ""
+    },
+    {
+      "id": 6,
+      "name": "2I/Borisov",
+      "description": "Comet 2I/Borisov is the first confirmed interstellar comet. It was discovered by Crimean amateur astronomer Gennady Borisov on Aug. 30, 2019, and quickly became a global phenomenon.",
+      "image": ""
+    },
+    {
+      "id": 7,
+      "name": "2P/Encke",
+      "description": "Comet 2P/Encke is a small comet. Its nucleus measures approximately 2.98 miles (4.8 kilometers) in diameter, which is about a third of the size of the object hypothesized to have led to the demise of the dinosaurs.",
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "55P/Tempel-Tuttle",
+      "description": "It takes comet Tempel-Tuttle 33 years to orbit the sun once.",
+      "image": ""
+    },
+    {
+      "id": 9,
+      "name": "67P/Churyumov-Gerasimenko",
+      "description": "It takes comet Churyumov-Gerasimenko 6.5 years to orbit the sun once.",
+      "image": ""
+    },
+    {
+      "id": 10,
+      "name": "81P/Wild (Wild 2)",
+      "description": "81P/Wild (Wild 2) is a small comet with the shape of a flattened sphere.",
+      "image": ""
+    },
+    {
+      "id": 11,
+      "name": "9P/Tempel 1",
+      "description": "Comet 9P/Tempel 1 orbits the sun within the asteroid belt, which lies between the orbits of Mars and Jupiter. Tempel 1 last reached perihelion (closest approach to the sun) in 2016.",
+      "image": ""
+    },
+    {
+      "id": 12,
+      "name": "C/1861 G1 (Thatcher)",
+      "description": "It takes 415 years for comet C/1861 G1 Thatcher to orbit the sun once.",
+      "image": ""
+    },
+    {
+      "id": 13,
+      "name": "C/1995 O1 (Hale-Bopp)",
+      "description": "Also called the Great Comet of 1997, comet C/1995 O1 (Hale-Bopp) is a large comet with a nucleus measuring approximately 37 miles (60 kilometers) in diameter.",
+      "image": ""
+    },
+    {
+      "id": 14,
+      "name": "C/2013 A1 Siding Spring",
+      "description": "Comet C/2013 A1 Siding Spring is en route to buzz Mars in October 2014.",
+      "image": ""
+    },
+    {
+      "id": 15,
+      "name": "ISON",
+      "description": "Comet ISON came from the Oort cloud region of our solar system.",
+      "image": ""
+    },
+    {
+      "id": 16,
+      "name": "Oumuamua",
+      "description": "The first confirmed object from another star to visit our solar system.",
+      "image": ""
+    },
+    {
+      "id": 17,
+      "name": "P/Shoemaker-Levy 9",
+      "description": "Comet Shoemaker-Levy 9 was captured by the gravity of Jupiter, torn apart and then crashed into the giant planet in July 1994.",
+      "image": ""
+    }
   ],
-  "Meteors":[
+  "Meteors": [
     {
-        "id": 1,
-        "name": "January: Quadrantids",
-        "description": "The Quadrantids, which peak during early-January each year, are considered to be one of the best annual meteor showers.",
-        "image": ""
-      },
-      {
-        "id": 2,
-        "name": "April: Lyrids",
-        "description": "The Lyrids, which peak during late April, are one of the oldest known meteor showers: Lyrids have been observed for 2,700 years.",
-        "image": ""
-      },
-      {
-        "id": 3,
-        "name": "May: Eta Aquarids",
-        "description": "The Eta Aquarids peak during early-May each year. Eta Aquarid meteors are known for their speed.",
-        "image": ""
-      },
-      {
-        "id": 4,
-        "name": "July: Southern Delta Aquariids",
-        "description": "The Southern Delta Aquariids are active beginning in mid-July and are visible until late August. These faint meteors are difficult to spot, and if the Moon is visible, you will not be able to view them.",
-        "image": ""
-      },
-      {
-        "id": 5,
-        "name": "August: Perseids",
-        "description": "The Perseids, which peak during mid-August, are considered the best meteor shower of the year.",
-        "image": ""
-      },
-      {
-        "id": 6,
-        "name": "October: Orionids",
-        "description": "The Orionids, which peak during mid-October each year, are considered to be one of the most beautiful showers of the year.",
-        "image": ""
-      },
-      {
-        "id": 7,
-        "name": "November: Leonids",
-        "description": "The Leonids, which peak during mid-November each year, are considered to be a major shower though meteor rates are often as low as about 15 meteors per hour.",
-        "image": ""
-      },
-      {
-        "id": 8,
-        "name": "December: Geminids",
-        "description": "The Geminids, which peak during mid-December each year, are considered to be one of the best and most reliable annual meteor showers.",
-        "image": ""
-      }
+      "id": 1,
+      "name": "January: Quadrantids",
+      "description": "The Quadrantids, which peak during early-January each year, are considered to be one of the best annual meteor showers.",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "April: Lyrids",
+      "description": "The Lyrids, which peak during late April, are one of the oldest known meteor showers: Lyrids have been observed for 2,700 years.",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "May: Eta Aquarids",
+      "description": "The Eta Aquarids peak during early-May each year. Eta Aquarid meteors are known for their speed.",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "July: Southern Delta Aquariids",
+      "description": "The Southern Delta Aquariids are active beginning in mid-July and are visible until late August. These faint meteors are difficult to spot, and if the Moon is visible, you will not be able to view them.",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "name": "August: Perseids",
+      "description": "The Perseids, which peak during mid-August, are considered the best meteor shower of the year.",
+      "image": ""
+    },
+    {
+      "id": 6,
+      "name": "October: Orionids",
+      "description": "The Orionids, which peak during mid-October each year, are considered to be one of the most beautiful showers of the year.",
+      "image": ""
+    },
+    {
+      "id": 7,
+      "name": "November: Leonids",
+      "description": "The Leonids, which peak during mid-November each year, are considered to be a major shower though meteor rates are often as low as about 15 meteors per hour.",
+      "image": ""
+    },
+    {
+      "id": 8,
+      "name": "December: Geminids",
+      "description": "The Geminids, which peak during mid-December each year, are considered to be one of the best and most reliable annual meteor showers.",
+      "image": ""
+    }
   ]
 }

@@ -1,8 +1,8 @@
-import { Bounds, OrbitControls } from "@react-three/drei";
-import { Canvas, useLoader } from "@react-three/fiber";
+import { Bounds } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
-import PlanetCreator from "../../Components/Planets/PlanetCreator";
+import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import style from "./style.module.scss";
 // import texture from "../../Assets/img/stars.jpg";
 // import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -10,9 +10,8 @@ const SolarSystem = () => {
   // const map = useLoader(TextureLoader, texture);
   const { planets} = useSelector(
     (store) => store.planets); 
-  const width = window.innerHeight;
   console.log("solar system",planets);
-  const height = window.innerHeight;
+ 
   return (
     <div className={style.container}>    
       <Canvas
@@ -20,18 +19,17 @@ const SolarSystem = () => {
         className={style.Canvas}
         camera={{
           fov: 45,
-          aspect: width / height,
+          aspect:  window.innerWidth / window.innerHeight,
           near: 1,
           far: 4000,
-          position: [-10, 45, 20],
+          position: [0, 0, 0],
         }}
       >
-        <axesHelper args={[25, 25, 25]} />
+        {/* <axesHelper args={[25, 25, 25]} /> */}
     
         <Suspense fallback={null}>
           <Bounds fit clip observe margin={0.2}>
-            <PlanetCreator />
-     
+            <PlanetCreator planets={planets}/>     
           </Bounds>
         </Suspense>
         

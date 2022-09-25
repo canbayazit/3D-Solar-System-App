@@ -1,4 +1,4 @@
-import mercurymap from "../../Assets/img/PlanetsTexture/mercurymap.jpg"
+import mercurymap from "../../Assets/img/PlanetsTexture/2k_mercury.jpg"
 import venusmap from "../../Assets/img/PlanetsTexture/venusmap.jpg"
 import earthmap from "../../Assets/img/PlanetsTexture/earthmap.jpg"
 import marsmap from "../../Assets/img/PlanetsTexture/marsmap.jpg"
