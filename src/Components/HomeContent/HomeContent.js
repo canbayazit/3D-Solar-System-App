@@ -2,12 +2,25 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
 import { useSelector } from "react-redux";
-import { textures } from "../../../Constant/image";
-
+import { textures } from "../../Constant/planet_image/image";
+import { useNavigate } from "react-router-dom";
+import { button } from "../../Assets/svg/svg";
 const HomeContent = () => {
+  const [id, setID] = useState();
+
+  const [hover, setHover] = useState(false);
+
   const { planets } = useSelector((store) => store.planets);
+  const navigate = useNavigate();
 
   console.log("store planet", planets);
+
+  const handleClick = (item) => {
+    // dispatch(setCharacter(item));
+    let text =`/${item.name}`
+    let result = text.toLowerCase()
+    navigate(result);
+  };
 
   return (
     <div className={style.main}>
@@ -40,14 +53,41 @@ const HomeContent = () => {
           {planets.map((item, index) => {
             const image = textures[index].image;
             return (
-              <div key={index} className={style.card}>
+              <div
+                key={index}
+                className={style.card}
+                style={
+                  id === index + 1
+                    ? {
+                        border: `1px solid ${item.color}`,
+                        boxShadow: `0 0 5px 5px ${item.color}33,
+                                    0 0 10px 10px ${item.color}22,
+                                    0 0 20px 20px ${item.color}11,
+                                  
+                                    0 0 5px ${item.color},
+                                    0 0 10px ${item.color}   `,
+                      }
+                    : { border: `1px solid transparent` }
+                }
+                onMouseEnter={() => setID(item.id)}
+                onMouseLeave={() => setID(null)}
+              >
                 <div className={style.image_container}>
                   <img src={image} className={style.image}></img>
                 </div>
-                <h2 className={style.heading} style={{ color: item.color }}>
-                  {item.name}
-                </h2>
-                <p></p>
+                <div className={style.heading}>
+                  <h2 style={{ color: item.color }}>{item.name}</h2>
+                </div>
+                <div
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                  className={style.Button}
+                  onClick={() => handleClick(item)}
+                >
+                  <span>
+                  {button(item.color, hover)}
+                  </span>
+                </div>
               </div>
             );
           })}

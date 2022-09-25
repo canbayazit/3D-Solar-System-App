@@ -48,53 +48,100 @@
     }
     .planets{
         width: 100%;
-        height: 400vh;
+        height: 240vh;
         background-image: url("../../../Assets/img/background_stars_grid.jpg");
-        margin-top:80px;
+        margin-top:100px; 
         // background-size: cover;
         // background-position: center;
         background-repeat: repeat;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         .main_heading{
             color: #fff;
             font-size: 36px;
-            margin-bottom: 100px;
+            margin: 100px 0;
         }
         .card_container{
             display: grid;
-            grid-template-columns: repeat(2,1fr); 
-            top:150px;
+            grid-template-columns: repeat(4,1fr); 
             border: 1px solid #3b3b3b;
-         
             .card{
                 display: flex;
+                position: relative;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                margin:50px ;
-                width: 400px;
-                
-                cursor: pointer;
+                margin:30px ;
+                width: 300px;
+                height: 400px;
+                transition-duration: 0.5s ;
+                overflow: hidden;
+                // border: 1px solid #937341;
+                // border-color: transparent;
                 &:hover{
-                    border: 1px solid #3b3b3b;
+                    // border: 1px solid #937341;
+                    background-color: #000;
+                    transform:scale(1.1);
+                    transition-duration:all 0.5s ease-in;
+                    
+                
+                    .heading{
+                        opacity: 1;
+                    transform: translateY(20px);
+                    transition-duration: 0.5s ;
+
+                    }
+                    .Button{
+                    transform: translateY(-20px);
+                    transition-duration: 0.5s ;
+                    
+                    }
+
                 }
                 .image_container{
                     display: flex;
                     align-items: center;
-                    justify-content: center;            
+                    justify-content: center; 
+                    width: 280px;     
+                    transform : translateY(40px);     
                     .image{
-                    
+                    // background-size: cover ;
+                    width: 100%;
                     }
                 }
                 .heading{
-                    font-size: 64px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 0.7;
+                    transform: translateY(45px);
+                    transition-duration: 0.5s ;
+
+                    h2{
+                        font-size: 40px;
                     font-family:  'Open Sans';
-                    font-weight: 100;
-                    margin: 50px;
+                    font-weight: 300;
+                    margin: 50px 50px 30px 50px;
+                    padding: 0 20px;
                     text-transform: uppercase;
+                    width: 100%;
+                    }
+
+                }
+                .Button{                
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 30px;
+                    background-color: transparent;
+                   
+                    transform: translateY(100px);
+                    transition-duration: 0.5s ;
+                    cursor: pointer;
+                
+                    
                 }
              
             }

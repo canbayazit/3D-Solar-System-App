@@ -1,8 +1,9 @@
 import React from "react";
 import Header from "../../Components/Header/Header";
 import HomeSection from "../../Components/Section/HomeSection/HomeSection";
-import HomeContent from "../../Components/Content/HomeContent/HomeContent";
+import HomeContent from "../../Components/HomeContent/HomeContent";
 import style from "./style.module.scss";
+import Footer from "../../Components/Footer/Footer";
 const Home = () => {
 
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <HomeSection />
       <HomeContent />
+      <Footer/>
     </div>
   );
 };
