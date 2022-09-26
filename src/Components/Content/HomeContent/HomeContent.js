@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
 import { button } from "../../../Assets/svg/svg";
+import { setHeaderStatus } from "../../../Store/PlanetSlice";
 const HomeContent = () => {
-  const [id, setID] = useState();
-
+  const [id, setID] = useState();  
   const [hover, setHover] = useState(false);
-
+  const dispatch=useDispatch();
   const { planets } = useSelector((store) => store.planets);
   const navigate = useNavigate();
 
-  console.log("store planet", planets);
-
   const handleClick = (item) => {
-    // dispatch(setCharacter(item));
+    dispatch(setHeaderStatus(true));
     let text =`/${item.name}`
     let result = text.toLowerCase()
     navigate(result);

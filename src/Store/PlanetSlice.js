@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     planets:[],
-    loading:false
+    loading:false,
+    headerStatus:false
 }
 
 const planetSlice = createSlice({
@@ -11,10 +12,13 @@ const planetSlice = createSlice({
     reducers: {
         setPlanet: (state, action) => {
           state.planets = action.payload;
+        },
+        setHeaderStatus: (state, action) => {
+            state.headerStatus = action.payload;
         }
     },
   
 });
 
-export const {setPlanet} = planetSlice.actions;
+export const {setPlanet,setHeaderStatus} = planetSlice.actions;
 export default planetSlice.reducer;

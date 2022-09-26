@@ -16,7 +16,7 @@ import saturnimage from "../../Assets/img/PlanetsTexture/saturn_image.png"
 import uranusimage from "../../Assets/img/PlanetsTexture/uranus_image.png"
 import neptuneimage from "../../Assets/img/PlanetsTexture/neptune_image.png"
 
-
+import saturnring from "../../Assets/img/PlanetsTexture/saturnRing.png";
 
 
 
@@ -53,7 +53,8 @@ export const textures = [
     {
         planetID:6,
         texture:saturnmap,
-        image:saturnimage
+        image:saturnimage,
+        ring:saturnring
 
     },
     {

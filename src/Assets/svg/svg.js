@@ -69,13 +69,13 @@ export const button = (color, hover) =>
     </svg>
   );
 
-export const arrowLeft = (color)=>(
+export const arrowLeft = (color) => (
   <svg
     version="1.0"
     x="0px"
     y="0px"
     viewBox="0 0 162 70.28"
-    style={{width: 32.5}}
+    style={{ width: 32.5 }}
     fill="#c4b998"
   >
     <circle fill="#fff" cx="31.57" cy="35.21" r="11.57"></circle>
@@ -88,13 +88,13 @@ export const arrowLeft = (color)=>(
     </g>
   </svg>
 );
-export const arrowRight = (color)=>(
+export const arrowRight = (color) => (
   <svg
     version="1.0"
     x="0px"
     y="0px"
     viewBox="0 0 162 70.28"
-    style={{width: 32.5, transform: `rotate(180deg)`}}
+    style={{ width: 32.5, transform: `rotate(180deg)` }}
     fill="#c4b998"
   >
     <circle fill="#fff" cx="31.57" cy="35.21" r="11.57"></circle>
@@ -105,5 +105,63 @@ export const arrowRight = (color)=>(
       ></polygon>
       <rect x="84.61" y="29.76" fill="#fff" width="65" height="11.06"></rect>
     </g>
+  </svg>
+);
+
+export const moon = () => (
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 84 80"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M81.6632 40C81.6632 60.9034 63.9153 78 41.8316 78C19.7479 78 2 60.9034 2 40C2 19.0966 19.7479 2 41.8316 2C63.9153 2 81.6632 19.0966 81.6632 40Z"
+      stroke="#fff"
+      strokeWidth="4"
+    />
+    <ellipse cx="26.1447" cy="48" rx="5.22895" ry="5" fill="#fff" />
+    <ellipse cx="56.9957" cy="26.5" rx="13.0724" ry="12.5" fill="#fff" />
+    <ellipse cx="45.4919" cy="60.5" rx="2.61448" ry="2.5" fill="#fff" />
+    <ellipse cx="22.4844" cy="27.5" rx="2.61448" ry="2.5" fill="#fff" />
+  </svg>
+);
+
+export const arrowButtonRight = () => (
+  <svg
+    width="30"
+    height="60"
+    viewBox="0 0 13 30"
+    fill="none"
+    style={{transform: `rotate(180deg)` }}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 29L1.5 16L12 1.5" stroke="#fff" strokeWidth="1" />
+  </svg>
+);
+
+export const arrowButtonLeft = () => (
+  <svg
+    width="30"
+    height="60"
+    viewBox="0 0 13 30"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 29L1.5 16L12 1.5" stroke="#fff" strokeWidth="1" />
+  </svg>
+);
+
+export const arrowDown = () => (
+  <svg
+    width="10"
+    height="20"
+    viewBox="0 0 13 30"
+    style={{transform: `rotate(-90deg)` }}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 29L1.5 16L12 1.5" stroke="#000" strokeWidth="3" />
   </svg>
 );

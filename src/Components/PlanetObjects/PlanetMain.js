@@ -2,10 +2,11 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { textures } from "../../../Constant/planet_image/image";
-const Mercury = (planets) => {
+import { textures } from "../../Constant/planet_image/image";
+const PlanetMain = (props) => {
   const mercuryMap = useLoader(TextureLoader, textures[0].texture);
   const mercuryRef = useRef();
+  console.log("PlanetMain",props)
   useFrame(() => {
     mercuryRef.current.rotation.y += 0.001;
   });
@@ -30,9 +31,9 @@ const Mercury = (planets) => {
 
 </OrbitControls>
        
-    <mesh ref={mercuryRef} rotation={[0, 0, planets.planets[0].axialTilt]}>
+    <mesh ref={mercuryRef} rotation={[0, 0, props.planets.axialTilt]}>
  
-      <sphereGeometry args={[160, 128, 64]} >
+      <sphereGeometry args={[props.radius, 128, 64]} >
     
       </sphereGeometry>
       <meshStandardMaterial map={mercuryMap}  />
@@ -52,4 +53,4 @@ const Mercury = (planets) => {
   );
 };
 
-export default Mercury;
+export default PlanetMain;

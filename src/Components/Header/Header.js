@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./style.module.scss";
 const Header = () => {
@@ -7,9 +8,9 @@ const Header = () => {
   window.addEventListener("scroll", () => {
     window.scrollY >= 80 ? setScrolling(true) : setScrolling(false);
   });
-
+  const { headerStatus } = useSelector((store) => store.planets);
   return (
-    <header className={style.container } style={isScrolling  ?{backgroundColor:'#000' , borderBottom:' 1px solid #3b3b3b', transitionDuration:'1s'} :{backgroundColor:'#00000000', transitionDuration:'1s'}}>
+    <header className={style.container } style={isScrolling  ?{backgroundColor:'#000' , borderBottom:' 1px solid #3b3b3b', transitionDuration:'1s'} :{backgroundColor:headerStatus? '#000' : '#00000000',borderBottom: headerStatus ? ' 1px solid #3b3b3b':' 1px solid #3b3b3b00' , transitionDuration:'1s'}}>
       <div className={style.left_header}>
         <div className={style.page_logo}></div>
         <div className={style.heading}>
