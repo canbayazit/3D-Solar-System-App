@@ -1,4 +1,5 @@
 import React from 'react'
+import JupiterContent from '../../../Components/Content/JupiterContent/JupiterContent';
 import Footer from '../../../Components/Footer/Footer';
 import Header from '../../../Components/Header/Header';
 import PlanetSection from '../../../Components/Section/PlanetSection/PlanetSection';
@@ -11,6 +12,7 @@ const Jupiter = () => {
     <div className={style.container}>  
     <Header/>
     <PlanetSection/>
+    <JupiterContent/>
     <Footer/>
   </div>
   )

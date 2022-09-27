@@ -32,12 +32,29 @@
                 flex-direction: column;
                 margin-left: -80px;
                 font-size: 18px;
+                line-height: 1.4;   
                 h4{
                 color: #a9d3ee;
                 font-weight: 800;
                 }
                 span{
-                    font-size: 20px;
+                    font-size: 1em;
+                    margin-top: 0.3em;
+                    font-family: Metropolis,Helvetica,Arial,sans-serif;
+                    display: flex;
+                    // .ten{
+                    //     display: flex;
+                    //     align-items: center;
+                    //     font-size: 19px;
+                    //     margin:0 4px 0 10px;
+                    //     font-weight: 300;
+
+                    // }
+                    // .exponent{       
+                       
+                    //     font-size: .7em;
+                    //     font-weight: 100;
+                    // }
                 }
             }
         }

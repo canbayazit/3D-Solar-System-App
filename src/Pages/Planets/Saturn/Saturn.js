@@ -1,4 +1,5 @@
 import React from 'react'
+import SaturnContent from '../../../Components/Content/SaturnContent/SaturnContent';
 import Footer from '../../../Components/Footer/Footer';
 import Header from '../../../Components/Header/Header';
 import PlanetSection from '../../../Components/Section/PlanetSection/PlanetSection';
@@ -11,6 +12,7 @@ const Saturn = () => {
     <div className={style.container}>  
     <Header/>
     <PlanetSection/>
+    <SaturnContent/>
     <Footer/>
   </div>
   )

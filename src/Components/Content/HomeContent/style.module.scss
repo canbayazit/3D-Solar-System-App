@@ -27,7 +27,6 @@
         .solar_system_description{
            margin-top: 40px;
            font-size: 20px;
-        //    display: flex;
            .solar_system_img{
                 width: 440px;
                 height: 350px;
@@ -77,11 +76,8 @@
                 width: 300px;
                 height: 400px;
                 transition-duration: 0.5s ;
-                overflow: hidden;
-                // border: 1px solid #937341;
-                // border-color: transparent;
+                overflow: hidden;            
                 &:hover{
-                    // border: 1px solid #937341;
                     background-color: #000;
                     transform:scale(1.1);
                     transition-duration:all 0.5s ease-in;
@@ -107,7 +103,6 @@
                     width: 280px;     
                     transform : translateY(40px);     
                     .image{
-                    // background-size: cover ;
                     width: 100%;
                     }
                 }
@@ -120,7 +115,7 @@
                     transition-duration: 0.5s ;
 
                     h2{
-                        font-size: 40px;
+                    font-size: 40px;
                     font-family:  'Open Sans';
                     font-weight: 300;
                     margin: 50px 50px 30px 50px;

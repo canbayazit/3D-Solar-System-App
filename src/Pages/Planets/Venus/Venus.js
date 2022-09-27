@@ -1,4 +1,5 @@
 import React from 'react'
+import VenusContent from '../../../Components/Content/VenusContent/VenusContent';
 import Footer from '../../../Components/Footer/Footer';
 import Header from '../../../Components/Header/Header';
 import PlanetSection from '../../../Components/Section/PlanetSection/PlanetSection';
@@ -11,6 +12,7 @@ const Venus = () => {
     <div className={style.container}>  
     <Header />
     <PlanetSection/>
+    <VenusContent/>
     <Footer/>
   </div>
   )

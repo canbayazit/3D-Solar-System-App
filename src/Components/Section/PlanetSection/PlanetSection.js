@@ -17,7 +17,7 @@ import Dashboard from "../../Dashboard/Dashboard";
 
 const PlanetSection = () => {
   const [mod, setMod] = useState(false);
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const [radiusLeft, setRadiusLeftPlanet] = useState(100);
   const [radiusRight, setRadiusRightPlanet] = useState(100);
   const { planets,planetIndex} = useSelector((store) => store.planets);
@@ -32,26 +32,28 @@ console.log("section index",planetIndex);
   };
 
   const handleClickLeft = () => {
-    let val = index - 1;
-    setIndex(planets.length - 1);
-    if (val === 0) {
-      setIndex(planets.length - 1);
+    let val = index - 1; 
+    if (val === -1) {
+      planetIndex !== planets.length - 1 ? setIndex(planets.length - 1): setIndex(planets.length - 2)
     } else {
-      setIndex(val);
+      planetIndex === val ? val===0 ? setIndex(planets.length - 1):setIndex(val-1) : setIndex(val)
     }
   };
 
   const handleClickRight = () => {
     let val = index + 1;
     if (val === planets.length) {
-      setIndex(1);
+      planetIndex === 0 ? setIndex(1): setIndex(0)
     } else {
-      setIndex(val);
+      planetIndex === val ? val === planets.length-1 ? setIndex(0): setIndex(val+1) : setIndex(val)
     }
   };
 useEffect(() => {
   window.scrollTo(0,0);
-}, )
+planetIndex===index ? setIndex(1) : setIndex(0)
+},[] )
+console.log("radius right",radiusRight);
+console.log("radius left",radiusLeft);
 
   useEffect(() => {
     if (planets[planetIndex].radius > planets[index].radius) {
@@ -67,7 +69,7 @@ useEffect(() => {
       setRadiusLeftPlanet(100);
     }    
 
-    // console.log("useffect");
+    // console.log("useffect section");
   });
   
   return (

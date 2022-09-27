@@ -13,16 +13,20 @@ const Dashboard = () => {
       </div>
       <div className={style.stats}>
         <div className={style.info}>
-          <h4 style={{color:planets[planetIndex].color}}>DISTANCE FROM SUN</h4>
-          <span>8</span>
+          <h4 style={{color:planets[planetIndex].color}}>GRAVITY</h4>
+          <span>{planets[planetIndex].gravity}</span>
         </div>
         <div className={style.info}>
-          <h4 style={{color:planets[planetIndex].color}}>MOONS</h4>
-          <span>{planets[planetIndex].moons.units}</span>
+          <h4 style={{color:planets[planetIndex].color}}>TEMPERATURE</h4>
+          <span>{planets[planetIndex].temperature}</span>          
+          {/* <span>{planets[planetIndex].volume.number}<span className={style.ten}> x 10</span><span className={style.exponent}>{planets[planetIndex].mass.exponent}</span></span> */}
+
         </div>
         <div className={style.info}>
-          <h4 style={{color:planets[planetIndex].color}}>LENGTH OF YEAR</h4>
-          <span>{planets[planetIndex].lengthYear}</span>
+          <h4 style={{color:planets[planetIndex].color}}>AXIAL TILT</h4>
+          <span>{planets[planetIndex].axialTilt}</span>         
+          {/* <span>{planets[planetIndex].surfaceArea.number}<span className={style.ten}> x 10</span><span className={style.exponent}>{planets[planetIndex].mass.exponent}</span></span> */}
+
         </div>        
       </div>
     </div>

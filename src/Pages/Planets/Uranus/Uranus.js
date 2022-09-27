@@ -1,4 +1,5 @@
 import React from 'react'
+import UranusContent from '../../../Components/Content/UranusContent/UranusContent';
 import Footer from '../../../Components/Footer/Footer';
 import Header from '../../../Components/Header/Header';
 import PlanetSection from '../../../Components/Section/PlanetSection/PlanetSection';
@@ -11,6 +12,7 @@ const Uranus = () => {
     <div className={style.container}>  
     <Header/>
     <PlanetSection/>
+    <UranusContent/>
     <Footer/>
   </div>
   )

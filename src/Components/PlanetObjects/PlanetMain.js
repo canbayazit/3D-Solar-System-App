@@ -54,7 +54,7 @@ const PlanetMain = (props) => {
       <group>
         <mesh ref={planetMainRef} position={[0, 0, 0]}>
           <sphereGeometry
-            args={props.mod ? [props.radius, 128, 64] : [150, 128, 64]}
+            args={props.mod ? [props.radius, 128, 64] : [110, 128, 64]}
           ></sphereGeometry>
           <meshStandardMaterial map={planetMap} />
           <ambientLight intensity={0.25} />
@@ -75,7 +75,7 @@ const PlanetMain = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={[260, 280, 55]} />
+          <ringGeometry args={props.mod ? [(190*props.radius)/100, (210*props.radius)/100, 55]:[190, 210, 55]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
@@ -85,17 +85,17 @@ const PlanetMain = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={[210, 220, 55]} />
+          <ringGeometry args={props.mod ? [(150*props.radius)/100, (160*props.radius)/100, 55]:[150, 160, 55]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
           ref={ringSaturnRef}
           position={[0, 0, 0]}
-          rotation-y={Math.PI / 8}
-          rotation-x={Math.PI / 2.5}
+          rotation-y={Math.PI /12}
+          rotation-x={Math.PI /2 }
           receiveShadow
         >
-          <ringGeometry args={[190, 290, 55]} />
+          <ringGeometry args={props.mod ? [(140*props.radius)/100, (220*props.radius)/100, 55] : [140, 220, 55]} />
           <meshStandardMaterial map={ringMap} side={THREE.DoubleSide} />
         </mesh>
       </group>
