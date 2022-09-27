@@ -6,6 +6,7 @@ import { github, linkedin } from "../../Assets/svg/svg";
 const Footer = () => {
   return (
     <footer className={style.container}>
+     
       <div className={style.footer_top}>
         <img className={style.footer_top_image} src={footertop}></img>
         <img className={style.footer_bottom_image} src={footerbottom}></img>
@@ -50,7 +51,7 @@ const Footer = () => {
             {linkedin}
           </a>
         </div>
-      </div>
+      </div>    
     </footer>
   );
 };

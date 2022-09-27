@@ -20,6 +20,7 @@ import saturnring from "../../Assets/img/PlanetsTexture/saturnRing.png";
 
 
 
+
 export const textures = [
     {
         planetID:1,
@@ -67,5 +68,6 @@ export const textures = [
         planetID:8,
         texture:neptunemap,
         image:neptuneimage
+      
     },
 ]

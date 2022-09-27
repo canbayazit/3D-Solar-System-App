@@ -1,14 +1,36 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { textures } from "../../Constant/planet_image/image";
+import * as THREE from "three";
 const PlanetMain = (props) => {
-  const mercuryMap = useLoader(TextureLoader, textures[0].texture);
-  const mercuryRef = useRef();
-  console.log("PlanetMain",props)
+  const planetMap = useLoader(TextureLoader, textures[props.index].texture);
+  const ringMap = (props.planets.name === "Saturn" ) && useLoader(
+    TextureLoader,
+    textures[props.index].ring
+  );
+  const planetMainRef = useRef();
+  const ringSaturnRef = useRef();
+  const ringNeptuneOuterRef = useRef();
+  const ringNeptuneInnerRef = useRef();
+  // console.log("PlanetMain",props.mode)
+  useEffect(() => {
+    props.planets.name === "Neptune" 
+    ? ringNeptuneOuterRef.current.visible=true
+    : ringNeptuneOuterRef.current.visible=false
+    props.planets.name === "Neptune" 
+    ? ringNeptuneInnerRef.current.visible=true
+    : ringNeptuneInnerRef.current.visible=false
+    props.planets.name === "Saturn" 
+    ? ringSaturnRef.current.visible=true
+    : ringSaturnRef.current.visible=false
+    // console.log("useffect")
+  });
+
   useFrame(() => {
-    mercuryRef.current.rotation.y += 0.001;
+    planetMainRef.current.rotation.y += 0.001;
   });
   return (
     <>
@@ -19,36 +41,64 @@ const PlanetMain = (props) => {
         count={12000}
         fade={false}
         factor={2}
+        enableZooms={false}
       ></Stars>
 
-  <OrbitControls
-          enableZooms={true}
-          enablePan={true}
-          enableRotate={true}
-          autoRotate={false}
-          screenSpacePanning={false}
+      <OrbitControls
+        enableZooms={props.mod ? false : true}
+        enablePan={true}
+        enableRotate={true}
+        autoRotate={false}
+        screenSpacePanning={false}
+      ></OrbitControls>
+      <group>
+        <mesh ref={planetMainRef} position={[0, 0, 0]}>
+          <sphereGeometry
+            args={props.mod ? [props.radius, 128, 64] : [150, 128, 64]}
+          ></sphereGeometry>
+          <meshStandardMaterial map={planetMap} />
+          <ambientLight intensity={0.25} />
+          {/* <pointLight 
+   castShadow 
+   position={[5, 0, 0]} 
+   intensity={0.1} 
+   distance={1000} 
+   shadow-mapSize-height={512}
+   shadow-mapSize-width={512}
+  
+   /> */}
+        </mesh>
+        <mesh
+          ref={ringNeptuneOuterRef}
+          position={[0, 0, 0]}
+          rotation-y={Math.PI / 8}
+          rotation-x={Math.PI / 2.5}
+          receiveShadow
         >
-
-</OrbitControls>
-       
-    <mesh ref={mercuryRef} rotation={[0, 0, props.planets.axialTilt]}>
- 
-      <sphereGeometry args={[props.radius, 128, 64]} >
-    
-      </sphereGeometry>
-      <meshStandardMaterial map={mercuryMap}  />
-      <ambientLight intensity={0.25} position={[0, 0, 0]} />
-      {/* <pointLight 
-        castShadow 
-        position={[5, 0, 0]} 
-        intensity={0.1} 
-        distance={1000} 
-        shadow-mapSize-height={512}
-        shadow-mapSize-width={512}
-       
-        /> */}
-    </mesh>
-
+          <ringGeometry args={[260, 280, 55]} />
+          <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
+        </mesh>
+        <mesh
+          ref={ringNeptuneInnerRef}
+          position={[0, 0, 0]}
+          rotation-y={Math.PI / 8}
+          rotation-x={Math.PI / 2.5}
+          receiveShadow
+        >
+          <ringGeometry args={[210, 220, 55]} />
+          <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
+        </mesh>
+        <mesh
+          ref={ringSaturnRef}
+          position={[0, 0, 0]}
+          rotation-y={Math.PI / 8}
+          rotation-x={Math.PI / 2.5}
+          receiveShadow
+        >
+          <ringGeometry args={[190, 290, 55]} />
+          <meshStandardMaterial map={ringMap} side={THREE.DoubleSide} />
+        </mesh>
+      </group>
     </>
   );
 };

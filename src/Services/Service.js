@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 

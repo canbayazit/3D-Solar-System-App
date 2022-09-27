@@ -1,9 +1,19 @@
 import React from 'react'
+import Footer from '../../../Components/Footer/Footer';
+import Header from '../../../Components/Header/Header';
+import PlanetSection from '../../../Components/Section/PlanetSection/PlanetSection';
+import style from "./style.module.scss";
+
 
 const Jupiter = () => {
+  
   return (
-    <div>Jupiter</div>
+    <div className={style.container}>  
+    <Header/>
+    <PlanetSection/>
+    <Footer/>
+  </div>
   )
 }
 
-export default Jupiter
+export default Jupiter;

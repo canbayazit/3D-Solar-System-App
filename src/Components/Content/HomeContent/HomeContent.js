@@ -5,18 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
 import { button } from "../../../Assets/svg/svg";
-import { setHeaderStatus } from "../../../Store/PlanetSlice";
+import { setHeaderStatus, setPlanetIndex } from "../../../Store/PlanetSlice";
 const HomeContent = () => {
   const [id, setID] = useState();  
   const [hover, setHover] = useState(false);
   const dispatch=useDispatch();
   const { planets } = useSelector((store) => store.planets);
   const navigate = useNavigate();
+  // console.log("home",planets);
 
-  const handleClick = (item) => {
+  const handleClick = (item,index) => {
     dispatch(setHeaderStatus(true));
+    dispatch(setPlanetIndex(index));
+
     let text =`/${item.name}`
-    let result = text.toLowerCase()
+    let result = text.toLowerCase();
     navigate(result);
   };
 
@@ -79,8 +82,8 @@ const HomeContent = () => {
                 <div
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
-                  className={style.Button}
-                  onClick={() => handleClick(item)}
+                  className={style.Button}  
+                  onClick={()=>handleClick(item,index)}                
                 >
                   <span>
                   {button(item.color, hover)}

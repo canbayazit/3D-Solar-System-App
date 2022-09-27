@@ -1,6 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import style from "./App.module.scss";
-import FirebaseFunction from "./Components/Function/FirebaseFunction";
+import ScrollToTop from "./Components/Function/ScrollToTop";
 import AsteroidsAndComets from "./Pages/Asteroids&Comets/AsteroidsAndComets";
 import Home from "./Pages/Home/Home";
 import Moons from "./Pages/Moons/Moons";
@@ -14,12 +16,23 @@ import Saturn from "./Pages/Planets/Saturn/Saturn";
 import Uranus from "./Pages/Planets/Uranus/Uranus";
 import Venus from "./Pages/Planets/Venus/Venus";
 import SolarSystem from "./Pages/Solar System/SolarSystem";
+import { getPlanets } from "./Store/PlanetSlice";
+
 
 function App() {
-  FirebaseFunction();
+  const { loading } = useSelector((store) => store.planets);
+  const dispatch=useDispatch();
+
+  useEffect(() => {
+    if(loading === false){
+        dispatch(getPlanets());
+    }
+},[])
+  ScrollToTop();
   return (
     <div className={style.App}>
       <Routes>
+   
         <Route path="/" element={<Home />} />
         <Route path="/solarsystem" element={<SolarSystem />} />
         <Route path="/moons" element={<Moons />} />

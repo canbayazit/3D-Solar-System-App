@@ -205,20 +205,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 80px;
             .card_left_container{
                 position: absolute;
-                bottom: 30px;
+                bottom: 75px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                font-size: 1.3em;    
+                font-size: 1.4em;   
+                font-weight: 600;   
                 .radius_left{
                     display: flex;
                     justify-content: center;
                     margin-left: 55px;
                     padding-bottom: 10px;
                     border-bottom: 1px solid #ffffff80 ;
+                    position: relative;
+                    &:before{
+                        content:'Radius';
+                        position: absolute;
+                        top: 45px;
+                        left: 0;
+                        color: #ffffff80;
+                        font-size: .6em; 
+                         
+
+                    }
                     span{
                      
                         align-items: center;
@@ -232,6 +245,15 @@
                     margin-left: 55px;
                     padding-bottom: 10px;
                     border-bottom: 1px solid #ffffff80 ;
+                    position: relative;
+                    &:before{
+                        content:'Name';
+                        position: absolute;
+                        top: 45px;
+                        left: 0;
+                        color: #ffffff80;
+                        font-size: .6em; 
+                    }
                 }           
             }
             .Canvas{
@@ -247,20 +269,31 @@
             height: 100%;
             width: 100%;
             position: relative;
+            margin-top: 80px;
             .card_right_container{
                 position: absolute;
-                bottom: 30px;
+                bottom: 75px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                font-size: 1.3em;    
+                font-size: 1.4em;  
+                font-weight: 600;  
                 .radius_right{
                     display: flex;
                     justify-content: center;
                     margin-left: 55px;
                     padding-bottom: 10px;
                     border-bottom: 1px solid #ffffff80 ;
+                    position: relative;
+                    &:before{
+                        content:'Radius';
+                        position: absolute;
+                        top: 45px;
+                        left: 0;
+                        color: #ffffff80;
+                        font-size: .6em; 
+                    }
                     span{
                      
                         align-items: center;
@@ -274,6 +307,15 @@
                     margin-left: 55px;
                     padding-bottom: 10px;
                     border-bottom: 1px solid #ffffff80 ;
+                    position: relative;
+                    &:before{
+                        content:'Name';                        
+                        position: absolute;
+                        top: 45px;
+                        left: 0;
+                        color: #ffffff80;
+                        font-size: .6em; 
+                    }
                 }           
             }
             .button_left{

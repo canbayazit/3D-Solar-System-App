@@ -13,6 +13,7 @@ export default function useScrollPosition(scrollFactor=0) {
     //removes the eventlistener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", onScroll);
+      
     };
   }, []);
 

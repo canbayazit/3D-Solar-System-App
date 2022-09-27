@@ -10,16 +10,33 @@ const Header = () => {
   });
   const { headerStatus } = useSelector((store) => store.planets);
   return (
-    <header className={style.container } style={isScrolling  ?{backgroundColor:'#000' , borderBottom:' 1px solid #3b3b3b', transitionDuration:'1s'} :{backgroundColor:headerStatus? '#000' : '#00000000',borderBottom: headerStatus ? ' 1px solid #3b3b3b':' 1px solid #3b3b3b00' , transitionDuration:'1s'}}>
+    <header
+      className={style.container}
+      style={
+        isScrolling
+          ? {
+              backgroundColor: "#000",
+              borderBottom: " 1px solid #3b3b3b",
+              transitionDuration: "1s",
+            }
+          : {
+              backgroundColor: headerStatus ? "#000" : "#00000000",
+              borderBottom: headerStatus
+                ? " 1px solid #3b3b3b"
+                : " 1px solid #3b3b3b00",
+              transitionDuration: "1s",
+            }
+      }
+    >
       <div className={style.left_header}>
         <div className={style.page_logo}></div>
         <div className={style.heading}>
-          <h4>EXPLORE THE SOLAR SYSTEM</h4>
+          <h4><Link to={"/"} >EXPLORE THE SOLAR SYSTEM</Link></h4>
         </div>
       </div>
       <div className={style.right_header}>
         <div className={style.orrery}>
-        <div className={style.outmost_circle}>
+          <div className={style.outmost_circle}>
             <div className={style.outmost_dot}></div>
           </div>
           <div className={style.outer_circle}>
@@ -32,37 +49,25 @@ const Header = () => {
         </div>
         <ul>
           <li>
-            <Link to={"/solarsystem"} className="link">
-              Solar System
+            <Link to={"/solarsystem"} >
+              3D Solar System
             </Link>
           </li>
           <li>
-            <Link to={"/planets"} className="link">
+            <Link to={"/planets"} >
               Planets
             </Link>
           </li>
           <li>
-            <Link to={"/moons"} className="link">
+            <Link to={"/moons"} >
               Moons
             </Link>
           </li>
           <li>
-            <Link to={"/asteroidsandcomets"} className="link">
+            <Link to={"/asteroidsandcomets"} >
               Asteroids & Comets
             </Link>
           </li>
-        
-          <li>
-            <div className={style.container_search}>
-              <input
-                type={"text"}
-                className={style.search}
-                value={value}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <div className={style.search_icon}></div>
-            </div>
-          </li>         
         </ul>
       </div>
     </header>
