@@ -15,7 +15,6 @@ const PlanetMain = (props) => {
   const ringSaturnRef = useRef();
   const ringNeptuneOuterRef = useRef();
   const ringNeptuneInnerRef = useRef();
-  // console.log("PlanetMain",props.mode)
   useEffect(() => {
     props.planets.name === "Neptune" 
     ? ringNeptuneOuterRef.current.visible=true
@@ -26,7 +25,6 @@ const PlanetMain = (props) => {
     props.planets.name === "Saturn" 
     ? ringSaturnRef.current.visible=true
     : ringSaturnRef.current.visible=false
-    // console.log("useffect")
   });
 
   useFrame(() => {
@@ -46,7 +44,7 @@ const PlanetMain = (props) => {
 
       <OrbitControls
         enableZooms={props.mod ? false : true}
-        enablePan={true}
+        enablePan={false}
         enableRotate={true}
         autoRotate={false}
         screenSpacePanning={false}
@@ -57,16 +55,7 @@ const PlanetMain = (props) => {
             args={props.mod ? [props.radius, 128, 64] : [110, 128, 64]}
           ></sphereGeometry>
           <meshStandardMaterial map={planetMap} />
-          <ambientLight intensity={0.25} />
-          {/* <pointLight 
-   castShadow 
-   position={[5, 0, 0]} 
-   intensity={0.1} 
-   distance={1000} 
-   shadow-mapSize-height={512}
-   shadow-mapSize-width={512}
-  
-   /> */}
+          <ambientLight intensity={0.25} />        
         </mesh>
         <mesh
           ref={ringNeptuneOuterRef}

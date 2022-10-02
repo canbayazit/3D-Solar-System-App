@@ -1,33 +1,49 @@
 .card_container{
     position:absolute;       
-    bottom: 0;
+    top: 0;
     color: white;
     height: 100%;
-    width:370px;
+    width:380px;
     padding: 0 20px;
     border-right: 1px solid #3b3b3b;
-    z-index: 998;
+    z-index: 999;
+    .close_button_container{ 
+        margin-top: 15px;
+        font-size: 35px;       
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; 
+        .close_button{
+             cursor: pointer;
+             opacity: 0.8;   
+             background-color: transparent;
+             border: none; 
+             &:hover{
+                opacity: 1;
+            }            
+            span{
+             
+
+            }
+        }
+    }
     .image_container{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-size: cover;
         width: 100%; 
-        .image{                  
-            height: 250px;
-            margin-top: 135px;          
-        }
+        margin-top: 30px;
+        .image{     
+            width: 100%; 
+            }
     }
     .description_container{
         background: linear-gradient(to top,rgb(0, 0, 0) 95%, transparent);
-        position:absolute;
-        height: 115px; 
         width: 100%;
-        padding: 0 20px;
-        left: 0; 
-        bottom:225px;
+        margin-bottom: 50px;
+        margin-top: 30px;
+
         .description{
-            padding-top: 10px;
             font-size: 0.95em;
         }
     }
@@ -126,14 +142,14 @@
      }
      
     }
-    .button{
+    .button_container{
             display: flex;
             justify-content: center;   
             align-items: center;
             border-top: 1px solid #ffffff80;    
             margin-top: 20px;
             
-            button{
+            .button{
                 border: none;
                 background-color: transparent;
                 font-size: 1.1em;
@@ -151,3 +167,46 @@
             }
     }
 }
+.comparison_mode_container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; 
+    border-bottom: 1px solid #ffffff80;
+    .comparison_mode_button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        color: #fff;
+        opacity: 0.8;
+        cursor: pointer;
+        font-size: 1em;
+        font-family: "Exo",Helvetica,Arial,sans-serif;
+        span{
+            font-size:1.5em;
+            margin-right: 10px;
+        }
+        &:hover{
+            opacity: 1;
+        }
+
+    }
+}
+// .canvas_container_active{
+//     display: flex;
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     z-index: 998;
+// }
+// .canvas_container_passive{
+//     display: none;
+   
+// }

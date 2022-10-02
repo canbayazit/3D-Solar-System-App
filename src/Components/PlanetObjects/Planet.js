@@ -6,10 +6,6 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { textures } from "../../Constant/planet_image/image";
 import * as THREE from "three";
 const Planet = (props) => {
-  console.log("Planet", props.mod);
-  //   console.log("Planet index", props);
-  //   console.log("mercury", props) ;
-
   const planetMap = useLoader(TextureLoader, textures[props.index].texture);
   const ringMap =
     props.planets.name === "Saturn" &&
@@ -49,7 +45,7 @@ const Planet = (props) => {
 
       <OrbitControls
         enableZooms={props.mod ? false : true}
-        enablePan={true}
+        enablePan={false}
         enableRotate={true}
         autoRotate={false}
         screenSpacePanning={false}

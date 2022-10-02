@@ -1,0 +1,154 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .canvas_left{               
+        height: 100%;
+        width: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+        .card_left_container{
+            position: absolute;
+            bottom: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            font-size: 1.4em;   
+            font-weight: 600;   
+            .radius_left{
+                display: flex;
+                justify-content: center;
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:'Radius';
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                     
+
+                }
+                span{                     
+                    margin-left: 6px;
+                    font-size: .5em; 
+                    color:#ffffff90;   
+
+                }
+            } 
+            .name_left{
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:'Name';
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                }
+            }           
+        }
+        .Canvas{
+      
+            border-right: 1px solid #ffffff80;
+        }
+    }
+    .canvas_right{        
+        // display: flex;        
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 100%;
+        width: 50%;
+        position: relative;
+        margin-top: 80px;
+        .card_right_container{
+            position: absolute;
+            bottom: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            font-size: 1.4em;  
+            font-weight: 600;  
+            .radius_right{
+                display: flex;
+                justify-content: center;
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:'Radius';
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                }
+                span{
+                 
+                    align-items: center;
+                    margin-left: 10px;
+                    font-size: .5em; 
+                    color:#ffffff90;   
+
+                }
+            } 
+            .name_right{
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:'Name';                        
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                }
+            }           
+        }
+        .button_left{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: transparent;
+            border: none;
+            margin-left: 30px;
+            opacity: 0.7;
+            cursor: pointer;
+            &:hover{
+            opacity: 1;
+            }
+         }
+         .button_right{
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: transparent;
+            border: none;
+            margin-right: 30px;
+            opacity: 0.7;
+            cursor: pointer;
+            &:hover{
+            opacity: 1;
+            }
+         }
+    }
+}

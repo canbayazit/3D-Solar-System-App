@@ -4,16 +4,20 @@ import axios from "axios";
 
 const initialState ={
     planets:[],
+    stars:[],
     loading:false,
     headerStatus:false, 
-    planetIndex:0
+    planetIndex:0,
+    click:false,
+    position:0,
+    mod:false,
 }
 
 export const getPlanets = createAsyncThunk (
     'planets/getPlanets', async()=>{  
         const URL = "https://private-93626-solarsystem2.apiary-mock.com/"
         const response = await axios.get(URL);      
-        return response.data.planets;
+        return response.data;
        
     }
   );
@@ -27,6 +31,16 @@ const planetSlice = createSlice({
         },
         setPlanetIndex: (state, action)=>{
             state.planetIndex = action.payload;
+        },
+        setClick: (state, action)=>{
+            state.click = action.payload;
+        },
+        setPosition: (state, action)=>{
+            state.position = action.payload;
+        }
+        ,
+        setMod: (state, action)=>{
+            state.mod = action.payload;
         }
     },
     extraReducers: {
@@ -35,17 +49,18 @@ const planetSlice = createSlice({
       },
         [getPlanets.fulfilled] : (state,action) => {  
             state.loading=false;            
-            state.planets = action.payload;
+            state.planets = action.payload.planets;
+            state.stars = action.payload.stars;
          
       },
-      [getPlanets.rejected] : (state,action) => { 
-        state.loading=false;
-        state.error = action.error.message;
+        [getPlanets.rejected] : (state,action) => { 
+            state.loading=false;
+            state.error = action.error.message;
     }
   
     }
   
 });
 
-export const {setHeaderStatus,setPlanetIndex} = planetSlice.actions;
+export const {setHeaderStatus,setPlanetIndex,setClick,setPosition,setMod} = planetSlice.actions;
 export default planetSlice.reducer;

@@ -134,7 +134,7 @@ export const arrowButtonRight = () => (
     height="60"
     viewBox="0 0 13 30"
     fill="none"
-    style={{transform: `rotate(180deg)` }}
+    style={{ transform: `rotate(180deg)` }}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M12 29L1.5 16L12 1.5" stroke="#fff" strokeWidth="1" />
@@ -158,10 +158,23 @@ export const arrowDown = () => (
     width="10"
     height="20"
     viewBox="0 0 13 30"
-    style={{transform: `rotate(-90deg)` }}
+    style={{ transform: `rotate(-90deg)` }}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M12 29L1.5 16L12 1.5" stroke="#000" strokeWidth="3" />
+  </svg>
+);
+
+export const closeButton = () => (
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 27 27"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M26.5 25.5L1 1" stroke="#fff" strokeWidth={1.3}/>
+    <path d="M25.5 0.5L1 26" stroke="#fff" strokeWidth={1.3}/>
   </svg>
 );
