@@ -1,40 +1,37 @@
-import { Bounds } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import React, { Suspense, useEffect } from 'react'
-import { Provider } from 'react-redux';
-import { store } from '../../../Store';
-import PlanetCreator from '../../PlanetCreator/PlanetCreator';
-import Sun from '../../PlanetObjects/Sun';
+import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
-
+import image from "../../../Assets/img/solar_system_img.jpg";
+import { useDispatch } from "react-redux";
+import { setHeaderStatus, setIsPlanet } from "../../../Store/PlanetSlice";
+import { button, ExploreButton, Text } from "../../../Assets/svg/svg";
+import { useNavigate } from "react-router-dom";
 const HomeSection = () => {
-    useEffect(() => {
-      
-    }, [])
-    
+  const [status, setStatus] = useState(false);
+  const [hover, setHover] = useState(true);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(setHeaderStatus(false));
+    setStatus(true);
+  }, []);
+  
+  const handleClick = () => {
+    navigate("/solarsystem");
+    dispatch(setIsPlanet(false));
+  }
+
   return (
     <div className={style.container}>
-        <Canvas
-            shadows
-            className={style.Canvas}
-            camera={{
-              fov: 45,
-              aspect: window.innerWidth / window.innerHeight,
-              near: 1,
-              far: 4000,
-              position: [5, 0, 10],
-            }}
-          >
-            <Suspense fallback={null}>
-              <Bounds fit clip observe margin={0.2}>
-                <Provider store={store}>
-                <PlanetCreator />
-                </Provider>
-              </Bounds>
-            </Suspense>
-          </Canvas>
+      <img className={style.img} src={image}></img>
+      <div className={style.button_container} onClick={()=>handleClick()}>
+        <button  className={style.explore_button}>EXPLORE</button>
+        {/* <span className={style.explore_button}>
+          {ExploreButton()} <span className={style.text}>{Text()}</span>
+        </span> */}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeSection
+export default HomeSection;

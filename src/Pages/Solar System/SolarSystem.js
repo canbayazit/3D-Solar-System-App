@@ -10,12 +10,18 @@ import ComparePlanet from "../../Components/ComparePlanet/ComparePlanet";
 import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import Search from "../../Components/Search/Search";
 import { store } from "../../Store";
+import { setClick, setIsPlanet, setMod } from "../../Store/PlanetSlice";
+import { setStarStatus } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 // import texture from "../../Assets/img/stars.jpg";
 // import { TextureLoader } from "three/src/loaders/TextureLoader";
 const SolarSystem = () => {
   const { planets, stars, mod } = useSelector((store) => store.planets);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    document.body.requestFullscreen();
+  }, []);
   // useEffect(() => {
   //   planets.filter((item) => item.name.toLowerCase()).includes(text) ? setStatus(true): setStatus(false)
   //   console.log(status)
@@ -23,13 +29,18 @@ const SolarSystem = () => {
 
   //   console.log("includes",planets.filter((item) => item.name.toLowerCase()))
   // }, [text]);
-const handleClick=()=>{
-  navigate("/");
-}
+  const handleClick = () => {
+    dispatch(setClick(false));
+    dispatch(setStarStatus(false));
+    dispatch(setIsPlanet(false));
+    dispatch(setMod(false));
+    navigate("/");
+    document.exitFullscreen();
+  };
   return (
     <div className={style.container}>
-       <div className={style.close_button}>
-        <button onClick={()=>handleClick()}>{closeButton()}</button>
+      <div className={style.close_button}>
+        <button onClick={() => handleClick()}>{closeButton()}</button>
       </div>
       <CardContainer />
       <Search />
@@ -53,10 +64,10 @@ const handleClick=()=>{
             }}
           >
             <axesHelper args={[25, 25, 25]} />
-        
+
             <Suspense fallback={null}>
               <Bounds fit clip observe margin={0.2}>
-                <Provider store={store}>           
+                <Provider store={store}>
                   <PlanetCreator />
                 </Provider>
               </Bounds>

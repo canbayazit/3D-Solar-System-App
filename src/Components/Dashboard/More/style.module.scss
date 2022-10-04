@@ -1,0 +1,26 @@
+.more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;      
+    a{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: none;
+     background-color: transparent;
+     text-decoration: none;
+     cursor: pointer;
+     color: black;
+     span{
+         font-size: 1.2em;
+         font-weight: 600;
+         font-family: Metropolis,Helvetica,Arial,sans-serif;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-right:20px ;
+     }
+    }
+ }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
+import { setStarStatus } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
 const Search = () => {
-  const { planets } = useSelector((store) => store.planets);
+  const { planets ,mod} = useSelector((store) => store.planets);
   const [text, setText] = useState("");
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
@@ -16,11 +17,12 @@ const Search = () => {
   const handleClick = (id, position) => {
     dispatch(setPlanetIndex(id - 1));
     dispatch(setClick(true));
+    dispatch(setStarStatus(false));
     dispatch(setPosition(position));
     setText("");
   };
   return (
-    <div className={style.search_container}>
+    <div className={style.search_container} style={mod ? {display:"none"}:{display:"block"}}>
       <ul
         id="list"
         className={style.list_container}

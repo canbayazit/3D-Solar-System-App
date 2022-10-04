@@ -2,29 +2,62 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
 import { useDispatch, useSelector } from "react-redux";
-import { textures } from "../../../Constant/planet_image/image";
+import { starTexture, textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
 import { button } from "../../../Assets/svg/svg";
-import { setHeaderStatus, setPlanetIndex } from "../../../Store/PlanetSlice";
+import { getPlanets, setHeaderStatus, setIsPlanet, setPlanetIndex } from "../../../Store/PlanetSlice";
+import { getStars, setStarStatus } from "../../../Store/StarSlice";
 const HomeContent = () => {
   const [id, setID] = useState();  
   const [hover, setHover] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const dispatch=useDispatch();
-  const { planets } = useSelector((store) => store.planets);
+  const { planets ,loading} = useSelector((store) => store.planets);
+  const { stars ,status} = useSelector((store) => store.stars);
   const navigate = useNavigate();
   // console.log("home",planets);
+  
+
+  useEffect(() => {
+    if(loading === false){
+        dispatch(getPlanets());
+        dispatch(getStars());
+    }
+},[])
+
+  const handleButton = (arr)=>{
+   arr===planets &&  dispatch(setStarStatus(false));
+   arr===stars &&  dispatch(setStarStatus(true));
+  }
+
+  useEffect(() => {
+    let prevButton = null;
+    const wrapper = document.getElementById("wrapper");    
+    wrapper.addEventListener('click', (e) => {    
+      const isButton = e.target.nodeName === 'BUTTON';       
+      if (!isButton) {
+        return;
+      }      
+      e.target.classList.add(`${style.active}`);     
+      if(prevButton !== null) {
+        prevButton.classList.remove(`${style.active}`);  
+      }      
+      prevButton = e.target;    
+    });
+  })
+  
 
   const handleClick = (item,index) => {
     dispatch(setHeaderStatus(true));
     dispatch(setPlanetIndex(index));
-
+    dispatch(setIsPlanet(true));
     let text =`/${item.name}`
     let result = text.toLowerCase();
     navigate(result);
   };
 
   return (
-    <div className={style.main}>
+    <div className={style.main} id="content">
       <div className={style.content}>
         <fieldset className={style.fieldset}>
           <legend>Our Solar System</legend>
@@ -47,15 +80,19 @@ const HomeContent = () => {
         </div>
       </div>
       <div className={style.planets}>
-        <div>
-          <h1 className={style.main_heading}>Planets in Our Solar System</h1>
+        <div className={style.main_heading}>
+          <h1>Planets in Our Solar System</h1>        
+        </div>
+        <div className={style.button_container} id={"wrapper"} >
+          <button onClick={()=>handleButton(planets)} className={ `${style.button} `}>Planets</button>
+          <button onClick={()=>handleButton(stars)} className={`${style.button} `}>Stars</button>
         </div>
         <div className={style.card_container}>
-          {planets.map((item, index) => {
-            const image = textures[index].image;
+          {(status ? stars : planets).map((item, index) => {
+            const image = status? starTexture[index].image : textures[index].image;
             return (
               <div
-                key={index}
+                key={item.id}
                 className={style.card}
                 style={
                   id === index + 1

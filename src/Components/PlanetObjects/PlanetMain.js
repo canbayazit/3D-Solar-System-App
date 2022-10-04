@@ -3,10 +3,11 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { textures } from "../../Constant/planet_image/image";
+import { textures,starTexture } from "../../Constant/planet_image/image";
 import * as THREE from "three";
 const PlanetMain = (props) => {
   const planetMap = useLoader(TextureLoader, textures[props.index].texture);
+  const sunMap = props.status && useLoader(TextureLoader, starTexture[props.index].texture);
   const ringMap = (props.planets.name === "Saturn" ) && useLoader(
     TextureLoader,
     textures[props.index].ring
@@ -54,8 +55,8 @@ const PlanetMain = (props) => {
           <sphereGeometry
             args={props.mod ? [props.radius, 128, 64] : [110, 128, 64]}
           ></sphereGeometry>
-          <meshStandardMaterial map={planetMap} />
-          <ambientLight intensity={0.25} />        
+          <meshStandardMaterial map={props.status ? sunMap : planetMap} />
+          <ambientLight intensity={0.5} />        
         </mesh>
         <mesh
           ref={ringNeptuneOuterRef}

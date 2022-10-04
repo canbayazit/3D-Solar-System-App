@@ -1,28 +1,41 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import style from "./style.module.scss";
-import { textures } from "../../Constant/planet_image/image";
+import { textures, starTexture } from "../../Constant/planet_image/image";
 import { arrowLeft, arrowRight, closeButton, moon } from "../../Assets/svg/svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setClick, setMod } from "../../Store/PlanetSlice";
-import ComparePlanet from "../ComparePlanet/ComparePlanet";
+import { setStarStatus } from "../../Store/StarSlice";
+
 const CardContainer = () => {
-  const { planets,stars,planetIndex,click,mod} = useSelector(
-    (store) => store.planets);
+  const { planets, planetIndex, click, mod, isPlanet } = useSelector(
+    (store) => store.planets
+  );
+  const { stars, status } = useSelector((store) => store.stars);
   const dispatch = useDispatch();
+console.log("status",status)
   const openComparison = () => {
     dispatch(setMod(true));
   };
   const closeComparison = () => {
     dispatch(setMod(false));
   };
-  const handleClose = () => {
-    dispatch(setClick(false)); 
+  const CloseCard = () => {
+    dispatch(setClick(false));
+    dispatch(setStarStatus(false));
   };
+  console.log("isPlanet", isPlanet);
+  console.log("mod ", mod);
+  console.log("click ", click);
   return (
     <>
       <div
-        className={style.comparison_mode_container}
-        style={mod === false ? { display: "none" } : { display: "flex" }}
+        className={
+          isPlanet
+            ? style.comparison_mode_container_isPlanet
+            : style.comparison_mode_container
+        }
+        style={mod ? { display: "flex" } : { display: "none" }}
       >
         <button
           className={style.comparison_mode_button}
@@ -32,32 +45,49 @@ const CardContainer = () => {
         </button>
       </div>
       <div
-        className={style.card_container}
+        className={
+          isPlanet ? style.card_container_isPlanet : style.card_container
+        }
         style={
-          (mod === true || click === false)
-            ? { display: "none" }
-            : { display: "block" }
+          click
+            ? mod
+              ? { display: "none" }
+              : { display: "block" }
+            : isPlanet
+            ? mod
+              ? { display: "none" }
+              : { display: "block" }
+            : { display: "none" }
         }
       >
         <div className={style.close_button_container}>
-          <button className={style.close_button} onClick={() => handleClose()}>
-           {closeButton()}
+          <button className={style.close_button} onClick={() => CloseCard()}>
+            {closeButton()}
           </button>
         </div>
         <div className={style.image_container}>
-          <img src={textures[planetIndex].image} className={style.image}></img>
+          <img
+            src={
+              status
+                ? starTexture[planetIndex].image
+                : textures[planetIndex].image
+            }
+            className={style.image}
+          ></img>
         </div>
         <div className={style.description_container}>
-          <p className={style.description}>{planets[planetIndex].description}</p>
+          <p className={style.description}>
+            {status ? stars[planetIndex].description : planets[planetIndex].description}
+          </p>
         </div>
 
         <div className={style.stats_container}>
           <div className={style.length_year_container}>
             <div
               className={style.length_year}
-              style={{ color: planets[planetIndex].color }}
+              style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
             >
-              {planets[planetIndex].lengthYear} <span>EARTH DAYS</span>
+              {status ? stars[planetIndex].lengthYear : planets[planetIndex].lengthYear} <span>{status ?"MILLION EARTH YEARS": "EARTH DAYS"}</span>
             </div>
             <div className={style.label}>Length of Year</div>
           </div>
@@ -65,25 +95,27 @@ const CardContainer = () => {
           <div className={style.distance_container}>
             <div
               className={style.distance}
-              style={{ color: planets[planetIndex].color }}
+              style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
             >
-              {planets[planetIndex].distance} <span>AU</span>
+              {status ? stars[planetIndex].radius : planets[planetIndex].distance} <span>{status ? "KM":"AU"}</span>
             </div>
-            <div className={style.label}>Distance from Sun</div>
+            <div className={style.label}>{status ? "Radius" : "Distance from Sun"}</div>
           </div>
           <div className={style.namesake_container}>
-            <div className={style.namesake}>{planets[planetIndex].namesake}</div>
+            <div className={style.namesake}>
+              {status ? stars[planetIndex].namesake : planets[planetIndex].namesake}
+            </div>
             <div className={style.label}>Namesake</div>
           </div>
           <div className={style.moons_units_container}>
             <div
               className={style.moons_units}
-              style={{ color: planets[planetIndex].color }}
+              style={{ color:status ? stars[planetIndex].color : planets[planetIndex].color }}
             >
-              {planets[planetIndex].moons.units}
+              {status ? stars[planetIndex].planets.units : planets[planetIndex].moons.units}
               <span>{moon(planets[planetIndex].color)}</span>
             </div>
-            <div className={style.label}>Moons</div>
+            <div className={style.label}>{status ?"Planets" : "Moons"}</div>
           </div>
         </div>
         <div className={style.button_container}>
@@ -98,9 +130,6 @@ const CardContainer = () => {
           </button>
         </div>
       </div>
-      {/* <div className={mod ? style.canvas_container_active : style.canvas_container_passive} >
-        <ComparePlanet/>
-      </div> */}
     </>
   );
 };

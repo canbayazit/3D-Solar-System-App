@@ -13,23 +13,13 @@ import {
 } from "../../../Assets/svg/svg";
 import Planet from "../../PlanetObjects/Planet";
 import PlanetMain from "../../PlanetObjects/PlanetMain";
-import Dashboard from "../../Dashboard/Dashboard";
+import CardContainer from "../../CardContainer/CardContainer";
 
 const PlanetSection = () => {
-  const [mod, setMod] = useState(false);
   const [index, setIndex] = useState(0);
   const [radiusLeft, setRadiusLeftPlanet] = useState(100);
   const [radiusRight, setRadiusRightPlanet] = useState(100);
-  const { planets,planetIndex} = useSelector((store) => store.planets);
-  // console.log("home",planets);
-console.log("section index",planetIndex);
-
-  const openComparison = () => {
-    setMod(true);
-  };
-  const closeComparison = () => {
-    setMod(false);
-  };
+  const { planets,planetIndex,mod} = useSelector((store) => store.planets);
 
   const handleClickLeft = () => {
     let val = index - 1; 
@@ -48,12 +38,12 @@ console.log("section index",planetIndex);
       planetIndex === val ? val === planets.length-1 ? setIndex(0): setIndex(val+1) : setIndex(val)
     }
   };
-useEffect(() => {
-  window.scrollTo(0,0);
-planetIndex===index ? setIndex(1) : setIndex(0)
-},[] )
-console.log("radius right",radiusRight);
-console.log("radius left",radiusLeft);
+  useEffect(() => {
+    window.scrollTo(0,0);
+  planetIndex===index ? setIndex(1) : setIndex(0)
+  },[] )
+  console.log("radius right",radiusRight);
+  console.log("radius left",radiusLeft);
 
   useEffect(() => {
     if (planets[planetIndex].radius > planets[index].radius) {
@@ -69,68 +59,12 @@ console.log("radius left",radiusLeft);
       setRadiusLeftPlanet(100);
     }    
 
-    // console.log("useffect section");
   });
   
   return (
     <div className={style.container}>      
-      <div
-        className={style.card_container}
-        style={mod ? { display: "none" } : { display: "block" }}
-      >
-        <div className={style.image_container}>
-          <img src={textures[planetIndex].image} className={style.image}></img>
-        </div>
-        <div className={style.description_container}>
-          <p className={style.description}>{planets[planetIndex].description}</p>
-        </div>
-
-        <div className={style.stats_container}>
-          <div className={style.length_year_container}>
-            <div
-              className={style.length_year}
-              style={{ color: planets[planetIndex].color }}
-            >
-              {planets[planetIndex].lengthYear} <span>EARTH DAYS</span>
-            </div>
-            <div className={style.label}>Length of Year</div>
-          </div>
-
-          <div className={style.distance_container}>
-            <div className={style.distance} style={{ color: planets[planetIndex].color }}>
-              {planets[planetIndex].distance} <span>AU</span>
-            </div>
-            <div className={style.label}>Distance from Sun</div>
-          </div>
-          <div className={style.namesake_container}>
-            <div className={style.namesake}>{planets[planetIndex].namesake}</div>
-            <div className={style.label}>Namesake</div>
-          </div>
-          <div className={style.moons_units_container}>
-            <div
-              className={style.moons_units}
-              style={{ color: planets[planetIndex].color }}
-            >
-              {planets[planetIndex].moons.units}
-              <span>{moon(planets[planetIndex].color)}</span>
-            </div>
-            <div className={style.label}>Moons</div>
-          </div>
-        </div>
-        <div className={style.button}>
-          <button onClick={() => openComparison()}>
-            <span className={style.left}>{arrowLeft(planets[planetIndex].color)}</span>
-            <span>COMPARE SIZE</span>
-            <span className={style.right}>{arrowRight(planets[planetIndex].color)}</span>
-          </button>
-        </div>
-      </div>
-      <div className={style.canvas_container}>
-        <div className={style.comparison_mode_container} style={mod===false ? { display: "none" } : { display: "flex" }}>
-          <button className={style.comparison_mode_button}  onClick={()=>closeComparison()}>
-            <span>X</span> Close Comparison Mode
-          </button>
-        </div>
+      <CardContainer/>
+      <div className={style.canvas_container}>        
         <div className={style.canvas_left} style={mod ? { width: "50%" } : { width: "100%" } }>
           <Canvas
             shadows
@@ -194,8 +128,7 @@ console.log("radius left",radiusLeft);
             {arrowButtonRight()}
           </button>
         </div>
-      </div>
-      <Dashboard/>  
+      </div>    
     </div>
    
 

@@ -12,6 +12,7 @@ const ComparePlanet = () => {
   const [radiusLeft, setRadiusLeftPlanet] = useState(100);
   const [radiusRight, setRadiusRightPlanet] = useState(100);
   const { planets, planetIndex,mod } = useSelector((store) => store.planets);
+  const { stars,status } = useSelector((store) => store.stars);
 
   const handleClickLeft = () => {
     let val = index - 1;
@@ -45,20 +46,38 @@ const ComparePlanet = () => {
   }, []);
 
   useEffect(() => {
-    if (planets[planetIndex].radius > planets[index].radius) {
-      let newRadius =
-        radiusLeft / (planets[planetIndex].radius / planets[index].radius);
-      setRadiusRightPlanet(newRadius);
-      setRadiusLeftPlanet(100);
-    } else if (planets[planetIndex].radius < planets[index].radius) {
-      let newRadius =
-        radiusRight / (planets[index].radius / planets[planetIndex].radius);
-      setRadiusRightPlanet(100);
-      setRadiusLeftPlanet(newRadius);
+    if (status) {
+        if (stars[planetIndex].radius > planets[index].radius) {
+            let newRadius =
+              radiusLeft / (stars[planetIndex].radius / planets[index].radius);
+            setRadiusRightPlanet(newRadius);
+            setRadiusLeftPlanet(100);
+          } else if (stars[planetIndex].radius < planets[index].radius) {
+            let newRadius =
+              radiusRight / (stars[index].radius / planets[planetIndex].radius);
+            setRadiusRightPlanet(100);
+            setRadiusLeftPlanet(newRadius);
+          } else {
+            setRadiusRightPlanet(100);
+            setRadiusLeftPlanet(100);
+          }
     } else {
-      setRadiusRightPlanet(100);
-      setRadiusLeftPlanet(100);
+        if (planets[planetIndex].radius > planets[index].radius) {
+            let newRadius =
+              radiusLeft / (planets[planetIndex].radius / planets[index].radius);
+            setRadiusRightPlanet(newRadius);
+            setRadiusLeftPlanet(100);
+          } else if (planets[planetIndex].radius < planets[index].radius) {
+            let newRadius =
+              radiusRight / (planets[index].radius / planets[planetIndex].radius);
+            setRadiusRightPlanet(100);
+            setRadiusLeftPlanet(newRadius);
+          } else {
+            setRadiusRightPlanet(100);
+            setRadiusLeftPlanet(100);
+          }
     }
+    
   });
 
   return (
@@ -79,9 +98,10 @@ const ComparePlanet = () => {
             <Bounds fit clip observe margin={0.2}>
               <PlanetMain
                 index={planetIndex}
-                planets={planets[planetIndex]}
+                planets={status ? stars[planetIndex] : planets[planetIndex]}
                 radius={radiusLeft}
                 mod={mod}
+                status={status}
               />
             </Bounds>
           </Suspense>
@@ -89,15 +109,15 @@ const ComparePlanet = () => {
         <div className={style.card_left_container} style={{ display: "flex" }}>
           <div
             className={style.name_left}
-            style={{ color: planets[planetIndex].color }}
+            style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
           >
-            {planets[planetIndex].name}
+            {status ? stars[planetIndex].name : planets[planetIndex].name}
           </div>
           <div
             className={style.radius_left}
-            style={{ color: planets[planetIndex].color }}
+            style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
           >
-            {planets[planetIndex].radius}
+            {status ? stars[planetIndex].radius : planets[planetIndex].radius}
             <span>KM</span>
           </div>
         </div>

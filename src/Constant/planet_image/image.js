@@ -1,7 +1,7 @@
 import mercurymap from "../../Assets/img/PlanetsTexture/2k_mercury.jpg"
-import venusmap from "../../Assets/img/PlanetsTexture/venusmap.jpg"
-import earthmap from "../../Assets/img/PlanetsTexture/earthmap.jpg"
-import marsmap from "../../Assets/img/PlanetsTexture/marsmap.jpg"
+import venusmap from "../../Assets/img/PlanetsTexture/8k_venus_surface.jpg"
+import earthmap from "../../Assets/img/PlanetsTexture/8k_earth_daymap.jpg"
+import marsmap from "../../Assets/img/PlanetsTexture/8k_mars.jpg"
 import jupitermap from "../../Assets/img/PlanetsTexture/jupitermap.jpg"
 import saturnmap from "../../Assets/img/PlanetsTexture/saturnmap.jpg"
 import uranusmap from "../../Assets/img/PlanetsTexture/uranusmap.jpg"
@@ -16,10 +16,21 @@ import saturnimage from "../../Assets/img/PlanetsTexture/saturn_image.png"
 import uranusimage from "../../Assets/img/PlanetsTexture/uranus_image.png"
 import neptuneimage from "../../Assets/img/PlanetsTexture/neptune_image.png"
 
+import sunmap from "../../Assets/img/PlanetsTexture/sunmap2.png";
+import sunimage from "../../Assets/img/PlanetsTexture/sun_solar_image.png";
+
+
 import saturnring from "../../Assets/img/PlanetsTexture/saturnRing.png";
 
 
-
+export const starTexture = [
+    {
+        starID:1,
+        texture:sunmap,
+        image:sunimage
+      
+    },
+]
 
 export const textures = [
     {
@@ -69,5 +80,5 @@ export const textures = [
         texture:neptunemap,
         image:neptuneimage
       
-    },
+    },   
 ]
