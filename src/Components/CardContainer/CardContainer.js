@@ -1,19 +1,19 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React from "react";
 import style from "./style.module.scss";
 import { textures, starTexture } from "../../Constant/planet_image/image";
 import { arrowLeft, arrowRight, closeButton, moon } from "../../Assets/svg/svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setClick, setMod } from "../../Store/PlanetSlice";
-import { setStarStatus } from "../../Store/StarSlice";
+import { useLocation } from "react-router-dom";
 
 const CardContainer = () => {
-  const { planets, planetIndex, click, mod, isPlanet } = useSelector(
+  const { planets, planetIndex, click, mod, pathname } = useSelector(
     (store) => store.planets
   );
-  const { stars, status } = useSelector((store) => store.stars);
+  const { stars, isSun } = useSelector((store) => store.stars);
   const dispatch = useDispatch();
-console.log("status",status)
+  let location = useLocation();
   const openComparison = () => {
     dispatch(setMod(true));
   };
@@ -22,20 +22,18 @@ console.log("status",status)
   };
   const CloseCard = () => {
     dispatch(setClick(false));
-    dispatch(setStarStatus(false));
   };
-  console.log("isPlanet", isPlanet);
-  console.log("mod ", mod);
-  console.log("click ", click);
+  console.log("click card", click);
+  console.log("pathname card", pathname);
+  console.log("location.pathname card", location.pathname);
   return (
     <>
       <div
-        className={
-          isPlanet
-            ? style.comparison_mode_container_isPlanet
-            : style.comparison_mode_container
-        }
-        style={mod ? { display: "flex" } : { display: "none" }}
+        className={style.comparison_mode_container}
+        style={{
+          display: mod ? "flex" : "none",
+          top: pathname !== '/solarsystem' ? `${85}px` : "0",
+        }}
       >
         <button
           className={style.comparison_mode_button}
@@ -46,17 +44,17 @@ console.log("status",status)
       </div>
       <div
         className={
-          isPlanet ? style.card_container_isPlanet : style.card_container
+          pathname !== '/solarsystem'
+            ? style.card_container
+            : style.card_container_3d
         }
         style={
-          click
-            ? mod
-              ? { display: "none" }
-              : { display: "block" }
-            : isPlanet
-            ? mod
-              ? { display: "none" }
-              : { display: "block" }
+          pathname !== '/solarsystem'
+            ? click
+              ? { display: mod ? "none" : "block", height: "595px" }
+              : { display: "none" }
+            : click
+            ? { display: mod ? "none" : "block", height: "100%" }
             : { display: "none" }
         }
       >
@@ -68,16 +66,22 @@ console.log("status",status)
         <div className={style.image_container}>
           <img
             src={
-              status
+              location.pathname === "/sun"
                 ? starTexture[planetIndex].image
-                : textures[planetIndex].image
+                : isSun
+                  ? starTexture[planetIndex].image
+                  : textures[planetIndex].image
             }
             className={style.image}
           ></img>
         </div>
         <div className={style.description_container}>
           <p className={style.description}>
-            {status ? stars[planetIndex].description : planets[planetIndex].description}
+            {location.pathname === "/sun"
+              ? stars[planetIndex].description
+              : isSun
+                ? stars[planetIndex].description
+                : planets[planetIndex].description}
           </p>
         </div>
 
@@ -85,9 +89,25 @@ console.log("status",status)
           <div className={style.length_year_container}>
             <div
               className={style.length_year}
-              style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
+              style={{
+                color:
+                  location.pathname === "/sun"
+                    ? stars[planetIndex].color
+                    : isSun
+                      ? stars[planetIndex].color
+                      : planets[planetIndex].color,
+              }}
             >
-              {status ? stars[planetIndex].lengthYear : planets[planetIndex].lengthYear} <span>{status ?"MILLION EARTH YEARS": "EARTH DAYS"}</span>
+              {location.pathname === "/sun"
+                ? stars[planetIndex].lengthYear
+                : planets[planetIndex].lengthYear}{" "}
+              <span>
+                {location.pathname === "/sun"
+                  ? "MILLION EARTH YEARS"
+                  : isSun
+                    ? "MILLION EARTH YEARS"
+                    : "EARTH DAYS"}
+              </span>
             </div>
             <div className={style.label}>Length of Year</div>
           </div>
@@ -95,37 +115,72 @@ console.log("status",status)
           <div className={style.distance_container}>
             <div
               className={style.distance}
-              style={{ color: status ? stars[planetIndex].color : planets[planetIndex].color }}
+              style={{
+                color:
+                  location.pathname === "/sun"
+                    ? stars[planetIndex].color
+                    : isSun
+                      ? stars[planetIndex].color
+                      : planets[planetIndex].color,
+              }}
             >
-              {status ? stars[planetIndex].radius : planets[planetIndex].distance} <span>{status ? "KM":"AU"}</span>
+              {location.pathname === "/sun"
+                ? stars[planetIndex].radius
+                : isSun
+                  ? stars[planetIndex].radius
+                  : planets[planetIndex].distance}{" "}
+              <span>{location.pathname === "/sun" ? "KM" : isSun ? "KM" : "AU"}</span>
             </div>
-            <div className={style.label}>{status ? "Radius" : "Distance from Sun"}</div>
+            <div className={style.label}>
+              {location.pathname === "/sun"
+                ? "Radius"
+                : isSun
+                  ? "Radius"
+                  : "Distance from Sun"}
+            </div>
           </div>
           <div className={style.namesake_container}>
             <div className={style.namesake}>
-              {status ? stars[planetIndex].namesake : planets[planetIndex].namesake}
+              {location.pathname === "/sun"
+                ? stars[planetIndex].namesake
+                : isSun
+                  ? stars[planetIndex].namesake
+                  : planets[planetIndex].namesake}
             </div>
             <div className={style.label}>Namesake</div>
           </div>
           <div className={style.moons_units_container}>
             <div
               className={style.moons_units}
-              style={{ color:status ? stars[planetIndex].color : planets[planetIndex].color }}
+              style={{
+                color:
+                  location.pathname === "/sun"
+                    ? stars[planetIndex].color
+                    : isSun
+                      ? stars[planetIndex].color
+                      : planets[planetIndex].color,
+              }}
             >
-              {status ? stars[planetIndex].planets.units : planets[planetIndex].moons.units}
+              {location.pathname === "/sun"
+                ? stars[planetIndex].planets.units
+                : isSun
+                  ? stars[planetIndex].planets.units
+                  : planets[planetIndex].moons.units}
               <span>{moon(planets[planetIndex].color)}</span>
             </div>
-            <div className={style.label}>{status ?"Planets" : "Moons"}</div>
+            <div className={style.label}>
+              {location.pathname === "/sun" ? "Planets" : isSun ? "Planets" : "Moons"}
+            </div>
           </div>
         </div>
         <div className={style.button_container}>
           <button className={style.button} onClick={() => openComparison()}>
             <span className={style.left}>
-              {arrowLeft(planets[planetIndex].color)}
+              {arrowLeft(isSun ? stars[planetIndex].color : planets[planetIndex].color)}
             </span>
             <span>COMPARE SIZE</span>
             <span className={style.right}>
-              {arrowRight(planets[planetIndex].color)}
+              {arrowRight(isSun ? stars[planetIndex].color : planets[planetIndex].color)}
             </span>
           </button>
         </div>

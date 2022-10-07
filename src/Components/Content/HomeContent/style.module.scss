@@ -45,11 +45,12 @@
            }
         }
     }
-    .planets{
+    .card_container{
         width: 100%;
-        height: 240vh;
+        height: 100%;
         background-image: url("../../../Assets/img/background_stars_grid.jpg");
         margin-top:100px; 
+        padding-bottom: 400px;
         // background-size: cover;
         // background-position: center;
         background-repeat: repeat;
@@ -98,10 +99,13 @@
                 border-left: 1px solid #6e717f;                         
             }
         }
-        .card_container{
-            display: grid;
-            grid-template-columns: repeat(4,1fr); 
+        .planets{
+            // display: grid;
+            // grid-template-columns: repeat(4,1fr); 
+            display: flex;
+            flex-wrap: wrap;
             border: 1px solid #3b3b3b;
+            justify-content: center;
             .card{
                 display: flex;
                 position: relative;

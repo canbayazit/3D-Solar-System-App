@@ -9,7 +9,7 @@ import * as THREE from "three";
 import { textures } from "../../Constant/planet_image/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
-import { setStarStatus } from "../../Store/StarSlice";
+import { setIsSun } from "../../Store/StarSlice";
 const PlanetCreator = () => {
   const [id, setID] = useState(null);
   const [distance, setDistance] = useState();
@@ -21,11 +21,9 @@ const PlanetCreator = () => {
   const opacityRef = useRef();
 
   const dispatch = useDispatch();
-  const { planets, click, position } = useSelector(
-    (store) => store.planets
-  );
-  const { stars, status } = useSelector((store) => store.stars);
-console.log("stars",stars)
+  const { planets, click, position } = useSelector((store) => store.planets);
+  const { stars, isSun } = useSelector((store) => store.stars);
+
   const api = useBounds();
   const planetOrbitRef = useRef([]);
   const targetOrbitRef = useRef([]);
@@ -51,7 +49,7 @@ console.log("stars",stars)
 
   const handleStarClick = (index, position) => {
     dispatch(setClick(true));
-    dispatch(setStarStatus(true));
+    dispatch(setIsSun(true));
     dispatch(setPlanetIndex(index));
     dispatch(setPosition(position));
   };
@@ -345,11 +343,11 @@ console.log("stars",stars)
         autoRotate={false}
         screenSpacePanning={false}
         target={click ? [position, 0, 0] : [0, 0, 0]}
-        maxDistance={click ? status ? 400 :200 : 80000}
-        minDistance={click ? status ? 300 : 150 : 350 }
+        maxDistance={click ? 600 : 80000}
+        minDistance={click ? 500 : 450}
       />
       {stars.map((item, index) => (
-        <group ref={sunRef} rotation={[0, 0, 0]}>
+        <group key={item.id} ref={sunRef} rotation={[0, 0, 0]}>
           <Stars
             radius={distance}
             depth={distance}
@@ -376,8 +374,8 @@ console.log("stars",stars)
               letterSpacing={-0.05}
               color="#fff"
               ref={sunTextRef}
-              visible={status ? false : true}
-              onClick={() => handleStarClick(index, 1000 * item.distance)}
+              visible={isSun ? false : true}
+              onClick={(e) =>(e.stopPropagation(), handleStarClick(index, 1000 * item.distance))}
             >
               {item.name}
             </Text>
@@ -519,7 +517,6 @@ console.log("stars",stars)
                       ref={(el) => (textRef.current[index] = el)}
                     >
                       <meshBasicMaterial
-                        attach="material"
                         ref={(el) => (textMeshRef.current[index] = el)}
                         transparent
                         opacity={1}

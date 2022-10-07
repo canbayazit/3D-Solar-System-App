@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 const MercuryContent = () => {
   return (
     <div className={style.container} id="content">
-      <fieldset className={style.fieldset} >
+      <fieldset className={style.fieldset}>
         <legend>Our Solar System</legend>
         <h2>Mercury</h2>
         <p className={style.fieldset_description}>

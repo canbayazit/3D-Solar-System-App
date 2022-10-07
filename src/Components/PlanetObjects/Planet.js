@@ -5,23 +5,30 @@ import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { textures } from "../../Constant/planet_image/image";
 import * as THREE from "three";
+import { useSelector } from "react-redux";
 const Planet = (props) => {
+  const [args, setArgs] = useState();
+  const {  mod, planets } = useSelector(
+    (store) => store.planets
+  );
   const planetMap = useLoader(TextureLoader, textures[props.index].texture);
   const ringMap =
-    props.planets.name === "Saturn" &&
+  planets[props.index].name === "Saturn" &&
     useLoader(TextureLoader, textures[props.index].ring);
-
   useEffect(() => {
-    props.planets.name === "Neptune"
+    mod ? setArgs(props.radius) : setArgs(100);
+  });
+console.log("mod planet",mod)
+  useEffect(() => {
+    planets[props.index].name === "Neptune"
       ? (ringNeptuneOuterRef.current.visible = true)
       : (ringNeptuneOuterRef.current.visible = false);
-    props.planets.name === "Neptune"
+      planets[props.index].name === "Neptune"
       ? (ringNeptuneInnerRef.current.visible = true)
       : (ringNeptuneInnerRef.current.visible = false);
-    props.planets.name === "Saturn"
+      planets[props.index].name === "Saturn"
       ? (ringSaturnRef.current.visible = true)
       : (ringSaturnRef.current.visible = false);
-    // console.log("useffect")
   });
 
   const planetRef = useRef();
@@ -44,7 +51,7 @@ const Planet = (props) => {
       ></Stars>
 
       <OrbitControls
-        enableZooms={props.mod ? false : true}
+        enableZooms={mod ? false : true}
         enablePan={false}
         enableRotate={true}
         autoRotate={false}
@@ -54,7 +61,7 @@ const Planet = (props) => {
         <mesh ref={planetRef} position={[0, 0, 0]}>
           <sphereGeometry args={[props.radius, 128, 64]} />
           <meshStandardMaterial map={planetMap} />
-          <ambientLight intensity={0.25} />
+          <ambientLight intensity={0.45} />
         </mesh>
         <mesh
           ref={ringNeptuneOuterRef}
@@ -63,7 +70,7 @@ const Planet = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={props.mod ? [(190*props.radius)/100, (210*props.radius)/100, 55]:[190, 210, 55]} />
+          <ringGeometry args={[1.9 * args, 2.1 * args, 55]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
@@ -73,7 +80,7 @@ const Planet = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={props.mod ? [(150*props.radius)/100, (160*props.radius)/100, 55]:[150, 160, 55]} />
+          <ringGeometry args={[1.5 * args, 1.6 * args, 55]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
@@ -83,7 +90,7 @@ const Planet = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={props.mod ? [(125*props.radius)/100, (190*props.radius)/100, 55]:[125, 190, 55]} />
+          <ringGeometry args={[1.25 * args, 1.9 * args, 55]} />
           <meshStandardMaterial map={ringMap} side={THREE.DoubleSide} />
         </mesh>
       </group>

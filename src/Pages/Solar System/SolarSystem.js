@@ -4,17 +4,14 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { closeButton } from "../../Assets/svg/svg";
-import SelectToZoom from "../../Components/Bound/SelectedToZoom";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import ComparePlanet from "../../Components/ComparePlanet/ComparePlanet";
 import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import Search from "../../Components/Search/Search";
 import { store } from "../../Store";
 import { setClick, setIsPlanet, setMod } from "../../Store/PlanetSlice";
-import { setStarStatus } from "../../Store/StarSlice";
+import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
-// import texture from "../../Assets/img/stars.jpg";
-// import { TextureLoader } from "three/src/loaders/TextureLoader";
 const SolarSystem = () => {
   const { planets, stars, mod } = useSelector((store) => store.planets);
   const navigate = useNavigate();
@@ -31,7 +28,7 @@ const SolarSystem = () => {
   // }, [text]);
   const handleClick = () => {
     dispatch(setClick(false));
-    dispatch(setStarStatus(false));
+    dispatch(setIsSun(false));
     dispatch(setIsPlanet(false));
     dispatch(setMod(false));
     navigate("/");
@@ -44,11 +41,7 @@ const SolarSystem = () => {
       </div>
       <CardContainer />
       <Search />
-      <div
-        className={
-          mod ? style.canvas_container_active : style.canvas_container_passive
-        }
-      >
+      <div className={style.canvas_container}>
         {mod ? (
           <ComparePlanet />
         ) : (

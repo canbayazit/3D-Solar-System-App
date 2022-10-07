@@ -147,13 +147,13 @@ export const arrowLeft = (color) => (
     style={{ width: 32.5 }}
     fill="#c4b998"
   >
-    <circle fill="#fff" cx="31.57" cy="35.21" r="11.57"></circle>
+    <circle fill={color} cx="31.57" cy="35.21" r="11.57"></circle>
     <g>
       <polygon
-        fill="#fff"
+        fill={color}
         points="124.18,70.39 118.31,64.09 149.37,35.22 118.31,6.35 124.18,0.05 162,35.22"
       ></polygon>
-      <rect x="84.61" y="29.76" fill="#fff" width="65" height="11.06"></rect>
+      <rect x="84.61" y="29.76" fill={color} width="65" height="11.06"></rect>
     </g>
   </svg>
 );
@@ -166,13 +166,13 @@ export const arrowRight = (color) => (
     style={{ width: 32.5, transform: `rotate(180deg)` }}
     fill="#c4b998"
   >
-    <circle fill="#fff" cx="31.57" cy="35.21" r="11.57"></circle>
+    <circle fill={color} cx="31.57" cy="35.21" r="11.57"></circle>
     <g>
       <polygon
-        fill="#fff"
+        fill={color}
         points="124.18,70.39 118.31,64.09 149.37,35.22 118.31,6.35 124.18,0.05 162,35.22"
       ></polygon>
-      <rect x="84.61" y="29.76" fill="#fff" width="65" height="11.06"></rect>
+      <rect x="84.61" y="29.76" fill={color} width="65" height="11.06"></rect>
     </g>
   </svg>
 );

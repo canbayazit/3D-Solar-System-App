@@ -3,7 +3,7 @@ import Header from "../../../Components/Header/Header";
 import style from "./style.module.scss";
 import Footer from "../../../Components/Footer/Footer";
 import HomeContent from "../../../Components/Content/HomeContent/HomeContent";
-import PlanetsSection from "../../../Components/Section/PlanetsSection/PlanetsSection";
+import PlanetMainSection from "../../../Components/Section/PlanetMainSection/PlanetMainSection";
 
 
 const Planets = () => {
@@ -11,7 +11,7 @@ const Planets = () => {
   return (
     <div className={style.container}>
       <Header />
-      <PlanetsSection />
+      <PlanetMainSection />
       <HomeContent />
       <Footer/>
     </div>

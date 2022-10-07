@@ -5,54 +5,64 @@ import { useDispatch, useSelector } from "react-redux";
 import { starTexture, textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
 import { button } from "../../../Assets/svg/svg";
-import { getPlanets, setHeaderStatus, setIsPlanet, setPlanetIndex } from "../../../Store/PlanetSlice";
-import { getStars, setStarStatus } from "../../../Store/StarSlice";
+import {
+  getPlanets,
+  setClick,
+  setHeaderStatus,
+  setIsPlanet,
+  setPathname,
+  setPlanetIndex,
+} from "../../../Store/PlanetSlice";
+import { getStars, setIsSun } from "../../../Store/StarSlice";
 const HomeContent = () => {
-  const [id, setID] = useState();  
+  const [id, setID] = useState();
   const [hover, setHover] = useState(false);
-  const [clicked, setClicked] = useState(false);
-  const dispatch=useDispatch();
-  const { planets ,loading} = useSelector((store) => store.planets);
-  const { stars ,status} = useSelector((store) => store.stars);
+  const [active, setActive] = useState(false);
+  const dispatch = useDispatch();
+  const { planets, loading, isPlanet } = useSelector((store) => store.planets);
+  const { stars, isSun } = useSelector((store) => store.stars);
   const navigate = useNavigate();
-  // console.log("home",planets);
-  
+
+  const handleButton = (check) => {
+    check === isPlanet && dispatch(setIsSun(false));
+    check === isSun && dispatch(setIsSun(true));
+  };
 
   useEffect(() => {
-    if(loading === false){
-        dispatch(getPlanets());
-        dispatch(getStars());
+    const list = document.getElementById("planets").classList;
+    list.add(`${style.active}`);
+    setActive(true);
+    dispatch(setIsSun(false));
+    if (loading === false) {
+      dispatch(getPlanets());
+      dispatch(getStars());
     }
-},[])
-
-  const handleButton = (arr)=>{
-   arr===planets &&  dispatch(setStarStatus(false));
-   arr===stars &&  dispatch(setStarStatus(true));
-  }
+  }, []);
 
   useEffect(() => {
-    let prevButton = null;
-    const wrapper = document.getElementById("wrapper");    
-    wrapper.addEventListener('click', (e) => {    
-      const isButton = e.target.nodeName === 'BUTTON';       
+    let prevButton = active ? null : document.getElementById("planets");
+    console.log("prevButton", prevButton);
+    const wrapper = document.getElementById("wrapper");
+    wrapper.addEventListener("click", (e) => {
+      const isButton = e.target.nodeName === "BUTTON";
       if (!isButton) {
         return;
-      }      
-      e.target.classList.add(`${style.active}`);     
-      if(prevButton !== null) {
-        prevButton.classList.remove(`${style.active}`);  
-      }      
-      prevButton = e.target;    
+      }
+      e.target.classList.add(`${style.active}`);
+      prevButton.classList.remove(`${style.active}`);
+      prevButton = e.target;
     });
-  })
-  
+  }, []);
+  console.log("isSun homecontent", isSun);
+  console.log("isPlanet homecontent", isPlanet);
 
-  const handleClick = (item,index) => {
+  const handleClick = (item, index) => {
     dispatch(setHeaderStatus(true));
+    dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
-    dispatch(setIsPlanet(true));
-    let text =`/${item.name}`
+    let text = `/${item.name}`;
     let result = text.toLowerCase();
+    dispatch(setPathname(result));
     navigate(result);
   };
 
@@ -79,17 +89,30 @@ const HomeContent = () => {
           </p>
         </div>
       </div>
-      <div className={style.planets}>
+      <div className={style.card_container}>
         <div className={style.main_heading}>
-          <h1>Planets in Our Solar System</h1>        
+          <h1>Planets in Our Solar System</h1>
         </div>
-        <div className={style.button_container} id={"wrapper"} >
-          <button onClick={()=>handleButton(planets)} className={ `${style.button} `}>Planets</button>
-          <button onClick={()=>handleButton(stars)} className={`${style.button} `}>Stars</button>
+        <div className={style.button_container} id={"wrapper"}>
+          <button
+            onClick={() => handleButton(isPlanet)}
+            className={`${style.button} `}
+            id={"planets"}
+          >
+            Planets
+          </button>
+          <button
+            onClick={() => handleButton(isSun)}
+            className={`${style.button} `}
+          >
+            Stars
+          </button>
         </div>
-        <div className={style.card_container}>
-          {(status ? stars : planets).map((item, index) => {
-            const image = status? starTexture[index].image : textures[index].image;
+        <div className={style.planets}>
+          {(isSun ? stars : planets).map((item, index) => {
+            const image = isSun
+              ? starTexture[index].image
+              : textures[index].image;
             return (
               <div
                 key={item.id}
@@ -103,7 +126,7 @@ const HomeContent = () => {
                                     0 0 20px 20px ${item.color}11,
                                   
                                     0 0 5px ${item.color},
-                                    0 0 10px ${item.color}   `,
+                                    0 0 10px ${item.color}`,
                       }
                     : { border: `1px solid transparent` }
                 }
@@ -119,12 +142,10 @@ const HomeContent = () => {
                 <div
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
-                  className={style.Button}  
-                  onClick={()=>handleClick(item,index)}                
+                  className={style.Button}
+                  onClick={() => handleClick(item, index)}
                 >
-                  <span>
-                  {button(item.color, hover)}
-                  </span>
+                  <span>{button(item.color, hover)}</span>
                 </div>
               </div>
             );

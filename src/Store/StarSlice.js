@@ -5,7 +5,7 @@ import axios from "axios";
 const initialState ={  
     loading:false,
     stars:[],
-    status:false   
+    isSun:false   
 }
 
 export const getStars = createAsyncThunk (
@@ -21,8 +21,8 @@ const starSlice = createSlice({
     name:"stars",
     initialState: initialState,
     reducers: {        
-        setStarStatus: (state, action) => {
-            state.status = action.payload;
+        setIsSun: (state, action) => {
+            state.isSun = action.payload;
         }
     },
     extraReducers: {
@@ -43,5 +43,5 @@ const starSlice = createSlice({
   
 });
 
-export const {setStarStatus} = starSlice.actions;
+export const {setIsSun} = starSlice.actions;
 export default starSlice.reducer;

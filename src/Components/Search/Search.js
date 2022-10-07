@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
-import { setStarStatus } from "../../Store/StarSlice";
+import { setClick, setIsPlanet, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
+import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
 const Search = () => {
@@ -17,7 +17,7 @@ const Search = () => {
   const handleClick = (id, position) => {
     dispatch(setPlanetIndex(id - 1));
     dispatch(setClick(true));
-    dispatch(setStarStatus(false));
+    dispatch(setIsSun(false));
     dispatch(setPosition(position));
     setText("");
   };

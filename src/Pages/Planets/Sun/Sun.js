@@ -1,25 +1,21 @@
 import React from "react";
-import MercuryContent from "../../../Components/Content/MercuryContent/MercuryContent";
+import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../../Components/Header/Header";
-import More from "../../../Components/Dashboard/More/More";
 import style from "./style.module.scss";
-import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
+import More from "../../../Components/Dashboard/More/More"
 import CardContainer from "../../../Components/CardContainer/CardContainer";
-
-const Mercury = () => {
+const Sun = () => {
   return (
     <div className={style.container}>
-      <Header />
-      <ComparePlanet />
+      <Header/>
+      <ComparePlanet/>
       <CardContainer/>
-      <Dashboard />
-      <More />
-      <MercuryContent />
-      <Footer />
+      <Dashboard/>
+      <More/>
+      <Footer/>
     </div>
   );
 };
-
-export default Mercury;
+export default Sun;

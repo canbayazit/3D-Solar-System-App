@@ -2,22 +2,7 @@ import React from "react";
 import useScroll from "../../Function/ScrollFunction";
 import style from "./style.module.scss";
 
-const PlanetsSection = () => {
-  // let earth = document.getElementById("earth");
-  // let stars = document.getElementById("stars");
-  // let sun = document.getElementById("sun");
-  // let moon = document.getElementById("moon");
-  // window.addEventListener("scroll", () => {
-  // let value = window.scrollY;
-  // earth.style.backgroundPositionX = -1 * value - 1280 + "px";
-  // moon.style.backgroundPositionX = -1 * value * 0.15 + "px";
-  // moon.style.left = 80 - value * 0.08 + "%";
-  // moon.style.top = 400 + value * 0.3 + "px";
-  // sun.style.top = value * 0.5 + 350 + "px";
-  // });
-  // const parallax = useParallax<HTMLDivElement>({
-  //   rotateZ: [0, 360],
-  // });
+const PlanetMainSection = () => {
   const value = useScroll(1);
   return (
     <>
@@ -65,4 +50,4 @@ const PlanetsSection = () => {
   );
 };
 
-export default PlanetsSection;
+export default PlanetMainSection;

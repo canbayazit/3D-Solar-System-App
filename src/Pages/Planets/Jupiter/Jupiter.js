@@ -4,14 +4,16 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../../Components/Header/Header";
 import More from "../../../Components/Dashboard/More/More";
-import PlanetSection from "../../../Components/Section/PlanetSection/PlanetSection";
+import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
 import style from "./style.module.scss";
+import CardContainer from "../../../Components/CardContainer/CardContainer";
 
 const Jupiter = () => {
   return (
     <div className={style.container}>
       <Header />
-      <PlanetSection />
+      <ComparePlanet />
+      <CardContainer/>
       <Dashboard />
       <More />
       <JupiterContent />

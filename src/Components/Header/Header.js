@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setIsPlanet } from "../../Store/PlanetSlice";
+import { setClick, setMod, setPathname } from "../../Store/PlanetSlice";
 import style from "./style.module.scss";
 const Header = () => {
   const [isScrolling, setScrolling] = useState(false);
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   window.addEventListener("scroll", () => {
     window.scrollY >= 80 ? setScrolling(true) : setScrolling(false);
   });
   const { headerStatus } = useSelector((store) => store.planets);
-  const handleClick = () =>{
-    dispatch(setIsPlanet(false));
-  }
+  const handleClick = () => {
+    dispatch(setMod(false));
+    dispatch(setClick(false));
+    dispatch(setPathname(""));
+  };
+  const handle3DClick = () => {
+    dispatch(setMod(false));
+    dispatch(setClick(false));
+    dispatch(setPathname("/solarsystem"));
+  };
   return (
     <header
       className={style.container}
@@ -35,7 +42,11 @@ const Header = () => {
       <div className={style.left_header}>
         <div className={style.page_logo}></div>
         <div className={style.heading}>
-          <h4><Link to={"/"} onClick={()=>handleClick()}>EXPLORE THE SOLAR SYSTEM</Link></h4>
+          <h4>
+            <Link to={"/"} onClick={() => handleClick()}>
+              EXPLORE THE SOLAR SYSTEM
+            </Link>
+          </h4>
         </div>
       </div>
       <div className={style.right_header}>
@@ -53,22 +64,22 @@ const Header = () => {
         </div>
         <ul>
           <li>
-            <Link to={"/solarsystem"} onClick={()=>handleClick()} >
+            <Link to={"/solarsystem"} onClick={() => handle3DClick()}>
               3D Solar System
             </Link>
           </li>
           <li>
-            <Link to={"/planets"} onClick={()=>handleClick()}>
+            <Link to={"/planets"} onClick={() => handleClick()}>
               Planets
             </Link>
           </li>
           <li>
-            <Link to={"/moons"} onClick={()=>handleClick()}>
+            <Link to={"/moons"} onClick={() => handleClick()}>
               Moons
             </Link>
           </li>
           <li>
-            <Link to={"/asteroidsandcomets"} onClick={()=>handleClick()}>
+            <Link to={"/asteroidsandcomets"} onClick={() => handleClick()}>
               Asteroids & Comets
             </Link>
           </li>

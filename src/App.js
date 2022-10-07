@@ -11,6 +11,7 @@ import Mercury from "./Pages/Planets/Mercury/Mercury";
 import Neptune from "./Pages/Planets/Neptune/Neptune";
 import Planets from "./Pages/Planets/Planets/Planets";
 import Saturn from "./Pages/Planets/Saturn/Saturn";
+import Sun from "./Pages/Planets/Sun/Sun";
 import Uranus from "./Pages/Planets/Uranus/Uranus";
 import Venus from "./Pages/Planets/Venus/Venus";
 import SolarSystem from "./Pages/Solar System/SolarSystem";
@@ -22,8 +23,7 @@ function App() {
   ScrollToTop();
   return (
     <div className={style.App}>
-      <Routes>
-   
+      <Routes>   
         <Route path="/" element={<Home />} />
         <Route path="/solarsystem" element={<SolarSystem />} />
         <Route path="/moons" element={<Moons />} />
@@ -37,6 +37,7 @@ function App() {
         <Route path="/saturn" element={<Saturn />} />
         <Route path="/uranus" element={<Uranus />} />
         <Route path="/neptune" element={<Neptune />} />
+        <Route path="/sun" element={<Sun />} />
       </Routes>
     </div>
   );
