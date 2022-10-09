@@ -21,27 +21,30 @@
            font-size: 20px;    
        }
         .stats{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
+            width: 80%;
             .info{
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
                 flex-direction: column;
-                margin-left: -80px;
+                margin-left: 0;
                 font-size: 18px;
                 line-height: 1.4;   
                 h4{
                 color: #a9d3ee;
                 font-weight: 800;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 }
                 span{
                     font-size: 1em;
                     margin-top: 0.3em;
                     font-family: Metropolis,Helvetica,Arial,sans-serif;
+                    text-align: center;
                     display: flex;
+                    justify-content: center;
+                    align-items: center;
                     // .ten{
                     //     display: flex;
                     //     align-items: center;
@@ -64,9 +67,10 @@
 @media only screen and (max-width: 1025px){
     .dashboard_container{
         .dashboard{
+        padding: 0 30px;
+
             .title{
-                font-size: 14px;
-                margin-right: 85px;    
+                font-size: 19px;
             }
         }
     }
@@ -75,16 +79,11 @@
     .dashboard_container{
         .dashboard{
         padding: 0 40px;
-
             .title{
                 display: none;
             }
             .stats{
-                .info{
-                    margin-left: 0;
-                    font-size: 20px;    
-
-                }
+                width: 100%;
             }
         }
     }
@@ -93,16 +92,11 @@
     .dashboard_container{
         .dashboard{
         padding: 0 40px;
-
             .title{
                 display: none;
             }
             .stats{
-                .info{
-                    margin-left: 0;
-                    font-size: 20px;    
-
-                }
+                width: 100%;
             }
         }
     }
