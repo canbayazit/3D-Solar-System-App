@@ -17,7 +17,7 @@ const ComparePlanet = () => {
   const { planets, planetIndex, mod, click, pathname } = useSelector(
     (store) => store.planets
   );
-  const { stars,isSun } = useSelector((store) => store.stars);
+  const { stars, isSun } = useSelector((store) => store.stars);
 
   let location = useLocation();
 
@@ -72,46 +72,46 @@ const ComparePlanet = () => {
     location.pathname === "/sun"
       ? setIndex(0)
       : planetIndex === index
-        ? setIndex(1)
-        : setIndex(0);
+      ? setIndex(1)
+      : setIndex(0);
   }, []);
 
   useEffect(() => {
-    pathname !== '/solarsystem' ? setHeight("595px") : setHeight("100%");
-      if (location.pathname === "/sun" || isSun) {
-        console.log("1.");
+    pathname !== "/solarsystem" ? setHeight("595px") : setHeight("100%");
+    if (location.pathname === "/sun" || isSun) {
+      console.log("1.");
 
-        if (stars[planetIndex].radius > planets[index].radius) {
-          let newRadius =
-            radiusLeft / (stars[planetIndex].radius / planets[index].radius);
-          setRadiusRightPlanet(newRadius);
-          setRadiusLeftPlanet(100);
-        } else if (stars[planetIndex].radius < planets[index].radius) {
-          let newRadius =
-            radiusRight / (stars[index].radius / planets[planetIndex].radius);
-          setRadiusRightPlanet(100);
-          setRadiusLeftPlanet(newRadius);
-        } else {
-          setRadiusRightPlanet(100);
-          setRadiusLeftPlanet(100);
-        }
+      if (stars[planetIndex].radius > planets[index].radius) {
+        let newRadius =
+          radiusLeft / (stars[planetIndex].radius / planets[index].radius);
+        setRadiusRightPlanet(newRadius);
+        setRadiusLeftPlanet(100);
+      } else if (stars[planetIndex].radius < planets[index].radius) {
+        let newRadius =
+          radiusRight / (stars[index].radius / planets[planetIndex].radius);
+        setRadiusRightPlanet(100);
+        setRadiusLeftPlanet(newRadius);
       } else {
-        console.log("2.");        
-          if (planets[planetIndex].radius > planets[index].radius) {
-            let newRadius =
-              radiusLeft / (planets[planetIndex].radius / planets[index].radius);
-            setRadiusRightPlanet(newRadius);
-            setRadiusLeftPlanet(100);
-          } else if (planets[planetIndex].radius < planets[index].radius) {
-            let newRadius =
-              radiusRight / (planets[index].radius / planets[planetIndex].radius);
-            setRadiusRightPlanet(100);
-            setRadiusLeftPlanet(newRadius);
-          } else {
-            setRadiusRightPlanet(100);
-            setRadiusLeftPlanet(100);
-          }      
-      } 
+        setRadiusRightPlanet(100);
+        setRadiusLeftPlanet(100);
+      }
+    } else {
+      console.log("2.");
+      if (planets[planetIndex].radius > planets[index].radius) {
+        let newRadius =
+          radiusLeft / (planets[planetIndex].radius / planets[index].radius);
+        setRadiusRightPlanet(newRadius);
+        setRadiusLeftPlanet(100);
+      } else if (planets[planetIndex].radius < planets[index].radius) {
+        let newRadius =
+          radiusRight / (planets[index].radius / planets[planetIndex].radius);
+        setRadiusRightPlanet(100);
+        setRadiusLeftPlanet(newRadius);
+      } else {
+        setRadiusRightPlanet(100);
+        setRadiusLeftPlanet(100);
+      }
+    }
   });
 
   console.log("compare mod", mod);
@@ -135,7 +135,7 @@ const ComparePlanet = () => {
           <Suspense fallback={null}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
-                <PlanetMain radius={radiusLeft} pathname={location.pathname}/>
+                <PlanetMain radius={radiusLeft} />
               </Provider>
             </Bounds>
           </Suspense>
@@ -147,18 +147,30 @@ const ComparePlanet = () => {
           <div
             className={style.name_left}
             style={{
-              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[planetIndex].color,
+              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[
+                planetIndex
+              ].color,
             }}
           >
-            {(pathname === "/sun" ? stars : isSun ? stars : planets)[planetIndex].name}
+            {
+              (pathname === "/sun" ? stars : isSun ? stars : planets)[
+                planetIndex
+              ].name
+            }
           </div>
           <div
             className={style.radius_left}
             style={{
-              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[planetIndex].color,
+              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[
+                planetIndex
+              ].color,
             }}
           >
-            {(pathname === "/sun" ? stars : isSun ? stars : planets)[planetIndex].radius}
+            {
+              (pathname === "/sun" ? stars : isSun ? stars : planets)[
+                planetIndex
+              ].radius
+            }
             <span>KM</span>
           </div>
         </div>
@@ -181,11 +193,7 @@ const ComparePlanet = () => {
           <Suspense fallback={null}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
-                <Planet
-                  index={index}
-                  radius={radiusRight}
-                  pathname={location.pathname}
-                />
+                <Planet index={index} radius={radiusRight} />
               </Provider>
             </Bounds>
           </Suspense>

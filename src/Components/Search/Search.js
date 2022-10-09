@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setIsPlanet, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
+import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
@@ -37,7 +37,6 @@ const Search = () => {
           : planets
               .filter((item) => item.name.toLowerCase().includes(text))
               .map((item, index) => {
-                console.log("asd", index);
                 return (
                   <li id="list_item" key={index} className={style.list_item}>
                     <button
