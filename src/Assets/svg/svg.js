@@ -253,3 +253,18 @@ export const hamburgerMenu = () => (
     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
   </svg>
 );
+
+export const detailToggle = () => (
+  <svg
+    width="45"
+    height="45"
+    viewBox="0 0 94 94"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="47" cy="47" r="45" stroke="#fff" strokeWidth="3" />
+    <circle cx="22.3443" cy="47" r="7.70492" fill="#fff" />
+    <circle cx="47" cy="47" r="7.70492" fill="#fff" />
+    <circle cx="71.6557" cy="47" r="7.70492" fill="#fff" />
+  </svg>
+);

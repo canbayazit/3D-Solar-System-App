@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@mui/material";
 import { Bounds, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useEffect, useState } from "react";
@@ -16,8 +17,9 @@ const SolarSystem = () => {
   const { planets, stars, mod } = useSelector((store) => store.planets);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const matches = useMediaQuery('(max-width:1025px)');
   useEffect(() => {
-    document.body.requestFullscreen();
+    matches===false && document.body.requestFullscreen();
   }, []);
   // useEffect(() => {
   //   planets.filter((item) => item.name.toLowerCase()).includes(text) ? setStatus(true): setStatus(false)
@@ -32,7 +34,7 @@ const SolarSystem = () => {
     dispatch(setIsPlanet(false));
     dispatch(setMod(false));
     navigate("/");
-    document.exitFullscreen();
+    matches===false && document.exitFullscreen();
   };
   return (
     <div className={style.container}>

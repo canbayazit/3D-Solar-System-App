@@ -8,6 +8,7 @@ import Planet from "../PlanetObjects/Planet";
 import PlanetMain from "../PlanetObjects/PlanetMain";
 import style from "./style.module.scss";
 import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 const ComparePlanet = () => {
   const [index, setIndex] = useState(0);
@@ -77,7 +78,7 @@ const ComparePlanet = () => {
   }, []);
 
   useEffect(() => {
-    pathname !== "/solarsystem" ? setHeight("595px") : setHeight("100%");
+    pathname === "/solarsystem" && setHeight("100%");
     if (location.pathname === "/sun" || isSun) {
       console.log("1.");
 
@@ -113,13 +114,14 @@ const ComparePlanet = () => {
       }
     }
   });
+  const matches = useMediaQuery('(max-width:1025px)');
 
   console.log("compare mod", mod);
   return (
     <div className={style.container} style={{ height: `${height}` }}>
       <div
         className={style.canvas_left}
-        style={{ width: mod ? "50%" : "100%" }}
+        style={{ width: mod ?  matches ? "100%": "50%" : "100%",height: mod ?  matches ? "50%": "100%" : "100%" }}
       >
         <Canvas
           shadows
@@ -177,7 +179,7 @@ const ComparePlanet = () => {
       </div>
       <div
         className={style.canvas_right}
-        style={{ display: mod ? "block" : "none" }}
+        style={{ display: mod ? "block" : "none" ,height: mod ?  matches ? "50%": "100%" : "100%",width: mod ?  matches ? "100%": "50%" : "100%"}}
       >
         <Canvas
           shadows

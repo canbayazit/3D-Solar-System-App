@@ -51,15 +51,14 @@
     .stats_container{
         width: 100%;
         height: 125px;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 15px;   
+        display: flex;
+        flex-wrap: wrap; 
         margin-top: 4px;         
         justify-content: space-between;
         align-items: center;
         font-size: 2em;         
         .length_year_container{
-            width: 100%;
+            width: 45%;
 
             .length_year{
                 display: flex;
@@ -80,7 +79,7 @@
             }
         }
         .distance_container{
-            width: 150px;
+            width: 45%;
             .distance{
                 display: flex;
                 align-items: center;
@@ -100,7 +99,7 @@
             }
         }
        .namesake_container{
-        width: 100%;
+        width: 45%;
         .namesake{
             font-size: 0.42em;
             border-bottom: 1px solid #ffffff80;
@@ -113,7 +112,7 @@
             }
        }
      .moons_units_container{
-        width: 100%;
+        width: 45%;
         .moons_units{
             display: flex;
             align-items: center;
@@ -179,8 +178,8 @@
     top: 0;
     left: 0;
     color: white;
-    height: 100%;
-    width:380px;
+    height: 595px;
+    width:430px;
     padding: 0 20px;
     border-right: 1px solid #3b3b3b;
     z-index: 998;
@@ -209,12 +208,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 80px;
         width: 100%; 
         margin-top: 45px;
 
         .image{     
-            width: 100%; 
+            width: 85%; 
             }
     }
     .description_container{
@@ -234,16 +232,18 @@
     .stats_container{
         width: 100%;
         height: 125px;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 15px;   
-        margin-top: 40px;         
-        justify-content: space-between;
+        display: flex;
+        // grid-template-columns: auto auto;
+        flex-wrap: wrap;
+        // gap: 15px;   
+        margin-top: 40px; 
+        justify-content: center;
         align-items: center;
         font-size: 2em;         
         .length_year_container{
-            width: 100%;
-
+            // width: 100%;
+            flex: 40%;
+            margin-bottom: 20px;
             .length_year{
                 display: flex;
                 align-items: center;
@@ -263,7 +263,9 @@
             }
         }
         .distance_container{
-            width: 150px;
+            // width: 100%;
+            flex: 40%;
+            margin: 0 0 20px 10px;
             .distance{
                 display: flex;
                 align-items: center;
@@ -283,7 +285,8 @@
             }
         }
        .namesake_container{
-        width: 100%;
+        flex: 40%;
+        margin-bottom: 20px;
         .namesake{
             font-size: 0.42em;
             border-bottom: 1px solid #ffffff80;
@@ -296,7 +299,9 @@
             }
        }
      .moons_units_container{
-        width: 100%;
+        // width: 100%;
+        flex: 40%;
+        margin: 0 0 20px 10px;
         .moons_units{
             display: flex;
             align-items: center;
@@ -331,7 +336,7 @@
             justify-content: center;   
             align-items: center;
             border-top: 1px solid #ffffff80;    
-            margin-top: 20px;
+            margin-top: 25px;
             
             .button{
                 border: none;
@@ -354,6 +359,26 @@
                     transition-duration: 0.4s;
                 }
             }
+    }
+}
+.detail_toggle_container{
+    position: absolute;
+    top: 450px;
+    display: none;
+    justify-content: center;
+    background-color: transparent;
+    opacity: .75;
+    z-index: 999;
+    flex-direction: column;
+    h1{
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .detail_toggle{
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        
     }
 }
 .comparison_mode_container{
@@ -387,195 +412,476 @@
 
     }
 }
-// // .comparison_mode_container_isPlanet{
-// //     position: absolute;
-// //     top: 85px;
-// //     width: 100%;
-// //     height: 60px;
-// //     background-color: #252525;
-// //     display: flex;
-// //     justify-content: center;
-// //     align-items: center;
-// //     z-index: 999; 
-// //     border-bottom: 1px solid #ffffff80;
-// //     .comparison_mode_button{
-// //         display: flex;
-// //         justify-content: center;
-// //         align-items: center;
-// //         border: none;
-// //         background-color: transparent;
-// //         color: #fff;
-// //         opacity: 0.8;
-// //         cursor: pointer;
-// //         font-size: 1em;
-// //         font-family: "Exo",Helvetica,Arial,sans-serif;
-// //         span{
-// //             font-size:1.5em;
-// //             margin-right: 10px;
-// //         }
-// //         &:hover{
-// //             opacity: 1;
-// //         }
 
-// //     }
-// // }
 
-// .card_container_isPlanet{
-//     position:absolute;       
-//     bottom: 0;
-//     color: white;
-//     height: 100%;
-//     width:370px;
-//     padding: 0 20px;
-//     border-right: 1px solid #3b3b3b;
-//     z-index: 998;    
-//     .image_container{
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         background-size: cover;
-//         width: 100%; 
-//         .image{                  
-//            width: 100%;
-//            margin-top: 50px;        
-//         }
-//     }
-//     .description_container{
-//         background: linear-gradient(to top,rgb(0, 0, 0) 95%, transparent);
-//         height: 105px; 
-//         width: 100%;
-//         position: absolute;
-//         padding: 0 20px;
-//         left: 0; 
-//         bottom:255px;
-//         .description{
-//             padding-top: 10px;
-//             font-size: 0.95em;
-//         }
-//     }
-//     .stats_container{
-//         width: 100%;
-//         height: 125px;
-//         display: grid;
-//         grid-template-columns: auto auto;
-//         gap: 15px;   
-//         margin-top: 55px;         
-//         justify-content: space-between;
-//         align-items: center;
-//         font-size: 2em;         
-//         .length_year_container{
-//             width: 100%;
+@media only screen and (max-width: 1025px){
+    .card_container_3d{
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 100%;
+        .image_container{
+            padding:100px;
+            .image{     
+                width: 60%; 
+                }
+        }
+        .description_container{
+            top:360px;
+            padding: 20px 100px;
+            position: absolute;
+            line-height: 1.6em;
+            .description{
+                font-size: 1.2em;
+            }
+        }
+        .stats_container{
+            padding: 0 100px;
+            .distance_container{
+                margin-bottom: 50px;
+            }
+            .length_year_container{
+                margin-bottom: 50px;
+            }
+        }
+        .button_container{
+            padding: 0 100px;
+            margin: 100px 100px 0 100px;
+            .button{
+                font-size: 1.5em;
+            }
+        }
+    }
+    .detail_toggle_container{
+        top:1050px;
+        left: 50%;
+        right: 50%;
+        align-items: center;
+    }
+    .card_container{      
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 1170px;
+        .image_container{
+            padding: 0 100px;
+            .image{     
+                width: 60%; 
+                }
+        }
+        .description_container{
+            margin-top: 170px;
+            padding: 20px 120px;
+            position: absolute;
+            line-height: 1.6em;
+            .description{
+                font-size: 1.2em;
+            }
+        }
+        .stats_container{
+            padding: 0 100px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+        }
+        .button_container{
+            padding: 0 100px;
+            margin: 60px 100px 0 100px;
+            .button{
+                font-size: 1.5em;
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
 
-//             .length_year{
-//                 display: flex;
-//                 align-items: center;
-//                 border-bottom: 1px solid #ffffff80;
-//                 padding-bottom: 20px;
-//                 height: 30px;
-//                 span{
-//                     font-size: 0.4em;
-//                     margin-left: 15px;
-//                     color: #fff;
-//                 }
-//             }
-//             .label{
-//                 font-size: 0.4em;
-//                 margin-top: 5px;
-//                 color: #ffffff80;
-//             }
-//         }
-//         .distance_container{
-//             width: 150px;
-//             .distance{
-//                 display: flex;
-//                 align-items: center;
-//                 border-bottom: 1px solid #ffffff80;
-//                 padding-bottom: 20px;
-//                 height: 30px;
-//                 span{
-//                     font-size: 0.4em;
-//                     margin-left: 15px;
-//                     color: #fff;
-//                 }           
-//             }
-//             .label{
-//                 font-size: 0.4em;
-//                 margin-top: 5px;
-//                 color: #ffffff80;
-//             }
-//         }
-//        .namesake_container{
-//         width: 100%;
-//         .namesake{
-//             font-size: 0.42em;
-//             border-bottom: 1px solid #ffffff80;
-//             height: 30px;               
-//             }
-//             .label{
-//                 font-size: 0.4em;
-//                 margin-top: 5px;
-//                 color: #ffffff80;
-//             }
-//        }
-//      .moons_units_container{
-//         width: 100%;
-//         .moons_units{
-//             display: flex;
-//             align-items: center;
-//             border-bottom: 1px solid #ffffff80;    
-//             height: 30px;
-//             padding-bottom: 20px;
-//             span{
-//                 display: flex;
-//                 align-items: center;
-//                 font-size: 0.4em;
-//                 margin-left: 15px;
-//                 color: #fff;
-//             } 
+@media only screen and (max-width: 835px){
+    .card_container_3d{
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 100%;
+        .image_container{
+            padding:100px;
+            .image{     
+                width: 65%; 
+                }
+        }
+        .description_container{
+            top:280px;
+            padding: 20px 100px;
+            position: absolute;
+            line-height: 1.6em;
+            .description{
+                font-size: 1.2em;
+            }
+        }
+        .stats_container{
+            padding: 0 100px;
+            .distance_container{
+                margin-bottom: 50px;
+            }
+            .length_year_container{
+                margin-bottom: 50px;
+            }
+        }
+        .button_container{
+            padding: 0 100px;
+            margin: 100px 100px 0 100px;
+            .button{
+                font-size: 1.44em;
+            }
+        }
+    }
+    .detail_toggle_container{
+        top:750px;
+        left: 50%;
+        right: 50%;
+        align-items: center;
+    }
+    .card_container{
+        // padding: 0 100px;
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 1000px;
+        .image_container{
+            padding: 0 100px;
+            .image{     
+                width: 80%; 
+                }
+        }
+        .description_container{
+            margin-top: 170px;
+            padding: 20px 120px;
+            position: absolute;
+            .description{
+                font-size: 1.2em;
+            }
+        }
+        .stats_container{
+            padding: 0 100px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+        }
+        .button_container{
+            display: flex;
+            margin: 60px 100px 0 100px;
+            .button{
+                font-size: 1.44em;
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
 
-//         }
-//         .label{
-//             display: flex;
-//             justify-content: center;
-//             flex-direction: column;
-//             align-items: flex-start;
-//             font-size: 0.4em;
-//             margin-top: 5px;
-//             color: #ffffff80;
-           
-//         }
+@media only screen and (max-width: 429px){
+    .card_container_3d{
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 100%;
+        padding-right: 20px;
+        .image_container{
+            padding: 0 20px;
+            margin-top: 30px;
+            .image{     
+                width: 100%; 
+                }
+        }
+        .description_container{
+            left: 0;
+            right: 0;
+            top: 175px;
+            padding: 10px 40px;
+            position: absolute;
+            .description{
+                font-size: 1.1em;
+            }
+        }
+        .stats_container{
+            padding: 0 20px;
+            margin-top: 120px;
 
-//      }
-     
-//     }
-//     .button_container{
-//             display: flex;
-//             justify-content: center;   
-//             align-items: center;
-//             border-top: 1px solid #ffffff80;    
-//             margin-top: 20px;
-            
-//             .button{
-//                 border: none;
-//                 background-color: transparent;
-//                 font-size: 1.1em;
-//                 margin-top: 15px;
-//                 opacity: 0.8;
-//                 color: #fff;
-//                 cursor: pointer;
-//                 &:hover{
-//                     text-shadow: 0 0 30px #fff;
-//                     opacity: 1;
-//                     span{
-//                         margin: 0 10px;
-//                         transition-duration: 0.4s;
-//                     }
-//                 }
-//                 span{
-//                     margin: 0 20px;
-//                     transition-duration: 0.4s;
-//                 }
-//             }
-//     }
-// }
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+            .namesake_container{
+                .namesake{
+                    font-size: 0.33em;
+                    border-bottom: 1px solid #ffffff80;
+                    height: 30px;               
+                    }
+                 
+               }
+        }
+        .button_container{
+            margin: 120px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            .button{
+                display: flex;
+                font-size: 1.2em;              
+            }
+        }
+    }
+    .detail_toggle_container{
+        top:660px;
+        left: 50%;
+        right: 50%;
+        align-items: center;
+    }
+    .card_container{
+        // padding: 0 100px;
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgb(0, 0, 0,.85);
+        height: 720px;
+        .image_container{
+            padding: 0 20px;
+            .image{     
+                width: 100%; 
+                }
+        }
+        .description_container{
+            margin-top: 50px;
+            padding: 20px 40px;
+            position: absolute;
+            .description{
+                font-size: 1.2em;
+            }
+        }
+        .stats_container{
+            padding: 0 20px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+        }
+        .button_container{
+            margin: 60px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            .button{
+                display: flex;
+                font-size: 1.2em;
+                span{
+                    display: flex;                    
+                    transition-duration: 0.4s;
+                }
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
+@media only screen and (max-width: 415px){
+    .detail_toggle_container{
+        top:520px;
+    }
+    .card_container{
+        // padding: 0 100px;
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        height: 700px;
+        .image_container{
+            padding:0;
+            margin-top: 0;
+            .image{     
+                width: 100%; 
+                }
+        }
+        .description_container{
+            margin-top: 5px;
+            padding: 20px 40px;
+            position: absolute;
+            .description{
+                font-size: 1em;
+            }
+        }
+        .stats_container{
+            padding: 0 20px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+            .namesake_container{              
+                .namesake{
+                    font-size: 0.35em;
+                    height: 30px;               
+                    }
+               }
+        }
+        .button_container{
+            margin: 60px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            .button{
+                display: flex;
+                font-size: 1.2em;
+                span{
+                    display: flex;                    
+                    transition-duration: 0.4s;
+                }
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
+@media only screen and (max-width: 391px){
+    .detail_toggle_container{
+        top:550px;   
+    }
+    .card_container{
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        height: 650px;
+        .image_container{
+            padding:0;
+            margin-top: 0;
+            .image{     
+                width: 100%; 
+                }
+        }
+        .description_container{
+            margin-top: 5px;
+            padding: 20px 40px;
+            position: absolute;
+            .description{
+                font-size: 1.02em;
+            }
+        }
+        .stats_container{
+            padding: 0 20px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+            .namesake_container{              
+                .namesake{
+                    font-size: 0.35em;
+                    height: 30px;               
+                    }
+               }
+        }
+        .button_container{
+            margin: 60px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            .button{
+                display: flex;
+                font-size: 1.2em;
+                span{
+                    display: flex;                    
+                    transition-duration: 0.4s;
+                }
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
+@media only screen and (max-width: 361px){
+    .detail_toggle_container{
+        top:480px;   
+    }
+    .card_container{
+        // padding: 0 100px;
+        display: none;
+        top:85px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        height: 700px;
+        .image_container{
+            padding:0;
+            margin-top: -50px;
+            .image{     
+                width: 90%; 
+                }
+        }
+        .description_container{
+            margin-top: -70px;
+            padding: 20px 40px;
+            position: absolute;
+            .description{
+                font-size: .9em;
+            }
+        }
+        .stats_container{
+            padding: 0 20px;
+            .distance_container{
+                margin-top: 20px;
+            }
+            .length_year_container{
+                margin-top: 20px;
+            }
+            .namesake_container{              
+                .namesake{
+                    font-size: 0.35em;
+                    height: 30px;               
+                    }
+               }
+        }
+        .button_container{
+            margin: 60px 20px 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            .button{
+                display: flex;
+                font-size: 1.2em;
+                span{
+                    display: flex;                    
+                    transition-duration: 0.4s;
+                }
+            }
+        }
+        
+    }
+    .detail_toggle_container{
+        display: none;
+    }
+}
 

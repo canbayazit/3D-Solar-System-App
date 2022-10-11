@@ -112,16 +112,22 @@
 
 @media only screen and (max-width: 1025px){
     .section{
-    height: 70vh;
-
-    }
+        height: 94.5vh;
+            .earthDiv{
+                bottom: -600px;  
+                height: 1459.2px; 
+                box-shadow: inset 0px 0px 10px rgb(0, 0, 0,0.12),    
+                -5px 0 10px #28335b,
+                -10px 0 500px 10px #28335b;
+            }
+        }
 }
 @media only screen and (max-width: 835px){
     .section{
-    height: 70vh;
+    height: 93.5vh;
         .earthDiv{
-            bottom: -750px;  
-            height: 1019.2px; 
+            bottom: -600px;  
+            height: 1309.2px; 
             box-shadow: inset 0px 0px 10px rgb(0, 0, 0,0.12),    
             -5px 0 10px #28335b,
             -10px 0 500px 10px #28335b;
@@ -130,9 +136,9 @@
 }
 @media only screen and (max-width: 769px){
     .section{
-    height: 80vh;
+    height: 92vh;
         .earthDiv{
-            bottom: -750px;  
+            bottom: -600px;  
             height: 1019.2px; 
             box-shadow: inset 0px 0px 10px rgb(0, 0, 0,0.12),    
             -5px 0 10px #28335b,
@@ -140,14 +146,55 @@
         }
     }
 }
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 429px){
     .section{
-
+        height: 92vh;
         .earthDiv{
-            bottom: -800px;  
-            background-position: -1280px 150px;
-            height: 1719.2px; 
+            bottom: -210px;  
+            height: 519.2px; 
              
+        }
+    }
+}
+@media only screen and (max-width: 415px){
+    .section{
+        height: 90vh;
+        .earthDiv{
+            bottom: -230px;  
+            height: 500px; 
+             
+        }
+        .sun{
+            position: absolute;
+            top: 320px;
+        }
+    }
+}
+@media only screen and (max-width: 376px){
+    .section{
+        height: 90vh;
+        .earthDiv{
+            bottom: -230px;  
+            height: 500px; 
+             
+        }
+        .sun{
+            position: absolute;
+            top: 320px;
+        }
+    }
+}
+@media only screen and (max-width: 321px){
+    .section{
+        height: 95vh;
+        .earthDiv{
+            bottom: -200px;  
+            height: 419.2px; 
+             
+        }
+        .sun{
+            position: absolute;
+            top: 320px;
         }
     }
 }

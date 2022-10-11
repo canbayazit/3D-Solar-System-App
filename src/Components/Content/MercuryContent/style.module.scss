@@ -48,3 +48,85 @@
         }
     
 }
+@media only screen and (max-width: 1025px){
+    .container{
+        height: 50vh;
+        padding: 0 100px;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 811px){
+    .container{
+        height: 65vh;
+        padding: 0 100px;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 429px){
+    .container{
+        height: 90vh;
+        padding: 0 32px;
+        font-size: 110%;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 415px){
+    .container{
+        height: 110vh;
+        padding: 0 32px;
+        font-size: 110%;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 391px){
+    .container{
+        height: 110vh;
+        padding: 0 32px;
+        font-size: 110%;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 361px){
+    .container{
+        height: 135vh;
+        padding: 0 32px;
+        font-size: 110%;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}
+@media only screen and (max-width: 321px){
+    .container{
+        height: 180vh;
+        padding: 0 32px;
+        font-size: 110%;
+        .solar_system_description{
+            .description{
+                text-align: left;
+               }
+        }
+    }
+}

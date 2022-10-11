@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import { textures, starTexture } from "../../Constant/planet_image/image";
-import { arrowLeft, arrowRight, closeButton, moon } from "../../Assets/svg/svg";
+import { arrowLeft, arrowRight, closeButton, detailToggle, moon } from "../../Assets/svg/svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setClick, setMod } from "../../Store/PlanetSlice";
 import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 const CardContainer = () => {
   const { planets, planetIndex, click, mod, pathname } = useSelector(
@@ -14,6 +15,7 @@ const CardContainer = () => {
   const { stars, isSun } = useSelector((store) => store.stars);
   const dispatch = useDispatch();
   let location = useLocation();
+  const [open, setOpen] = useState(false)
   const openComparison = () => {
     dispatch(setMod(true));
   };
@@ -22,7 +24,20 @@ const CardContainer = () => {
   };
   const CloseCard = () => {
     dispatch(setClick(false));
+    setOpen(false);
+  }; 
+  const setToggle = () => {
+    setOpen(true);
+    dispatch(setClick(true));
+    console.log("clicked")
   };
+  const matches = useMediaQuery('(max-width:1025px)');
+
+  useEffect(() => {
+    pathname!=='/solarsystem' && (matches ===false && dispatch(setClick(true)));
+     setOpen(false) ;
+  }, [])
+  
   console.log("click card", click);
   console.log("pathname card", pathname);
   console.log("location.pathname card", location.pathname);
@@ -42,6 +57,16 @@ const CardContainer = () => {
           <span>X</span> Close Comparison Mode
         </button>
       </div>
+      <div className={style.detail_toggle_container} style={{display:pathname === '/solarsystem' ? (click ?  matches ? open ? "none": "flex" :"none" : "none") : (matches ? open ? "none":"flex":"none")}}>
+          <h1>{location.pathname === "/sun"
+              ? stars[planetIndex].name.toUpperCase()
+              : isSun
+                ? stars[planetIndex].name.toUpperCase()
+                : planets[planetIndex].name.toUpperCase()}</h1>
+          <button className={style.detail_toggle} onClick={() => setToggle()}>
+            {detailToggle()}
+          </button>
+      </div>
       <div
         className={
           pathname !== '/solarsystem'
@@ -51,11 +76,11 @@ const CardContainer = () => {
         style={
           pathname !== '/solarsystem'
             ? click
-              ? { display: mod ? "none" : "block", height: "595px" }
+              ? matches ? {display:open ?  (mod ? "none" : "block") :"none"} : { display: mod ? "none" : "block"}
               : { display: "none" }
             : click
-            ? { display: mod ? "none" : "block", height: "100%" }
-            : { display: "none" }
+              ? matches ? {display:open ?  (mod ? "none" : "block") :"none"} : { display: mod ? "none" : "block", height: "100%" }
+              : { display: "none" }
         }
       >
         <div className={style.close_button_container}>

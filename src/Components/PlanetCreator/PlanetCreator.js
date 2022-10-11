@@ -342,7 +342,7 @@ const PlanetCreator = () => {
         enableRotate={true}
         autoRotate={false}
         screenSpacePanning={false}
-        target={click ? [position, 0, 0] : [0, 0, 0]}
+        target={(click ? [position, 0, 0] : [0, 0, 0])}
         maxDistance={click ? 600 : 80000}
         minDistance={click ? 500 : 450}
       />
