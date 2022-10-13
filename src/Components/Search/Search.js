@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
+import { setClick, setPlanetIndex, setPositionX, setRadius } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
@@ -14,11 +14,12 @@ const Search = () => {
     let status = document.getElementById("list").contains(li);
     status ? setStatus(true) : setStatus(false);
   }, [text]);
-  const handleClick = (id, position) => {
+  const handleClick = (id,rad) => {
     dispatch(setPlanetIndex(id - 1));
+    dispatch(setRadius(rad));
     dispatch(setClick(true));
     dispatch(setIsSun(false));
-    dispatch(setPosition(position));
+    // dispatch(setPositionX(position));
     setText("");
   };
   return (
@@ -40,7 +41,7 @@ const Search = () => {
                 return (
                   <li id="list_item" key={index} className={style.list_item}>
                     <button
-                      onClick={() => handleClick(item.id, 1000 * item.distance)}
+                      onClick={() => handleClick(item.id,2000*item.distance)}
                     >
                       {item.name}
                     </button>

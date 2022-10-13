@@ -4,6 +4,7 @@ import ScrollToTop from "./Components/Function/ScrollToTop";
 import AsteroidsAndComets from "./Pages/Asteroids&Comets/AsteroidsAndComets";
 import Home from "./Pages/Home/Home";
 import Moons from "./Pages/Moons/Moons";
+import NotFoundPage from "./Pages/NotFound/NotFoundPage";
 import Earth from "./Pages/Planets/Earth/Earth";
 import Jupiter from "./Pages/Planets/Jupiter/Jupiter";
 import Mars from "./Pages/Planets/Mars/Mars";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/uranus" element={<Uranus />} />
         <Route path="/neptune" element={<Neptune />} />
         <Route path="/sun" element={<Sun />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </div>
   );

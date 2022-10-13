@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 // import image from "../../../Assets/img/solar_system_img.jpg";
 import { useDispatch } from "react-redux";
-import { setClick, setHeaderStatus, setIsPlanet, setPathname } from "../../../Store/PlanetSlice";
+import { setClick, setHeaderStatus, setPathname } from "../../../Store/PlanetSlice";
 import { useNavigate } from "react-router-dom";
 const HomeSection = () => {
 
@@ -11,12 +11,10 @@ const HomeSection = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(setHeaderStatus(false));
-    dispatch(setIsPlanet(false));
   }, []);
   
   const handleClick = () => {
     navigate("/solarsystem");
-    dispatch(setIsPlanet(false));
     dispatch(setPathname("/solarsystem"));
     dispatch(setClick(false));
   }

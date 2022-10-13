@@ -1,22 +1,18 @@
 import { useMediaQuery } from "@mui/material";
-import { Bounds, OrbitControls } from "@react-three/drei";
+import { Bounds } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useEffect, useState } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { closeButton } from "../../Assets/svg/svg";
-import CardContainer from "../../Components/CardContainer/CardContainer";
+import React, { Suspense, useEffect } from "react";
+import { Provider, useSelector } from "react-redux";
+import CardContainer from "../../Components/Card/CardContainer";
 import ComparePlanet from "../../Components/ComparePlanet/ComparePlanet";
+import MediaContainer from "../../Components/Media/MediaContainer";
 import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import Search from "../../Components/Search/Search";
 import { store } from "../../Store";
-import { setClick, setIsPlanet, setMod } from "../../Store/PlanetSlice";
-import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 const SolarSystem = () => {
-  const { planets, stars, mod } = useSelector((store) => store.planets);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { mod } = useSelector((store) => store.planets);
+
   const matches = useMediaQuery('(max-width:1025px)');
   useEffect(() => {
     matches===false && document.body.requestFullscreen();
@@ -28,19 +24,10 @@ const SolarSystem = () => {
 
   //   console.log("includes",planets.filter((item) => item.name.toLowerCase()))
   // }, [text]);
-  const handleClick = () => {
-    dispatch(setClick(false));
-    dispatch(setIsSun(false));
-    dispatch(setIsPlanet(false));
-    dispatch(setMod(false));
-    navigate("/");
-    matches===false && document.exitFullscreen();
-  };
+
   return (
     <div className={style.container}>
-      <div className={style.close_button}>
-        <button onClick={() => handleClick()}>{closeButton()}</button>
-      </div>
+      <MediaContainer/>
       <CardContainer />
       <Search />
       <div className={style.canvas_container}>
@@ -51,15 +38,15 @@ const SolarSystem = () => {
             shadows
             className={style.Canvas}
             camera={{
-              fov: 45,
+              fov: 60,
               aspect: window.innerWidth / window.innerHeight,
               near: 1,
-              far: 4000,
+              far: 3,
               position: [0, 0, 0],
             }}
           >
-            <axesHelper args={[25, 25, 25]} />
-
+           
+            <axesHelper args={[2500, 2500, 2500]} />
             <Suspense fallback={null}>
               <Bounds fit clip observe margin={0.2}>
                 <Provider store={store}>

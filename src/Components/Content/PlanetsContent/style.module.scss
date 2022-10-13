@@ -10,6 +10,7 @@
         line-height: 1.5;      
          padding: 100px 400px 50px 400px;
         .fieldset{
+            font-size: 1.2em;
             padding: 15px 10px 15px 30px;
             width: 100%;
             margin-left: auto;
@@ -25,26 +26,40 @@
             }
             .fieldset_description{
                 margin-top: 10px;
+                margin-right: 5px;
             }
         }
-        .solar_system_description{
+        .planets_img_container{
+            width: 100%;
+            .planets_img{
+                height: 300px;
+                width: 100%;
+            
+                // border-radius:5px;
+                border: 3px solid #202020;         
+                // shape-outside: circle();                    
+                // shape-margin: 55px;
+                // margin-right: 55px;
+                // float: left;
+           }
+        }
+        .description_container{
            margin-top: 40px;
            width: 100%;
            font-size: 20px;
            margin-left: auto;
            margin-right: auto;
-           .solar_system_img{
-                width: 440px;
-                height: 350px;
-                border-radius: 50%;
-                border: 2px solid black;         
-                shape-outside: circle();                    
-                shape-margin: 55px;
-                margin-right: 55px;
-                float: left;
-           }
+          
            .description{
             text-align: justify;
+            margin-bottom: 1em;
+           }
+           ol{
+            margin-bottom:  2em;
+            li{
+            margin-bottom: 9px;
+            list-style-position:inside
+            }
            }
         }
     }
@@ -100,7 +115,7 @@
                 border-left: 1px solid #6e717f;                         
             }
         }
-        .planets{         
+        .planets{          
             display: flex;
             flex-wrap: wrap;
             // border: 1px solid #3b3b3b;

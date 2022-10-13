@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setClick, setMod } from "../../Store/PlanetSlice";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import { setIsSun } from "../../Store/StarSlice";
 
 const CardContainer = () => {
   const { planets, planetIndex, click, mod, pathname } = useSelector(
@@ -24,6 +25,7 @@ const CardContainer = () => {
   };
   const CloseCard = () => {
     dispatch(setClick(false));
+    dispatch(setIsSun(false));
     setOpen(false);
   }; 
   const setToggle = () => {

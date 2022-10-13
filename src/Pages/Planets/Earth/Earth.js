@@ -6,7 +6,7 @@ import Header from "../../../Components/Header/Header";
 import style from "./style.module.scss";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
-import CardContainer from "../../../Components/CardContainer/CardContainer";
+import CardContainer from "../../../Components/Card/CardContainer";
 
 const Earth = () => {
   return (

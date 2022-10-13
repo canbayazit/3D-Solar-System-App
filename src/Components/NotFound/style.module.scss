@@ -1,0 +1,36 @@
+.container{
+    position: relative;
+    height: 30em;
+    width: 30em;
+    background-color: rgb(255, 255, 255,0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        position: absolute;
+        top: -75px;
+        color: #E62C1B;
+        font-weight: 900;
+        font-size: 2.5em;
+        text-shadow: 0 0 20px #E62C1B80;
+    }
+    .astronaut{
+        position: absolute;
+        z-index: 2;
+        animation: float 5s infinite;
+    }
+    @keyframes float {
+        50%{
+            transform: translateY(1em);
+        }
+    }
+    .planet{
+        position: absolute;
+        z-index: 1;
+        top:0;
+        right: 0;
+  
+    }
+
+}

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-undef */
 import { OrbitControls, Stars, Text, useBounds } from "@react-three/drei";
@@ -8,7 +9,7 @@ import sunTexture from "../../Assets/img/PlanetsTexture/sunmap2.png";
 import * as THREE from "three";
 import { textures } from "../../Constant/planet_image/image";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setPlanetIndex, setPosition } from "../../Store/PlanetSlice";
+import { setClick, setPlanetIndex, setPositionX, setPositionZ, setRadius } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 const PlanetCreator = () => {
   const [id, setID] = useState(null);
@@ -16,12 +17,9 @@ const PlanetCreator = () => {
   const [value, setValue] = useState(50);
 
   const sunMap = useLoader(TextureLoader, sunTexture);
-  const vec = new THREE.Vector3();
-
-  const opacityRef = useRef();
 
   const dispatch = useDispatch();
-  const { planets, click, position } = useSelector((store) => store.planets);
+  const { planets, click,positionX, positionZ,speedStatus,rad,planetIndex } = useSelector((store) => store.planets);
   const { stars, isSun } = useSelector((store) => store.stars);
 
   const api = useBounds();
@@ -32,7 +30,6 @@ const PlanetCreator = () => {
   const textRef = useRef([]);
   const planetRef = useRef([]);
   const targetRingRef = useRef([]);
-  const targetRing2Ref = useRef([]);
   const ringRef = useRef([]);
   const ringOuterRef = useRef([]);
   const ringOrbitRef = useRef([]);
@@ -40,34 +37,42 @@ const PlanetCreator = () => {
   const textMeshRef = useRef([]);
   const sunTextRef = useRef();
   const sunRef = useRef();
+  const orbitControls = useRef();
 
-  const handlePlanetClick = (index, position) => {
+  const handlePlanetClick = (index, rad,e) => {
     dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
-    dispatch(setPosition(position));
+    dispatch(setRadius(rad));
+    // dispatch(setPosition(position));
+     // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position);
+    // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position)
+    // orbitControls.current.update();
+    // console.log("cos angles",Math.cos(angles))
+    // console.log("object position z",Math.sin(angles)*position)
+    // console.log("object position x",Math.cos(angles)*position)
+    // console.log("rotation.y",planetOrbitRef.current[index].rotation.y*180/Math.PI)
+    // console.log("e",Math.PI)
+    // console.log("position",position)
+    // setVariable(planetOrbitRef.current[index].position);
   };
 
-  const handleStarClick = (index, position) => {
+  const handleStarClick = (index) => {
     dispatch(setClick(true));
     dispatch(setIsSun(true));
     dispatch(setPlanetIndex(index));
-    dispatch(setPosition(position));
+    dispatch(setPositionX(0));
+    dispatch(setPositionZ(0));
   };
 
-  useFrame((state) => {
-    if (click === false) {
-      // console.log("click içinde planet Index",planetIndex)
-      // console.log("click içinde planet Index",planetRef.current[planetIndex].position)
-      // state.camera.lookAt(-11292.054273159407,11470.923208638555,-399.3228425757357);
-      // state.camera.position.lerp(vec.set(planetRef.current[planetIndex].position.x,planetRef.current[planetIndex].position.y,planetRef.current[planetIndex].position.z-450),0.5);
-      // state.camera.updateProjectionMatrix();
-    }
-  });
-
   useEffect(() => {
+    let angles = planetOrbitRef.current[planetIndex].rotation.y
+    console.log("angles planet creator",angles)
+    console.log("planetIndex  planet creator",planetIndex)
+    dispatch(setPositionX(isSun ? 0 : Math.cos(angles)*rad))
+    dispatch(setPositionZ(isSun ? 0 : -1*Math.sin(angles)*rad))
     setValue(50);
     planets.map((item, index) => {
-      index === planets.length - 1 && setDistance(500 * item.distance * 2);
+      index === planets.length - 1 && setDistance(2000 * item.distance );
     });
     planets.name === "Neptune"
       ? (ringOuterRef.current.visible = true)
@@ -78,7 +83,7 @@ const PlanetCreator = () => {
     planets.name === "Saturn"
       ? (ringRef.current.visible = true)
       : (ringRef.current.visible = false);
-  });
+  }, [dispatch, rad, planets, planetIndex]);
   // console.log("position", position);
   // console.log("position/500", position / 500);
   // useFrame(state=>{
@@ -94,47 +99,56 @@ const PlanetCreator = () => {
   useFrame(({ clock, camera, state, delta }) => {
     // const elapsedTime = clock.getElapsedTime();
     // earthRef.current.rotation.y = elapsedTime / 6;
-    let speed = 0.002;
+    let speed = speedStatus ? click ? 0 : 0.002 : 0;
+    planetRef.current[0].rotation.y +=0.001;
+    planetRef.current[1].rotation.y +=0.001;
+    planetRef.current[2].rotation.y +=0.001;
+    planetRef.current[3].rotation.y +=0.001;
+    planetRef.current[4].rotation.y +=0.001;
+    planetRef.current[5].rotation.y +=0.001;
+    planetRef.current[6].rotation.y +=0.001;
+    planetRef.current[7].rotation.y +=0.001;
+    
     sunTextRef.current.quaternion.copy(camera.quaternion);
     sunTextRef.current.rotation.copy(camera.rotation);
-    // planetOrbitRef.current[0].rotation.y += speed;
-    // targetOrbitRef.current[0].rotation.y += speed;
-    // targetRef.current[0].rotation.y -= speed;
+    planetOrbitRef.current[0].rotation.y += speed;
+    targetOrbitRef.current[0].rotation.y += speed;
+    targetRef.current[0].rotation.y -= speed;
     targetGroupRef.current[0].quaternion.copy(camera.quaternion);
     targetGroupRef.current[0].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[1].rotation.y += speed / 2;
-    // targetOrbitRef.current[1].rotation.y += speed / 2;
-    // targetRef.current[1].rotation.y -= speed / 2;
+    planetOrbitRef.current[1].rotation.y += speed / 2;
+    targetOrbitRef.current[1].rotation.y += speed / 2;
+    targetRef.current[1].rotation.y -= speed / 2;
     targetGroupRef.current[1].quaternion.copy(camera.quaternion);
     targetGroupRef.current[1].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[2].rotation.y += speed / 3;
-    // targetOrbitRef.current[2].rotation.y += speed / 3;
-    // targetRef.current[2].rotation.y -= speed / 3;
+    planetOrbitRef.current[2].rotation.y += speed / 3;
+    targetOrbitRef.current[2].rotation.y += speed / 3;
+    targetRef.current[2].rotation.y -= speed / 3;
     targetGroupRef.current[2].quaternion.copy(camera.quaternion);
     targetGroupRef.current[2].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[3].rotation.y += speed / 4;
-    // targetOrbitRef.current[3].rotation.y += speed / 4;
-    // targetRef.current[3].rotation.y -= speed / 4;
+    planetOrbitRef.current[3].rotation.y += speed / 4;
+    targetOrbitRef.current[3].rotation.y += speed / 4;
+    targetRef.current[3].rotation.y -= speed / 4;
     targetGroupRef.current[3].quaternion.copy(camera.quaternion);
     targetGroupRef.current[3].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[4].rotation.y += speed / 10;
-    // targetOrbitRef.current[4].rotation.y += speed / 10;
-    // targetRef.current[4].rotation.y -= speed / 10;
+    planetOrbitRef.current[4].rotation.y += speed / 5;
+    targetOrbitRef.current[4].rotation.y += speed / 5;
+    targetRef.current[4].rotation.y -= speed / 5;
     targetGroupRef.current[4].quaternion.copy(camera.quaternion);
     targetGroupRef.current[4].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[5].rotation.y += speed / 20;
-    // targetOrbitRef.current[5].rotation.y += speed / 20;
-    // targetRef.current[5].rotation.y -= speed / 20;
+    planetOrbitRef.current[5].rotation.y += speed / 6;
+    targetOrbitRef.current[5].rotation.y += speed / 6;
+    targetRef.current[5].rotation.y -= speed / 6;
     targetGroupRef.current[5].quaternion.copy(camera.quaternion);
     targetGroupRef.current[5].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[6].rotation.y += speed / 30;
-    // targetOrbitRef.current[6].rotation.y += speed / 30;
-    // targetRef.current[6].rotation.y -= speed / 30;
+    planetOrbitRef.current[6].rotation.y += speed / 7;
+    targetOrbitRef.current[6].rotation.y += speed / 7;
+    targetRef.current[6].rotation.y -= speed / 7;
     targetGroupRef.current[6].quaternion.copy(camera.quaternion);
     targetGroupRef.current[6].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[7].rotation.y += speed / 50;
-    // targetOrbitRef.current[7].rotation.y += speed / 50;
-    // targetRef.current[7].rotation.y -= speed / 50;
+    planetOrbitRef.current[7].rotation.y += speed / 8;
+    targetOrbitRef.current[7].rotation.y += speed / 8;
+    targetRef.current[7].rotation.y -= speed / 8;
     targetGroupRef.current[7].quaternion.copy(camera.quaternion);
     targetGroupRef.current[7].rotation.copy(camera.rotation);
 
@@ -225,8 +239,7 @@ const PlanetCreator = () => {
         Math.pow(camera.position.y - planetRef.current[7].position.y, 2) +
         Math.pow(camera.position.z - planetRef.current[7].position.z, 2)
     );
-    // console.log("merkür",1500*distanceMercury/constant)
-    // console.log("venus",1500*distanceVenus/constant)
+
     sunTextRef.current.fontSize = (1500 * distanceSun) / constant;
     textRef.current[0].fontSize = (1500 * distanceMercury) / constant;
     textRef.current[1].fontSize = (1500 * distanceVenus) / constant;
@@ -337,14 +350,15 @@ const PlanetCreator = () => {
   return (
     <>
       <OrbitControls
+        ref={orbitControls}
         enableZooms={true}
         enablePan={false}
         enableRotate={true}
         autoRotate={false}
         screenSpacePanning={false}
-        target={(click ? [position, 0, 0] : [0, 0, 0])}
-        maxDistance={click ? 600 : 80000}
-        minDistance={click ? 500 : 450}
+        target={(click ? [positionX, 0, positionZ]: [0, 0, 0] )}
+        maxDistance={click ? isSun ? 600 :300 : 120000}
+        minDistance={click ? 170 : 450}
       />
       {stars.map((item, index) => (
         <group key={item.id} ref={sunRef} rotation={[0, 0, 0]}>
@@ -357,7 +371,7 @@ const PlanetCreator = () => {
             factor={200}
           ></Stars>
           <mesh position={[0, 0, 0]}>
-            <sphereGeometry args={[128, 128, 128]} />
+            <sphereGeometry args={[150, 150, 150]} />
             <meshBasicMaterial map={sunMap} color={item.color} />
             <ambientLight intensity={0} />
             <pointLight
@@ -375,7 +389,7 @@ const PlanetCreator = () => {
               color="#fff"
               ref={sunTextRef}
               visible={isSun ? false : true}
-              onClick={(e) =>(e.stopPropagation(), handleStarClick(index, 1000 * item.distance))}
+              onClick={(e) =>(e.stopPropagation(), handleStarClick(index, 2000 * item.distance))}
             >
               {item.name}
             </Text>
@@ -392,7 +406,7 @@ const PlanetCreator = () => {
                 args={
                   click
                     ? [0, 0, 200]
-                    : [1000 * item.distance, 1000 * item.distance + value, 200]
+                    : [2000 * item.distance, 2000 * item.distance + value, 200]
                 }
               />
               <meshBasicMaterial
@@ -413,24 +427,24 @@ const PlanetCreator = () => {
           useLoader(TextureLoader, textures[index].ring);
         return (
           <group key={item.id}>
-            <group ref={(el) => (planetOrbitRef.current[index] = el)}>
+            <group ref={(el) => (planetOrbitRef.current[index] = el)} >
               <mesh
                 ref={(el) => (planetRef.current[index] = el)}
-                position={[1000 * item.distance, 0, 0]}
-                castShadow
+                position={[2000 * item.distance, 0, 0]}
+                castShadow                
               >
                 <sphereGeometry args={[35, 50, 50]} />
                 <meshStandardMaterial map={planetMap} />
               </mesh>
               <mesh
                 ref={(el) => (ringRef.current[index] = el)}
-                position={[1000 * item.distance, 0, 0]}
+                position={[2000 * item.distance, 0, 0]}
                 rotation-y={Math.PI / 8}
                 rotation-x={Math.PI / 2.5}
                 receiveShadow
                 visible={item.name === "Saturn" ? true : false}
               >
-                <ringGeometry args={[35, 70, 55]} />
+                <ringGeometry args={[45, 70, 105]} />
                 <meshStandardMaterial
                   map={saturnRing}
                   side={THREE.DoubleSide}
@@ -438,7 +452,7 @@ const PlanetCreator = () => {
               </mesh>
               <mesh
                 ref={(el) => (ringOuterRef.current[index] = el)}
-                position={[1000 * item.distance, 0, 0]}
+                position={[2000 * item.distance, 0, 0]}
                 rotation-y={Math.PI / 8}
                 rotation-x={Math.PI / 2.5}
                 receiveShadow
@@ -449,7 +463,7 @@ const PlanetCreator = () => {
               </mesh>
               <mesh
                 ref={(el) => (ringOuterRef.current[index] = el)}
-                position={[1000 * item.distance, 0, 0]}
+                position={[2000 * item.distance, 0, 0]}
                 rotation-y={Math.PI / 8}
                 rotation-x={Math.PI / 2.5}
                 receiveShadow
@@ -467,21 +481,24 @@ const PlanetCreator = () => {
             >
               <mesh
                 ref={(el) => (targetRef.current[index] = el)}
-                position={[1000 * item.distance, 0, 0]}
+                position={[2000 * item.distance, 0, 0]}
                 onPointerOver={(e) => (e.stopPropagation(), setID(item.id))}
                 onPointerOut={(e) => (e.stopPropagation(), setID(null))}
+             
               >
                 <mesh ref={(el) => (targetGroupRef.current[index] = el)}>
-                  <mesh ref={(el) => (targetRingRef.current[index] = el)}>
-                    <ringGeometry args={[16.2, 16.5, 500]} />
-                    <meshStandardMaterial
+                  {/* <mesh ref={(el) => (targetRingRef.current[index] = el)}>
+                    
+                    <ringGeometry args={[((1000*item.radius)/695500)+30, ((1000*item.radius)/695500)+35, 500]} />
+                    <meshBasicMaterial
                       ref={opacityRef}
                       color={item.color}
                       opacity={id === index + 1 ? 1 : 0.8}
                       transparent
                       side={THREE.DoubleSide}
                     />
-                  </mesh>
+                   
+                  </mesh> */}
                   {/* <mesh
                     ref={(el) => (targetRing2Ref.current[index] = el)}
                     onClick={(e) => (
@@ -501,17 +518,16 @@ const PlanetCreator = () => {
                       side={THREE.DoubleSide}
                     />
                   </mesh> */}
-                  <mesh
-                    position={[20, 14, 0]}
-                    onClick={(e) => (
-                      e.stopPropagation(),
-                      // e.delta <= 2 &&
-                      //   api.refresh(planetRef.current[planetIndex]).fit(),
-                      handlePlanetClick(index, 1000 * item.distance)
+                  <mesh                    
+                  onClick={(e) => (
+                    e.stopPropagation(),
+                    // e.delta <= 2 &&
+                    //   api.refresh(planetRef.current[planetIndex]).fit(),
+                    handlePlanetClick(index, 2000 * item.distance,e.object.position)
                     )}
                   >
                     <Text
-                      position={[-20, 50, 0]}
+                      position={[0, 100, 0]}
                       letterSpacing={-0.05}
                       color="white"
                       ref={(el) => (textRef.current[index] = el)}

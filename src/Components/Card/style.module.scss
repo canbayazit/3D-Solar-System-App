@@ -59,7 +59,7 @@
         font-size: 2em;         
         .length_year_container{
             width: 45%;
-
+            margin-bottom: 25px;
             .length_year{
                 display: flex;
                 align-items: center;
@@ -80,6 +80,7 @@
         }
         .distance_container{
             width: 45%;
+            margin-bottom: 25px;
             .distance{
                 display: flex;
                 align-items: center;
@@ -101,7 +102,7 @@
        .namesake_container{
         width: 45%;
         .namesake{
-            font-size: 0.42em;
+            font-size: 0.4em;
             border-bottom: 1px solid #ffffff80;
             height: 30px;               
             }
@@ -147,7 +148,7 @@
             justify-content: center;   
             align-items: center;
             border-top: 1px solid #ffffff80;    
-            margin-top: 20px;
+            margin-top: 40px;
             
             .button{
                 border: none;

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Header from "../../../Components/Header/Header";
 import style from "./style.module.scss";
 import Footer from "../../../Components/Footer/Footer";
-import HomeContent from "../../../Components/Content/HomeContent/HomeContent";
 import PlanetMainSection from "../../../Components/Section/PlanetMainSection/PlanetMainSection";
+import PlanetContent from "../../../Components/Content/PlanetsContent/PlanetContent";
 
 
 const Planets = () => {
@@ -12,7 +12,7 @@ const Planets = () => {
     <div className={style.container}>
       <Header />
       <PlanetMainSection />
-      <HomeContent />
+      <PlanetContent />
       <Footer/>
     </div>
   );

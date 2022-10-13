@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
-import solarSystem from "../../../Assets/img/solarsystemm.png";
+import planet from "../../../Assets/img/planets.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { starTexture, textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
@@ -9,12 +9,11 @@ import {
   getPlanets,
   setClick,
   setHeaderStatus,
-  setIsPlanet,
   setPathname,
   setPlanetIndex,
 } from "../../../Store/PlanetSlice";
 import { getStars, setIsSun } from "../../../Store/StarSlice";
-const HomeContent = () => {
+const PlanetContent = () => {
   const [id, setID] = useState();
   const [hover, setHover] = useState(false);
   const [active, setActive] = useState(false);
@@ -67,26 +66,41 @@ const HomeContent = () => {
   };
 
   return (
-    <div className={style.main} id="content">
+    <div className={style.main} >
       <div className={style.content}>
         <fieldset className={style.fieldset}>
           <legend>Our Solar System</legend>
-          <h2>Why is it Called the Solar System? </h2>
+          <h2>What is a Planet?</h2>
           <p className={style.fieldset_description}>
-            There are many planetary systems like ours in the universe, with
-            planets orbiting a host star. Our planetary system is called “the
-            solar system” because we use the word “solar” to describe things
-            related to our star, after the Latin word for Sun, "solis."{" "}
+            This seemingly simple question doesn't have a simple answer.
+            Everyone knows that Earth, Mars and Jupiter are planets. But both
+            Pluto and Ceres were once considered planets until new discoveries
+            triggered scientific debate about how to best describe them—a
+            vigorous debate that continues to this day.{" "}
           </p>
         </fieldset>
-        <div className={style.solar_system_description}>
-          <img src={solarSystem} className={style.solar_system_img}></img>
+        <div className={style.description_container}>
           <p className={style.description}>
-            Our solar system consists of our star, the Sun, and everything bound
-            to it by gravity – the planets Mercury, Venus, Earth, Mars, Jupiter,
-            Saturn, Uranus, and Neptune; dwarf planets such as Pluto; dozens of
-            moons; and millions of asteroids, comets, and meteoroids.
+            The most recent definition of a planet was adopted by the
+            International Astronomical Union in 2006. It says a planet must do
+            three things:
           </p>
+          <ol>
+            <li>
+              It must orbit a star (in our cosmic neighborhood, the Sun).{" "}
+            </li>
+            <li>
+              It must be big enough to have enough gravity to force it into a
+              spherical shape.
+            </li>
+            <li>
+              It must be big enough that its gravity cleared away any other
+              objects of a similar size near its orbit around the Sun.
+            </li>
+          </ol>
+        </div>
+        <div className={style.planets_img_container}>
+          <img src={planet} className={style.planets_img}/>
         </div>
       </div>
       <div className={style.card_container}>
@@ -156,4 +170,4 @@ const HomeContent = () => {
   );
 };
 
-export default HomeContent;
+export default PlanetContent;

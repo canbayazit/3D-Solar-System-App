@@ -8,10 +8,12 @@ const initialState ={
     headerStatus:false, 
     planetIndex:0,
     click:false,
-    position:0,
+    positionX:0,
+    positionZ:0,  
+    rad:0,
     mod:false,
-    isPlanet:false,
-    pathname:''
+    pathname:'',
+    speedStatus:false,  
 }
 
 export const getPlanets = createAsyncThunk (
@@ -36,17 +38,23 @@ const planetSlice = createSlice({
         setClick: (state, action)=>{
             state.click = action.payload;
         },
-        setPosition: (state, action)=>{
-            state.position = action.payload;
+        setPositionX: (state, action)=>{
+            state.positionX = action.payload;
+        },
+        setPositionZ: (state, action)=>{
+            state.positionZ = action.payload;
+        },        
+        setRadius: (state, action)=>{
+            state.rad = action.payload;
         },
         setMod: (state, action)=>{
             state.mod = action.payload;
         },
-        setIsPlanet: (state, action)=>{
-            state.isPlanet = action.payload;
-        },
         setPathname: (state, action)=>{
             state.pathname = action.payload;
+        },
+        setSpeed: (state, action)=>{
+            state.speedStatus = action.payload;
         }
     },
     extraReducers: {
@@ -67,5 +75,5 @@ const planetSlice = createSlice({
   
 });
 
-export const {setHeaderStatus,setPlanetIndex,setClick,setPosition,setMod,setIsPlanet,setPathname} = planetSlice.actions;
+export const {setHeaderStatus,setPlanetIndex,setClick,setPositionX,setRadius,setPositionZ,setMod,setPathname,setSpeed} = planetSlice.actions;
 export default planetSlice.reducer;

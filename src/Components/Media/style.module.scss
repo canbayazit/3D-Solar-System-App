@@ -1,0 +1,38 @@
+.container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .close_button{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 998;
+        button{
+            background: transparent;
+            border: none;
+            opacity: 0.8;
+            cursor: pointer;
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+    .media_button{
+      
+        z-index: 998;
+        button{
+            background-color: transparent;
+            border: none;
+            margin-left: 50px;
+            margin-top: 20px;
+            opacity: 0.6;
+            cursor: pointer;
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}

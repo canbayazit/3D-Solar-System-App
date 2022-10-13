@@ -6,7 +6,7 @@ import Header from "../../../Components/Header/Header";
 import More from "../../../Components/Dashboard/More/More";
 import style from "./style.module.scss";
 import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
-import CardContainer from "../../../Components/CardContainer/CardContainer";
+import CardContainer from "../../../Components/Card/CardContainer";
 
 const Uranus = () => {
   return (

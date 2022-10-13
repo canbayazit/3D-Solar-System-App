@@ -5,7 +5,8 @@ import Footer from "../../../Components/Footer/Footer";
 import Header from "../../../Components/Header/Header";
 import style from "./style.module.scss";
 import More from "../../../Components/Dashboard/More/More"
-import CardContainer from "../../../Components/CardContainer/CardContainer";
+import CardContainer from "../../../Components/Card/CardContainer";
+import SunContent from "../../../Components/Content/SunContent/SunContent";
 const Sun = () => {
   return (
     <div className={style.container}>
@@ -14,6 +15,7 @@ const Sun = () => {
       <CardContainer/>
       <Dashboard/>
       <More/>
+      <SunContent/>
       <Footer/>
     </div>
   );

@@ -90,8 +90,8 @@ const Dashboard = () => {
       },
       {
         id: 4,
-        name: "moons",
-        value: (pathname === "/sun" ? stars : planets)[planetIndex].moons.units,
+        name: pathname === "/sun" ? "planets":"moons",
+        value: pathname === "/sun" ?  stars[planetIndex].planets.units : (planets[planetIndex].moons.units),
       },
     ],
   };

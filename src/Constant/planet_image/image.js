@@ -17,7 +17,7 @@ import uranusimage from "../../Assets/img/PlanetsTexture/uranus_image.png"
 import neptuneimage from "../../Assets/img/PlanetsTexture/neptune_image.png"
 
 import sunmap from "../../Assets/img/PlanetsTexture/sunmap2.png";
-import sunimage from "../../Assets/img/PlanetsTexture/sun_solar_image.png";
+import sunimage from "../../Assets/img/PlanetsTexture/sun.png";
 
 
 import saturnring from "../../Assets/img/PlanetsTexture/saturnRing.png";
