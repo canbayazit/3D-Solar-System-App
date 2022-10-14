@@ -4,6 +4,7 @@ import axios from "axios";
 
 const initialState ={
     planets:[],
+    moons:[],
     loading:false,
     headerStatus:false, 
     planetIndex:0,
@@ -14,6 +15,8 @@ const initialState ={
     mod:false,
     pathname:'',
     speedStatus:false,  
+    isPlanet:false,
+    isMoon:false,
 }
 
 export const getPlanets = createAsyncThunk (
@@ -55,6 +58,12 @@ const planetSlice = createSlice({
         },
         setSpeed: (state, action)=>{
             state.speedStatus = action.payload;
+        },
+        setIsPlanet: (state, action)=>{
+            state.isPlanet = action.payload;
+        },
+        setIsMoon: (state, action)=>{
+            state.isMoon = action.payload;
         }
     },
     extraReducers: {
@@ -64,7 +73,7 @@ const planetSlice = createSlice({
         [getPlanets.fulfilled] : (state,action) => {  
             state.loading=false;            
             state.planets = action.payload.planets;
-         
+            state.moons = action.payload.moons;
       },
         [getPlanets.rejected] : (state,action) => { 
             state.loading=false;
@@ -75,5 +84,5 @@ const planetSlice = createSlice({
   
 });
 
-export const {setHeaderStatus,setPlanetIndex,setClick,setPositionX,setRadius,setPositionZ,setMod,setPathname,setSpeed} = planetSlice.actions;
+export const {setHeaderStatus,setPlanetIndex,setClick,setPositionX,setRadius,setPositionZ,setMod,setPathname,setSpeed,setIsPlanet,setIsMoon} = planetSlice.actions;
 export default planetSlice.reducer;

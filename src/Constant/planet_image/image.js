@@ -7,6 +7,47 @@ import saturnmap from "../../Assets/img/PlanetsTexture/saturnmap.jpg"
 import uranusmap from "../../Assets/img/PlanetsTexture/uranusmap.jpg"
 import neptunemap from "../../Assets/img/PlanetsTexture/neptunemap.jpg"
 
+import Arielmap from "../../Assets/img/MoonTexture/Ariel.png"
+import Callistomap from "../../Assets/img/MoonTexture/Callisto.png"
+import Dionemap from "../../Assets/img/MoonTexture/Dione.png"
+import Enceladusmap from "../../Assets/img/MoonTexture/Enceladus.png"
+import Europamap from "../../Assets/img/MoonTexture/Europa.png"
+import Ganymedemap from "../../Assets/img/MoonTexture/Ganymede.png"
+import Iapetusmap from "../../Assets/img/MoonTexture/Iapetus.jpg"
+import Iomap from "../../Assets/img/MoonTexture/io.jpg"
+import Mimasmap from "../../Assets/img/MoonTexture/Mimas.png"
+import Mirandamap from "../../Assets/img/MoonTexture/Miranda.png"
+import Oberonmap from "../../Assets/img/MoonTexture/Oberon.png"
+import Rheamap from "../../Assets/img/MoonTexture/Rhea.png"
+import Tethysmap from "../../Assets/img/MoonTexture/Tethys.jpg"
+import Titanmap from "../../Assets/img/MoonTexture/Titan.jpg"
+import Titaniamap from "../../Assets/img/MoonTexture/Titania.png"
+import Tritonmap from "../../Assets/img/MoonTexture/Triton.png"
+import Umbrielmap from "../../Assets/img/MoonTexture/Umbriel.png"
+import Moonmap from "../../Assets/img/MoonTexture/moon.jpg"
+
+import ArielImage from "../../Assets/img/MoonImage/Ariel.jpg"
+import DeimosImage from "../../Assets/img/MoonImage/Deimos.jpg"
+import PhobosImage from "../../Assets/img/MoonImage/Phobos.jpg"
+import CallistoImage from "../../Assets/img/MoonImage/Callisto.jpg"
+import DioneImage from "../../Assets/img/MoonImage/Dione.jpg"
+import EuropaImage from "../../Assets/img/MoonImage/Europa.jpg"
+import GanymedeImage from "../../Assets/img/MoonImage/Ganymede.png"
+import IapetusImage from "../../Assets/img/MoonImage/Iapetus.jpg"
+import IoImage from "../../Assets/img/MoonImage/Io.jpg"
+import MimasImage from "../../Assets/img/MoonImage/Mimas.jpg"
+import MirandaImage from "../../Assets/img/MoonImage/Miranda.jpg"
+import MoonImage from "../../Assets/img/MoonImage/Moon.jpg"
+import OberonImage from "../../Assets/img/MoonImage/Oberon.jpg"
+import EnceladusImage from "../../Assets/img/MoonImage/Enceladus.jpg"
+import RheaImage from "../../Assets/img/MoonImage/Rhea.jpg"
+import TethysImage from "../../Assets/img/MoonImage/Tethys.jpg"
+import TitanImage from "../../Assets/img/MoonImage/Titan.jpg"
+import TitaniaImage from "../../Assets/img/MoonImage/Titania.jpg"
+import TritonImage from "../../Assets/img/MoonImage/Triton.jpg"
+import UmbrielImage from "../../Assets/img/MoonImage/Umbriel.jpg"
+
+
 import mercuryimage from "../../Assets/img/PlanetsTexture/mercury_image.png"
 import venusimage from "../../Assets/img/PlanetsTexture/venus_image.png"
 import earthimage from "../../Assets/img/PlanetsTexture/earth_image.png"
@@ -30,6 +71,110 @@ export const starTexture = [
         image:sunimage
       
     },
+]
+
+export const moonTexture = [
+    {
+        moonID:1,
+        texture:Moonmap,
+        image:MoonImage      
+    },
+    {
+        moonID:2,
+        texture:Arielmap,
+        image:DeimosImage      
+    },
+    {
+        moonID:3,
+        texture:Callistomap,
+        image:PhobosImage      
+    },
+    {
+        moonID:4,
+        texture:Dionemap,
+        image:CallistoImage      
+    },
+    {
+        moonID:5,
+        texture:Enceladusmap,
+        image:GanymedeImage      
+    },
+    {
+        moonID:6,
+        texture:Europamap,
+        image:EuropaImage      
+    },
+    {
+        moonID:7,
+        texture:Ganymedemap,
+        image:IoImage      
+    },
+    {
+        moonID:8,
+        texture:Iapetusmap,
+        image:IapetusImage      
+    },
+    {
+        moonID:9,
+        texture:Iomap,
+        image:TitanImage      
+    },
+    {
+        moonID:10,
+        texture:Mimasmap,
+        image:RheaImage      
+    },
+    {
+        moonID:11,
+        texture:Mirandamap,
+        image:DioneImage      
+    },
+    {
+        moonID:12,
+        texture:Oberonmap,
+        image:TethysImage      
+    },
+    {
+        moonID:13,
+        texture:Rheamap,
+        image:EnceladusImage      
+    },
+    {
+        moonID:14,
+        texture:Tethysmap,
+        image:MimasImage      
+    },
+    {
+        moonID:15,
+        texture:Titanmap,
+        image:OberonImage      
+    },
+    {
+        moonID:16,
+        texture:Titaniamap,
+        image:TitaniaImage      
+    },
+    {
+        moonID:17,
+        texture:Tritonmap,
+        image:UmbrielImage      
+    },
+    {
+        moonID:18,
+        texture:Umbrielmap,
+        image:ArielImage      
+    },
+    {
+        moonID:19,
+        texture:Umbrielmap,
+        image:MirandaImage      
+    },
+    {
+        moonID:20,
+        texture:Umbrielmap,
+        image:TritonImage      
+    }   
+   
 ]
 
 export const textures = [

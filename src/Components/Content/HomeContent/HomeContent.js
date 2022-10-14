@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";
 import { useDispatch, useSelector } from "react-redux";
-import { starTexture, textures } from "../../../Constant/planet_image/image";
+import { moonTexture, starTexture, textures } from "../../../Constant/planet_image/image";
 import { useNavigate } from "react-router-dom";
 import { button } from "../../../Assets/svg/svg";
 import {
   getPlanets,
   setClick,
   setHeaderStatus,
+  setIsMoon,
   setIsPlanet,
   setPathname,
   setPlanetIndex,
@@ -19,13 +20,24 @@ const HomeContent = () => {
   const [hover, setHover] = useState(false);
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
-  const { planets, loading, isPlanet } = useSelector((store) => store.planets);
+  const { planets,moons, loading, isPlanet, isMoon} = useSelector((store) => store.planets);
   const { stars, isSun } = useSelector((store) => store.stars);
   const navigate = useNavigate();
 
-  const handleButton = (check) => {
-    check === isPlanet && dispatch(setIsSun(false));
-    check === isSun && dispatch(setIsSun(true));
+  const planetButton = () => {
+    dispatch(setIsPlanet(true));
+    dispatch(setIsSun(false));
+    dispatch(setIsMoon(false));
+  };
+  const sunButton = () => {
+    dispatch(setIsPlanet(false));
+    dispatch(setIsSun(true));
+    dispatch(setIsMoon(false));
+  };
+  const moonButton = () => {
+    dispatch(setIsPlanet(false));
+    dispatch(setIsSun(false));
+    dispatch(setIsMoon(true));
   };
 
   useEffect(() => {
@@ -40,6 +52,7 @@ const HomeContent = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(setIsPlanet(true));
     let prevButton = active ? null : document.getElementById("planets");
     console.log("prevButton", prevButton);
     const wrapper = document.getElementById("wrapper");
@@ -95,24 +108,30 @@ const HomeContent = () => {
         </div>
         <div className={style.button_container} id={"wrapper"}>
           <button
-            onClick={() => handleButton(isPlanet)}
+            onClick={() => planetButton(isPlanet)}
             className={`${style.button} `}
             id={"planets"}
           >
             Planets
           </button>
           <button
-            onClick={() => handleButton(isSun)}
+            onClick={() => sunButton(isSun)}
             className={`${style.button} `}
           >
             Stars
           </button>
+          <button
+            onClick={() => moonButton(isMoon)}
+            className={`${style.button} `}
+          >
+            Moons
+          </button>
         </div>
         <div className={style.planets}>
-          {(isSun ? stars : planets).map((item, index) => {
+          {(isPlanet ? planets : isSun ? stars : moons).map((item, index) => {
             const image = isSun
               ? starTexture[index].image
-              : textures[index].image;
+              : isPlanet ? textures[index].image : moonTexture[index].image;
             return (
               <div
                 key={item.id}
@@ -134,7 +153,7 @@ const HomeContent = () => {
                 onMouseLeave={() => setID(null)}
               >
                 <div className={style.image_container}>
-                  <img src={image} className={style.image} ></img>
+                  <img src={image} className={style.image} style={{width:isMoon && "238px"}}></img>
                 </div>
                 <div className={style.heading}>
                   <h2 style={{ color: item.color }}>{item.name}</h2>
