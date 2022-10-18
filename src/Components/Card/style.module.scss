@@ -52,23 +52,30 @@
         width: 100%;
         height: 125px;
         display: flex;
-        flex-wrap: wrap; 
-        margin-top: 4px;         
-        justify-content: space-between;
+        // grid-template-columns: auto auto;
+        flex-wrap: wrap;
+        // gap: 15px;   
+        margin-bottom: 35px;
+        margin-top: 40px; 
+        justify-content: center;
         align-items: center;
         font-size: 2em;         
-        .length_year_container{
-            width: 45%;
+        .stats{
+            flex: 40%;
             margin-bottom: 25px;
-            .length_year{
+            padding-right: 20px;
+            .stat_item{
                 display: flex;
                 align-items: center;
                 border-bottom: 1px solid #ffffff80;
                 padding-bottom: 20px;
                 height: 30px;
-                span{
+                .value{
+                    margin-right: 10px;
+                }
+                .info{
+                    text-align: left;
                     font-size: 0.4em;
-                    margin-left: 15px;
                     color: #fff;
                 }
             }
@@ -78,69 +85,69 @@
                 color: #ffffff80;
             }
         }
-        .distance_container{
-            width: 45%;
-            margin-bottom: 25px;
-            .distance{
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid #ffffff80;
-                padding-bottom: 20px;
-                height: 30px;
-                span{
-                    font-size: 0.4em;
-                    margin-left: 15px;
-                    color: #fff;
-                }           
-            }
-            .label{
-                font-size: 0.4em;
-                margin-top: 5px;
-                color: #ffffff80;
-            }
-        }
-       .namesake_container{
-        width: 45%;
-        .namesake{
-            font-size: 0.4em;
-            border-bottom: 1px solid #ffffff80;
-            height: 30px;               
-            }
-            .label{
-                font-size: 0.4em;
-                margin-top: 5px;
-                color: #ffffff80;
-            }
-       }
-     .moons_units_container{
-        width: 45%;
-        .moons_units{
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ffffff80;    
-            height: 30px;
-            padding-bottom: 20px;
-            span{
-                display: flex;
-                align-items: center;
-                font-size: 0.4em;
-                margin-left: 15px;
-                color: #fff;
-            } 
+    //     .distance_container{
+    //         width: 45%;
+    //         margin-bottom: 25px;
+    //         .distance{
+    //             display: flex;
+    //             align-items: center;
+    //             border-bottom: 1px solid #ffffff80;
+    //             padding-bottom: 20px;
+    //             height: 30px;
+    //             span{
+    //                 font-size: 0.4em;
+    //                 margin-left: 15px;
+    //                 color: #fff;
+    //             }           
+    //         }
+    //         .label{
+    //             font-size: 0.4em;
+    //             margin-top: 5px;
+    //             color: #ffffff80;
+    //         }
+    //     }
+    //    .namesake_container{
+    //     width: 45%;
+    //     .namesake{
+    //         font-size: 0.4em;
+    //         border-bottom: 1px solid #ffffff80;
+    //         height: 30px;               
+    //         }
+    //         .label{
+    //             font-size: 0.4em;
+    //             margin-top: 5px;
+    //             color: #ffffff80;
+    //         }
+    //    }
+    //  .moons_units_container{
+    //     width: 45%;
+    //     .moons_units{
+    //         display: flex;
+    //         align-items: center;
+    //         border-bottom: 1px solid #ffffff80;    
+    //         height: 30px;
+    //         padding-bottom: 20px;
+    //         span{
+    //             display: flex;
+    //             align-items: center;
+    //             font-size: 0.4em;
+    //             margin-left: 15px;
+    //             color: #fff;
+    //         } 
 
-        }
-        .label{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: flex-start;
-            font-size: 0.4em;
-            margin-top: 5px;
-            color: #ffffff80;
+    //     }
+    //     .label{
+    //         display: flex;
+    //         justify-content: center;
+    //         flex-direction: column;
+    //         align-items: flex-start;
+    //         font-size: 0.4em;
+    //         margin-top: 5px;
+    //         color: #ffffff80;
            
-        }
+    //     }
 
-     }
+    //  }
      
     }
     .button_container{
@@ -219,7 +226,6 @@
     .description_container{
         background: linear-gradient(to top,rgb(0, 0, 0) 95%, transparent);
         width: 100%;
-        margin-bottom: 50px;
         margin-top: 80px;
         left: 0;
         right: 0;
@@ -237,23 +243,28 @@
         // grid-template-columns: auto auto;
         flex-wrap: wrap;
         // gap: 15px;   
+        margin-bottom: 35px;
         margin-top: 40px; 
         justify-content: center;
         align-items: center;
         font-size: 2em;         
-        .length_year_container{
+        .stats{
             // width: 100%;
-            flex: 40%;
-            margin-bottom: 20px;
-            .length_year{
+            flex: 50%;
+            margin-bottom: 25px;
+            padding-right: 20px;
+            .stat_item{
                 display: flex;
                 align-items: center;
                 border-bottom: 1px solid #ffffff80;
                 padding-bottom: 20px;
                 height: 30px;
-                span{
+                .value{
+                    margin-right: 10px;
+                }
+                .info{
+                    text-align: center;
                     font-size: 0.4em;
-                    margin-left: 15px;
                     color: #fff;
                 }
             }
@@ -263,73 +274,73 @@
                 color: #ffffff80;
             }
         }
-        .distance_container{
-            // width: 100%;
-            flex: 40%;
-            margin: 0 0 20px 10px;
-            .distance{
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid #ffffff80;
-                padding-bottom: 20px;
-                height: 30px;
-                span{
-                    font-size: 0.4em;
-                    margin-left: 15px;
-                    color: #fff;
-                }           
-            }
-            .label{
-                font-size: 0.4em;
-                margin-top: 5px;
-                color: #ffffff80;
-            }
-        }
-       .namesake_container{
-        flex: 40%;
-        margin-bottom: 20px;
-        .namesake{
-            font-size: 0.42em;
-            border-bottom: 1px solid #ffffff80;
-            height: 30px;               
-            }
-            .label{
-                font-size: 0.4em;
-                margin-top: 5px;
-                color: #ffffff80;
-            }
-       }
-     .moons_units_container{
-        // width: 100%;
-        flex: 40%;
-        margin: 0 0 20px 10px;
-        .moons_units{
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ffffff80;    
-            height: 30px;
-            padding-bottom: 20px;
-            span{
-                display: flex;
-                align-items: center;
-                font-size: 0.4em;
-                margin-left: 15px;
-                color: #fff;
-            } 
+    //     .distance_container{
+    //         // width: 100%;
+    //         flex: 40%;
+    //         margin: 0 0 20px 10px;
+    //         .distance{
+    //             display: flex;
+    //             align-items: center;
+    //             border-bottom: 1px solid #ffffff80;
+    //             padding-bottom: 20px;
+    //             height: 30px;
+    //             span{
+    //                 font-size: 0.4em;
+    //                 margin-left: 15px;
+    //                 color: #fff;
+    //             }           
+    //         }
+    //         .label{
+    //             font-size: 0.4em;
+    //             margin-top: 5px;
+    //             color: #ffffff80;
+    //         }
+    //     }
+    //    .namesake_container{
+    //     flex: 40%;
+    //     margin-bottom: 20px;
+    //     .namesake{
+    //         font-size: 0.42em;
+    //         border-bottom: 1px solid #ffffff80;
+    //         height: 30px;               
+    //         }
+    //         .label{
+    //             font-size: 0.4em;
+    //             margin-top: 5px;
+    //             color: #ffffff80;
+    //         }
+    //    }
+    //  .moons_units_container{
+    //     // width: 100%;
+    //     flex: 40%;
+    //     margin: 0 0 20px 10px;
+    //     .moons_units{
+    //         display: flex;
+    //         align-items: center;
+    //         border-bottom: 1px solid #ffffff80;    
+    //         height: 30px;
+    //         padding-bottom: 20px;
+    //         span{
+    //             display: flex;
+    //             align-items: center;
+    //             font-size: 0.4em;
+    //             margin-left: 15px;
+    //             color: #fff;
+    //         } 
 
-        }
-        .label{
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: flex-start;
-            font-size: 0.4em;
-            margin-top: 5px;
-            color: #ffffff80;
+    //     }
+    //     .label{
+    //         display: flex;
+    //         justify-content: center;
+    //         flex-direction: column;
+    //         align-items: flex-start;
+    //         font-size: 0.4em;
+    //         margin-top: 5px;
+    //         color: #ffffff80;
            
-        }
+    //     }
 
-     }
+    //  }
      
     }
     .button_container{
@@ -559,7 +570,7 @@
                 }
         }
         .description_container{
-            margin-top: 170px;
+            margin-top: 130px;
             padding: 20px 120px;
             position: absolute;
             .description{

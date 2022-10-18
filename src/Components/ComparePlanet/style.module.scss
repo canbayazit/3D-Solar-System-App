@@ -59,7 +59,21 @@
                     color: #ffffff80;
                     font-size: .6em; 
                 }
-            }           
+            }
+            .planet_moon_left{
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:"Planet's Moon";                        
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                }
+            }            
         }
         .Canvas{
             border-right: 1px solid #ffffff80;
@@ -120,7 +134,21 @@
                     color: #ffffff80;
                     font-size: .6em; 
                 }
-            }           
+            } 
+            .planet_moon_right{
+                margin-left: 55px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ffffff80 ;
+                position: relative;
+                &:before{
+                    content:"Planet's Moon";                        
+                    position: absolute;
+                    top: 45px;
+                    left: 0;
+                    color: #ffffff80;
+                    font-size: .6em; 
+                }
+            }          
         }
         .button_left{
             position: absolute;
@@ -157,7 +185,7 @@
         height: 1250px;
         flex-direction: column;
         .canvas_left{
-            top: 145px;
+            top: 0;
             margin-top: auto;
             margin-bottom: auto;
             .card_left_container{

@@ -6,23 +6,33 @@
     height: 40px;
     position: relative;
     z-index: 998;      
-    .more{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     border: none;
-     background-color: transparent;
-     text-decoration: none;
-     cursor: pointer;
-     color: black;
-     span{
-         font-size: 1.2em;
-         font-weight: 600;
-         font-family: Metropolis,Helvetica,Arial,sans-serif;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         margin-right:20px ;
-     }
-    }
+
+        .more{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            background-color: transparent;
+            text-decoration: none;
+            cursor: pointer;
+            color: black;
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.1em;
+                font-weight: 600;
+                font-family: Metropolis,Helvetica,Arial,sans-serif;
+                span{
+                    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right:10px ;
+                }
+            }
+           
+           }
+
+   
  }

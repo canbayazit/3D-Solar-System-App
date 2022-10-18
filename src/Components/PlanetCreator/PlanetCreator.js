@@ -7,9 +7,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import sunTexture from "../../Assets/img/PlanetsTexture/sunmap2.png";
 import * as THREE from "three";
-import { textures } from "../../Constant/planet_image/image";
+import { starTexture, textures } from "../../Constant/planet_image/image";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setPlanetIndex, setPositionX, setPositionZ, setRadius } from "../../Store/PlanetSlice";
+import { setClick, setImage, setPlanetArray, setPlanetIndex, setPositionX, setPositionZ, setRadius, setTexture } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 const PlanetCreator = () => {
   const [id, setID] = useState(null);
@@ -43,17 +43,13 @@ const PlanetCreator = () => {
     dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
     dispatch(setRadius(rad));
+    dispatch(setPlanetArray(planets));
+    dispatch(setTexture(textures[index].texture));
+    dispatch(setImage(textures[index].image));
     // dispatch(setPosition(position));
      // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position);
     // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position)
     // orbitControls.current.update();
-    // console.log("cos angles",Math.cos(angles))
-    // console.log("object position z",Math.sin(angles)*position)
-    // console.log("object position x",Math.cos(angles)*position)
-    // console.log("rotation.y",planetOrbitRef.current[index].rotation.y*180/Math.PI)
-    // console.log("e",Math.PI)
-    // console.log("position",position)
-    // setVariable(planetOrbitRef.current[index].position);
   };
 
   const handleStarClick = (index) => {
@@ -62,12 +58,13 @@ const PlanetCreator = () => {
     dispatch(setPlanetIndex(index));
     dispatch(setPositionX(0));
     dispatch(setPositionZ(0));
+    dispatch(setPlanetArray(stars));
+    dispatch(setTexture(starTexture[index].texture));
+    dispatch(setImage(starTexture[index].image));
   };
 
   useEffect(() => {
     let angles = planetOrbitRef.current[planetIndex].rotation.y
-    console.log("angles planet creator",angles)
-    console.log("planetIndex  planet creator",planetIndex)
     dispatch(setPositionX(isSun ? 0 : Math.cos(angles)*rad))
     dispatch(setPositionZ(isSun ? 0 : -1*Math.sin(angles)*rad))
     setValue(50);
@@ -83,7 +80,7 @@ const PlanetCreator = () => {
     planets.name === "Saturn"
       ? (ringRef.current.visible = true)
       : (ringRef.current.visible = false);
-  }, [dispatch, rad, planets, planetIndex]);
+  }, [dispatch, rad, planets, planetIndex, isSun]);
   // console.log("position", position);
   // console.log("position/500", position / 500);
   // useFrame(state=>{
@@ -306,45 +303,6 @@ const PlanetCreator = () => {
           (distanceNeptune / constant) * 25)
       : (ringOrbitGeometryRef.current[7].opacity =
           (distanceNeptune / constant) * 4);
-
-    // console.log()
-    // console.log("merkür",distanceMercury)
-    // console.log("venus",distanceVenus)
-    // console.log("earth ",distanceEarth)
-    // console.log("juppiter",distanceJupiter)
-    // console.log("merkür",ringOrbitGeometryRef.current[0].opacity)
-    // console.log("venus",ringOrbitGeometryRef.current[1].opacity)
-    // console.log("earth ",ringOrbitGeometryRef.current[2].opacity)
-    // console.log("mars",ringOrbitGeometryRef.current[3].opacity)
-    // console.log(ringOrbitRef.current[0].opacity)
-
-    // value = value - 40
-    // ringOrbitGeometryRef.current[7].__r3f.memoizedProps.args[1]-=1
-    // ringOrbitRef.ringOrbitGeometryRef.current[7].parameters.outerRadius=15150
-    //  ringOrbitRef.current[7].geometry.parameters.outerRadius=15550;
-    // console.log((distance/constant)*10)
-    // console.log(ringOrbitGeometryRef.current[7].boundingSphere.radius)
-    // console.log(ringOrbitGeometryRef.current[7].__r3f.memoizedProps.args[1])
-    // console.log(planetOrbitRef.current[7].rotation)
-    // ringOrbitGeometryRef.current[7].parameters.outerRadius -=1000
-    // console.log(ringOrbitRef.current[7])
-
-    // ringOrbitGeometryRef.current[7].parameters.outerRadius = 0
-    // distance > newDistance
-    //   ? (opacityRef.current.opacity = 0)
-    //   : (opacityRef.current.opacity += newDistance);
-    // console.log("newDistance",newDistance);
-    // console.log("target",opacityRef.current.opacity);
-    // x >= camera.quaternion._x ? opacityValue + 0.2 : opacityValue - 0.2;
-    // console.log("quaternion",camera.quaternion._x);
-    // console.log("opacity", opacityRef.current.opacity);
-    // console.log("position",camera.position.x);
-    // textRef.current.position.copy(camera.position);
-    // textRef.current.rotation.copy(camera.rotation);
-    // textRef.current.quaternion.copy(camera.quaternion);
-    // textRef.current.translateX(20);
-    // textRef.current.translateY(5);
-    // sunhRef.current.rotation.y += 0.001;
   });
 
   return (

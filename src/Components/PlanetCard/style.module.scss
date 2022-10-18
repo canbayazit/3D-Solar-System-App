@@ -1,0 +1,284 @@
+.card_container{
+    width: 100%;        
+    background-image: url("../../Assets/img/background_stars_grid.jpg");
+    padding-bottom: 400px;        
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    .main_heading{
+        color: #fff;
+        font-size: 20px;
+        width: 100%;
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        h1{
+        height: 100%;
+
+        }
+        }
+    .button_container{
+        color:#fff;
+        width: 100%;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .button{
+            font-weight: 600;
+            font-size: 20px;
+            padding: 0 15px;
+            border: none;
+            color:#6e717f;
+            border-left: 1px solid transparent;
+            background-color: transparent;
+            cursor: pointer;
+            &:hover{
+                color:#fff;
+            }               
+        }
+        .active{
+            color:#fff;
+        }         
+        .button + .button{              
+            border-left: 1px solid #6e717f;                         
+        }
+    }
+    .planets{         
+        display: flex;
+        flex-wrap: wrap;
+        // border: 1px solid #3b3b3b;
+        justify-content: center;
+        .card{
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin:30px ;
+            width: 300px;
+            height: 400px;
+            transition-duration: 0.5s ;
+            overflow: hidden;            
+            &:hover{
+                background-color: #000;
+                transform:scale(1.1);
+                transition-duration:all 0.5s ease-in;
+                
+            
+                .heading{
+                    opacity: 1;
+                transform: translateY(-5px);
+                transition-duration: 0.5s ;
+
+                }
+                .Button{
+                transform: translateY(-20px);
+                transition-duration: 0.5s ;
+                
+                }
+
+            }
+            .image_container{
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                width: 100%;   
+                transform : translateY(40px);     
+                .image{
+                width: 100%;     
+                background-size: cover;
+             
+                }
+            }
+            .heading{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+                opacity: 0.7;
+                transform: translateY(45px);
+                transition-duration: 0.5s ;
+
+                h2{
+                font-size: 40px;
+                font-family:  'Open Sans';
+                font-weight: 300;
+                margin: 50px 50px 10px 50px;
+                padding: 0 20px;
+                text-transform: uppercase;
+                width: 100%;
+                }
+
+            }
+            .Button{                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 30px;
+                background-color: transparent;                   
+                transform: translateY(100px);
+                transition-duration: 0.5s ;
+                cursor: pointer;
+              
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1025px){
+    .card_container{            
+            .main_heading{
+                font-size: 1.4rem;  
+                margin-top: 80px;
+                }
+            .button_container{  
+                border-bottom: 1px solid #6e717f;
+                padding-bottom: 60px;
+                .button{
+                  font-size: 1.5rem;            
+                }
+            }
+            .planets{   
+                border:none;
+                width: 100%;
+                .card{      
+                    .image_container{
+                        transform : translateY(20px); 
+                    }
+                    .heading{
+                        transform: translateY(0);
+                    }
+                    .Button{            
+                        transform: translateY(-20px);
+                    }
+                }
+            }
+        }
+}
+@media only screen and (max-width: 835px){
+  .card_container{            
+            .main_heading{
+                font-size: 1.2rem;  
+                margin-top: 80px;
+                }
+            .button_container{  
+                border-bottom: 1px solid #6e717f;
+                padding-bottom: 60px;
+                .button{
+                  font-size: 1.5rem;            
+                }
+            }
+            .planets{   
+                border:none;
+                width: 100%;
+                .card{      
+                    .image_container{
+                        transform : translateY(20px); 
+                    }
+                    .heading{
+                        transform: translateY(0);
+                    }
+                    .Button{            
+                        transform: translateY(-20px);
+                    }
+                }
+            }
+        }
+}
+
+@media only screen and (max-width: 428px){
+    .card_container{            
+            .main_heading{
+                font-size: 15px;
+                text-align: center;
+                width: 100%;
+                margin-top: 80px;
+                }
+            .button_container{            
+                .button{
+                    padding:15px;
+                    width: 100%;
+                    border: 1px solid #6e717f;
+                    background-color: transparent;
+                    cursor: pointer;
+                    &:hover{
+                        color:#fff;
+                    }               
+                }
+                .active{
+                    color:#fff;
+                    background-color: #323544;
+                }         
+                .button + .button{              
+                    border-left: 1px solid transparent;                         
+                }
+            }
+            .planets{   
+                border:none;
+                width: 100%;
+                .card{      
+                    .image_container{
+                        transform : translateY(20px); 
+                    }
+                    .heading{
+                        transform: translateY(0);
+                    }
+                    .Button{            
+                        transform: translateY(-20px);
+                    }
+                }
+            }
+        }
+}
+
+@media only screen and (max-width: 320px){
+          .card_container{            
+            .main_heading{
+                font-size: 15px;
+                text-align: center;
+                width: 100%;
+                margin-top: 80px;
+                }
+            .button_container{            
+                .button{
+                    padding:15px;
+                    width: 100%;
+                    border: 1px solid #6e717f;
+                    background-color: transparent;
+                    cursor: pointer;
+                    &:hover{
+                        color:#fff;
+                    }               
+                }
+                .active{
+                    color:#fff;
+                    background-color: #323544;
+                }         
+                .button + .button{              
+                    border-left: 1px solid transparent;                         
+                }
+            }
+            .planets{   
+                border: 1px solid transparent;
+                width: 100%;
+                .card{      
+                    .image_container{
+                        transform : translateY(20px); 
+                    }
+                    .heading{
+                        transform: translateY(0);
+                    }
+                    .Button{            
+                        transform: translateY(-20px);
+                    }
+                }
+            }
+        }
+}

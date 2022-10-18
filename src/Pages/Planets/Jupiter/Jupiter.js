@@ -7,6 +7,7 @@ import More from "../../../Components/Dashboard/More/More";
 import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
 import style from "./style.module.scss";
 import CardContainer from "../../../Components/Card/CardContainer";
+import PlanetCardContainer from "../../../Components/PlanetCard/PlanetCardContainer";
 
 const Jupiter = () => {
   return (
@@ -17,6 +18,7 @@ const Jupiter = () => {
       <Dashboard />
       <More />
       <JupiterContent />
+      <PlanetCardContainer/>
       <Footer />
     </div>
   );

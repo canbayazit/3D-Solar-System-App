@@ -1107,7 +1107,10 @@
       "namesake": "Latin word for Moon:'Luna'",
       "planet": "Earth",
       "radius": 1738.1,
-      "color": "#5592c6"
+      "color": "#5592c6",
+      "gravity":1.62,
+      "axialTilt":5,
+      "temperature": "-173 °C || 127 °C"
     },
     {
       "id": 2,
@@ -1116,7 +1119,10 @@
       "namesake": "Greek god of dread",
       "planet": "Mars",
       "radius": 8.7,
-      "color": "#f9825d"
+      "color": "#f9825d",
+      "gravity":0.003,
+      "axialTilt":0,
+      "temperature": "-40 °C"
     },
     {
       "id": 3,
@@ -1125,7 +1131,10 @@
       "namesake": "Greek god of fear",
       "planet": "Mars",
       "radius": 14,
-      "color": "#f9825d"
+      "color": "#f9825d",
+      "gravity":0.0057,
+      "axialTilt":0,
+      "temperature": "-40 °C"
     },
     {
       "id": 4,
@@ -1134,7 +1143,10 @@
       "namesake": "Woman Changed into Bear by Roman Gods",
       "planet": "Jupiter",
       "radius": 2410.3,
-      "color": "#e96a76"
+      "color": "#e96a76",
+      "gravity":1.236,
+      "axialTilt":0,
+      "temperature": "-139.2 °C"
     },
     {
       "id": 5,
@@ -1143,7 +1155,10 @@
       "namesake": "Cupbearer to Greek gods",
       "planet": "Jupiter",
       "radius": 2634.1,
-      "color": "#e96a76"
+      "color": "#e96a76",
+      "gravity":1.428,
+      "axialTilt":0.33,
+      "temperature": "-203 °C || -121 °C"
     },
     {
       "id": 6,
@@ -1152,7 +1167,10 @@
       "namesake": "Woman abducted by greek god Zeus",
       "planet": "Jupiter",
       "radius": 1569,
-      "color": "#e96a76"
+      "color": "#e96a76",
+      "gravity":1.315,
+      "axialTilt":0.1,
+      "temperature": "-220 °C || -160 °C"
     },
     {
       "id": 7,
@@ -1161,7 +1179,10 @@
       "namesake": "Woman changed into cow by roman gods",
       "planet": "Jupiter",
       "radius": 1821.3,
-      "color": "#e96a76"
+      "color": "#e96a76",
+      "gravity":1.796,
+      "axialTilt":0.04,
+      "temperature": "-130 °C || 1,649 °C"
     },
     {
       "id": 8,
@@ -1170,7 +1191,10 @@
       "namesake": "Mythological Greek giant",
       "planet": "Saturn",
       "radius": 735.6,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.223,
+      "axialTilt":0,
+      "temperature": "-183 °C || -143 °C"
     },
     {
       "id": 9,
@@ -1179,7 +1203,10 @@
       "namesake": "Children of Greek gods",
       "planet": "Saturn",
       "radius": 2575,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":1.352,
+      "axialTilt":27,
+      "temperature": "-179 °C"
     },
     {
       "id": 10,
@@ -1188,7 +1215,10 @@
       "namesake": "Mythological Greek giant",
       "planet": "Saturn",
       "radius": 764.3,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.264,
+      "axialTilt":0,
+      "temperature": "-220 °C || -174 °C"
     },
     {
       "id": 11,
@@ -1197,7 +1227,10 @@
       "namesake": "Mother of Greek goddess Aphrodite",
       "planet": "Saturn",
       "radius": 561.1,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.232,
+      "axialTilt":0,
+      "temperature": "-186 °C"
     },
     {
       "id": 12,
@@ -1206,7 +1239,10 @@
       "namesake": "Greek goddess of rivers",
       "planet": "Saturn",
       "radius": 538.4,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.145,
+      "axialTilt":0,
+      "temperature": "-187 °C"
     },
     {
       "id": 13,
@@ -1215,7 +1251,10 @@
       "namesake": "Mythological Greek Giant",
       "planet": "Saturn",
       "radius": 252.1,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.113,
+      "axialTilt":0,
+      "temperature": "-330 °C"
     },
     {
       "id": 14,
@@ -1224,7 +1263,10 @@
       "namesake": "Mythological Greek Giant",
       "planet": "Saturn",
       "radius": 198.3,
-      "color": "#eba357"
+      "color": "#eba357",
+      "gravity":0.064,
+      "axialTilt":0,
+      "temperature": "-200 °C"
     },
     {
       "id": 15,
@@ -1233,7 +1275,10 @@
       "namesake": "Literary Fair King",
       "planet": "Uranus",
       "radius": 761.4,
-      "color": "#89ebff"
+      "color": "#89ebff",
+      "gravity":0.354,
+      "axialTilt":0,
+      "temperature": "-200 °C"
     },
     {
       "id": 16,
@@ -1242,7 +1287,10 @@
       "namesake": "Literary fairy queen",
       "planet": "Uranus",
       "radius": 788.4,
-      "color": "#89ebff"
+      "color": "#89ebff",
+      "gravity":0.367,
+      "axialTilt":0,
+      "temperature": "-184 °C || -213 °C"
     },
     {
       "id": 17,
@@ -1251,7 +1299,10 @@
       "namesake": "Evil spirit in literature",
       "planet": "Uranus",
       "radius": 584.7,
-      "color": "#89ebff"
+      "color": "#89ebff",
+      "gravity":0.2,
+      "axialTilt":0,
+      "temperature": "-193 °C"
     },
     {
       "id": 18,
@@ -1260,7 +1311,10 @@
       "namesake": "Sylph in literature",
       "planet": "Uranus",
       "radius": 578.9,
-      "color": "#89ebff"
+      "color": "#89ebff",
+      "gravity":0.249,
+      "axialTilt":0,
+      "temperature": "-189 °C || -213 °C"
     },
     {
       "id": 19,
@@ -1269,7 +1323,10 @@
       "namesake": "Heroine of Shakespeare's 'The Tempest'",
       "planet": "Uranus",
       "radius": 235.8,
-      "color": "#89ebff"
+      "color": "#89ebff",
+      "gravity":0.079,
+      "axialTilt":0,
+      "temperature": "-187 °C"
     },
     {
       "id": 20,
@@ -1278,7 +1335,10 @@
       "namesake": "Son of Greek god Poseidon",
       "planet": "Neptune",
       "radius": 1353.4,
-      "color": "#97b7ff"
+      "color": "#97b7ff",
+      "gravity":0.779,
+      "axialTilt":30,
+      "temperature": "-235 °C"
     }
   ],
   "astreoids": [

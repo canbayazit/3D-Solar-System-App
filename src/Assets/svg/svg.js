@@ -42,9 +42,9 @@ export const Text = () => (
         width="242.58"
         height="31.1619"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -224,14 +224,14 @@ export const arrowButtonLeft = () => (
 
 export const arrowDown = () => (
   <svg
-    width="10"
-    height="20"
+    width="8"
+    height="15"
     viewBox="0 0 13 30"
     style={{ transform: `rotate(-90deg)` }}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 29L1.5 16L12 1.5" stroke="#000" strokeWidth="3" />
+    <path d="M12 29L1.5 16L12 1.5" stroke="#000" strokeWidth="4" />
   </svg>
 );
 
@@ -308,8 +308,8 @@ export const playButton = (play) =>
     </svg>
   );
 
-export const playMusic = (music) =>
-  !music ? (
+export const playMusic = (open) =>
+  !open ? (
     <svg
       width="45"
       height="45"
@@ -414,7 +414,7 @@ export const astronaut = () => (
       r="13"
       transform="rotate(15.1511 184.407 187.13)"
       fill="#E2E9F4"
-      fill-opacity="0.25"
+      fillOpacity="0.25"
     />
     <rect
       x="312.235"
@@ -547,9 +547,9 @@ export const planet = () => (
         width="255"
         height="255"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
@@ -578,9 +578,9 @@ export const planet = () => (
         width="93"
         height="37"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -613,9 +613,9 @@ export const planet = () => (
         width="82"
         height="28"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -648,9 +648,9 @@ export const planet = () => (
         width="82"
         height="28"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"

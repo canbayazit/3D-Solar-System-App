@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setPlanetIndex, setPositionX, setRadius } from "../../Store/PlanetSlice";
+import { textures } from "../../Constant/planet_image/image";
+import { setClick, setImage, setPlanetArray, setPlanetIndex, setPositionX, setRadius, setTexture } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
@@ -19,6 +20,9 @@ const Search = () => {
     dispatch(setRadius(rad));
     dispatch(setClick(true));
     dispatch(setIsSun(false));
+    dispatch(setPlanetArray(planets));
+    dispatch(setTexture(textures[id-1].texture));
+    dispatch(setImage(textures[id-1].image));
     // dispatch(setPositionX(position));
     setText("");
   };
@@ -39,7 +43,7 @@ const Search = () => {
               .filter((item) => item.name.toLowerCase().includes(text))
               .map((item, index) => {
                 return (
-                  <li id="list_item" key={index} className={style.list_item}>
+                  <li id="list_item" key={item.id} className={style.list_item}>
                     <button
                       onClick={() => handleClick(item.id,2000*item.distance)}
                     >

@@ -3,30 +3,29 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { textures } from "../../Constant/planet_image/image";
+import { moonTexture, textures } from "../../Constant/planet_image/image";
 import * as THREE from "three";
 import { useSelector } from "react-redux";
 const Planet = (props) => {
   const [args, setArgs] = useState();
-  const {  mod, planets } = useSelector(
+  const {  mod, planets ,isMoon} = useSelector(
     (store) => store.planets
   );
-  const planetMap = useLoader(TextureLoader, textures[props.index].texture);
-  const ringMap =
-  planets[props.index].name === "Saturn" &&
-    useLoader(TextureLoader, textures[props.index].ring);
+  const planetMap = isMoon ? useLoader(TextureLoader, moonTexture[props.index].texture) :useLoader(TextureLoader, textures[props.index].texture);
+  const ringMap =!isMoon ?
+   planets[props.index].name === "Saturn" &&
+    useLoader(TextureLoader, textures[props.index].ring) : "";
   useEffect(() => {
     mod ? setArgs(props.radius) : setArgs(100);
-  });
-console.log("mod planet",mod)
+  }, [mod, props.radius]);
   useEffect(() => {
-    planets[props.index].name === "Neptune"
+    !isMoon && planets[props.index].name === "Neptune"
       ? (ringNeptuneOuterRef.current.visible = true)
       : (ringNeptuneOuterRef.current.visible = false);
-      planets[props.index].name === "Neptune"
+    !isMoon && planets[props.index].name === "Neptune"
       ? (ringNeptuneInnerRef.current.visible = true)
       : (ringNeptuneInnerRef.current.visible = false);
-      planets[props.index].name === "Saturn"
+    !isMoon && planets[props.index].name === "Saturn"
       ? (ringSaturnRef.current.visible = true)
       : (ringSaturnRef.current.visible = false);
   });
@@ -61,7 +60,7 @@ console.log("mod planet",mod)
         <mesh ref={planetRef} position={[0, 0, 0]}>
           <sphereGeometry args={[props.radius, 128, 64]} />
           <meshStandardMaterial map={planetMap} />
-          <ambientLight intensity={0.45} />
+          <ambientLight intensity={0.3} />
         </mesh>
         <mesh
           ref={ringNeptuneOuterRef}

@@ -6,10 +6,9 @@ import { arrowButtonLeft, arrowButtonRight } from "../../Assets/svg/svg";
 import style from "./style.module.scss";
 
 const Dashboard = () => {
-  const { planets, planetIndex, pathname } = useSelector(
+  const { planetIndex, pathname, planetArray } = useSelector(
     (store) => store.planets
   );
-  const { stars } = useSelector((store) => store.stars);
   const [color, setColor] = useState();
   const location = useLocation();
   function SamplePrevArrow(props) {
@@ -49,6 +48,8 @@ const Dashboard = () => {
       </div>
     );
   }
+  // console.log("dashboard array",planetArray)
+  // console.log("dashboard planetIndex",planetIndex)
   const data = {
     heading: [
       {
@@ -76,22 +77,23 @@ const Dashboard = () => {
       {
         id: 1,
         name: "gravity",
-        value: (pathname === "/sun" ? stars : planets)[planetIndex].gravity,
+        value: planetArray[planetIndex].gravity,
       },
       {
         id: 2,
         name: "temperature",
-        value: (pathname === "/sun" ? stars : planets)[planetIndex].temperature,
+        value: planetArray[planetIndex].temperature,
       },
       {
         id: 3,
         name: "axialTilt",
-        value: (pathname === "/sun" ? stars : planets)[planetIndex].axialTilt,
+        value: planetArray[planetIndex].axialTilt,
       },
       {
         id: 4,
-        name: pathname === "/sun" ? "planets":"moons",
-        value: pathname === "/sun" ?  stars[planetIndex].planets.units : (planets[planetIndex].moons.units),
+        name: pathname==="/moons" ? "PLANET'S MOON" : pathname === "/sun" ? "planets":"moons",
+        value: location.pathname === "/sun" ?  planetArray[planetIndex].planets.units : (location.pathname==="/moons" ? planetArray[planetIndex].planet: planetArray[planetIndex].moons.units),
+      
       },
     ],
   };
@@ -148,22 +150,13 @@ const Dashboard = () => {
       },
     ],
   };
-  // console.log("data",data[0].heading)
   useEffect(() => {
     let color =
       location.pathname === pathname
-        ? (pathname === "/sun" ? stars : planets)[planetIndex].color
+        ? planetArray[planetIndex].color
         : "#a9d3ee";
     setColor(color);
-  }, [
-    color,
-    setColor,
-    pathname,
-    location.pathname,
-    stars,
-    planets,
-    planetIndex,
-  ]);
+  }, [location.pathname, pathname, planetArray, planetIndex]);
 
   return (
     <div className={style.dashboard_container}>
@@ -171,13 +164,13 @@ const Dashboard = () => {
         <div className={style.title}>
           <h1>
             {location.pathname === pathname &&
-              (pathname === "/sun" ? stars : planets)[planetIndex].name}
-            {location.pathname === "/planets" && "Solar System"}
+              planetArray[planetIndex].name}
+            {location.pathname !== pathname && "Solar System"}
           </h1>
         </div>
         <div className={style.stats}>
           <Slider {...settings}>
-            {(location.pathname === "/planets" ? data.heading : data.stats).map(
+            {(location.pathname !== pathname ? data.heading : data.stats).map(
               (item, index) => (
                 <div key={item.id} className={style.info}>
                   <h4 style={{ color: color }}>{item.name.toUpperCase()}</h4>

@@ -4,44 +4,36 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { textures, starTexture } from "../../Constant/planet_image/image";
+import {
+  textures,  
+} from "../../Constant/planet_image/image";
 import * as THREE from "three";
 import { useSelector } from "react-redux";
 const PlanetMain = (props) => {
   const [args, setArgs] = useState();
-  const { planetIndex, mod, pathname, planets } = useSelector(
+  const { planetIndex, mod,texture,planetArray } = useSelector(
     (store) => store.planets
   );
-  const { isSun } = useSelector((store) => store.stars);
-  console.log("isSun", isSun);
-  const map =
-    pathname === "/solarsystem"
-      ? isSun
-        ? useLoader(TextureLoader, starTexture[planetIndex].texture)
-        : useLoader(TextureLoader, textures[planetIndex].texture)
-      : pathname === "/sun"
-        ? useLoader(TextureLoader, starTexture[planetIndex].texture)
-        : useLoader(TextureLoader, textures[planetIndex].texture);
+  const map =useLoader(TextureLoader, texture);
   const ringMap =
-    planets[planetIndex].name === "Saturn" &&
+  planetArray[planetIndex].name === "Saturn" &&
     useLoader(TextureLoader, textures[planetIndex].ring);
 
   useEffect(() => {
     mod ? setArgs(props.radius) : setArgs(100);
   }, [mod, props.radius]);
-  console.log("args", args);
   const planetMainRef = useRef();
   const ringSaturnRef = useRef();
   const ringNeptuneOuterRef = useRef();
   const ringNeptuneInnerRef = useRef();
   useEffect(() => {
-    planets[planetIndex].name === "Neptune"
+      planetArray[planetIndex].name === "Neptune"
       ? (ringNeptuneOuterRef.current.visible = true)
       : (ringNeptuneOuterRef.current.visible = false);
-    planets[planetIndex].name === "Neptune"
+     planetArray[planetIndex].name === "Neptune"
       ? (ringNeptuneInnerRef.current.visible = true)
       : (ringNeptuneInnerRef.current.visible = false);
-    planets[planetIndex].name === "Saturn"
+      planetArray[planetIndex].name === "Saturn"
       ? (ringSaturnRef.current.visible = true)
       : (ringSaturnRef.current.visible = false);
   });
@@ -71,7 +63,7 @@ const PlanetMain = (props) => {
       <group>
         <mesh ref={planetMainRef} position={[0, 0, 0]}>
           <sphereGeometry
-            args={mod ? [props.radius, 128, 64] : [110, 128, 64]}
+            args={mod ? [props.radius, 128, 64] : [110, 128, 250]}
           ></sphereGeometry>
           <meshStandardMaterial map={map} />
           <ambientLight intensity={0.5} />
@@ -83,7 +75,7 @@ const PlanetMain = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={[1.9 * args, 2.1 * args, 55]} />
+          <ringGeometry args={[1.9 * args, 2.1 * args, 250]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
@@ -93,7 +85,7 @@ const PlanetMain = (props) => {
           rotation-x={Math.PI / 2.5}
           receiveShadow
         >
-          <ringGeometry args={[1.5 * args, 1.6 * args, 55]} />
+          <ringGeometry args={[1.5 * args, 1.6 * args, 250]} />
           <meshBasicMaterial color="#252525" side={THREE.DoubleSide} />
         </mesh>
         <mesh
@@ -103,7 +95,7 @@ const PlanetMain = (props) => {
           rotation-x={Math.PI / 2}
           receiveShadow
         >
-          <ringGeometry args={[1.4 * args, 2.2 * args, 55]} />
+          <ringGeometry args={[1.4 * args, 2.2 * args, 250]} />
           <meshStandardMaterial map={ringMap} side={THREE.DoubleSide} />
         </mesh>
       </group>

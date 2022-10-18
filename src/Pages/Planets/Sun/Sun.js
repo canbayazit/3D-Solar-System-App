@@ -4,19 +4,22 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../../Components/Header/Header";
 import style from "./style.module.scss";
-import More from "../../../Components/Dashboard/More/More"
+import More from "../../../Components/Dashboard/More/More";
 import CardContainer from "../../../Components/Card/CardContainer";
 import SunContent from "../../../Components/Content/SunContent/SunContent";
+import PlanetCardContainer from "../../../Components/PlanetCard/PlanetCardContainer";
+
 const Sun = () => {
   return (
     <div className={style.container}>
-      <Header/>
-      <ComparePlanet/>
-      <CardContainer/>
-      <Dashboard/>
-      <More/>
-      <SunContent/>
-      <Footer/>
+      <Header />
+      <ComparePlanet />
+      <CardContainer />
+      <Dashboard />
+      <More />
+      <SunContent />
+      <PlanetCardContainer />
+      <Footer />
     </div>
   );
 };

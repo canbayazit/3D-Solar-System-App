@@ -7,16 +7,18 @@ import More from "../../../Components/Dashboard/More/More";
 import style from "./style.module.scss";
 import ComparePlanet from "../../../Components/ComparePlanet/ComparePlanet";
 import CardContainer from "../../../Components/Card/CardContainer";
+import PlanetCardContainer from "../../../Components/PlanetCard/PlanetCardContainer";
 
 const Venus = () => {
   return (
     <div className={style.container}>
       <Header />
       <ComparePlanet />
-      <CardContainer/>
+      <CardContainer />
       <Dashboard />
       <More />
       <VenusContent />
+      <PlanetCardContainer />
       <Footer />
     </div>
   );

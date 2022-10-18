@@ -20,7 +20,7 @@ import Mirandamap from "../../Assets/img/MoonTexture/Miranda.png"
 import Oberonmap from "../../Assets/img/MoonTexture/Oberon.png"
 import Rheamap from "../../Assets/img/MoonTexture/Rhea.png"
 import Tethysmap from "../../Assets/img/MoonTexture/Tethys.jpg"
-import Titanmap from "../../Assets/img/MoonTexture/Titan.jpg"
+import Titanmap from "../../Assets/img/MoonTexture/Titan.png"
 import Titaniamap from "../../Assets/img/MoonTexture/Titania.png"
 import Tritonmap from "../../Assets/img/MoonTexture/Triton.png"
 import Umbrielmap from "../../Assets/img/MoonTexture/Umbriel.png"
@@ -91,12 +91,12 @@ export const moonTexture = [
     },
     {
         moonID:4,
-        texture:Dionemap,
+        texture:Callistomap,
         image:CallistoImage      
     },
     {
         moonID:5,
-        texture:Enceladusmap,
+        texture:Ganymedemap,
         image:GanymedeImage      
     },
     {
@@ -106,7 +106,7 @@ export const moonTexture = [
     },
     {
         moonID:7,
-        texture:Ganymedemap,
+        texture:Iomap,
         image:IoImage      
     },
     {
@@ -116,37 +116,37 @@ export const moonTexture = [
     },
     {
         moonID:9,
-        texture:Iomap,
+        texture:Titanmap,
         image:TitanImage      
     },
     {
         moonID:10,
-        texture:Mimasmap,
+        texture:Rheamap,
         image:RheaImage      
     },
     {
         moonID:11,
-        texture:Mirandamap,
+        texture:Dionemap,
         image:DioneImage      
     },
     {
         moonID:12,
-        texture:Oberonmap,
+        texture:Tethysmap,
         image:TethysImage      
     },
     {
         moonID:13,
-        texture:Rheamap,
+        texture:Enceladusmap,
         image:EnceladusImage      
     },
     {
         moonID:14,
-        texture:Tethysmap,
+        texture:Mimasmap,
         image:MimasImage      
     },
     {
         moonID:15,
-        texture:Titanmap,
+        texture:Oberonmap,
         image:OberonImage      
     },
     {
@@ -156,22 +156,22 @@ export const moonTexture = [
     },
     {
         moonID:17,
-        texture:Tritonmap,
+        texture:Umbrielmap,
         image:UmbrielImage      
     },
     {
         moonID:18,
-        texture:Umbrielmap,
+        texture:Arielmap,
         image:ArielImage      
     },
     {
         moonID:19,
-        texture:Umbrielmap,
+        texture:Mirandamap,
         image:MirandaImage      
     },
     {
         moonID:20,
-        texture:Umbrielmap,
+        texture:Tritonmap,
         image:TritonImage      
     }   
    

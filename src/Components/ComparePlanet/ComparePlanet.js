@@ -15,31 +15,29 @@ const ComparePlanet = () => {
   const [height, setHeight] = useState();
   const [radiusLeft, setRadiusLeftPlanet] = useState(100);
   const [radiusRight, setRadiusRightPlanet] = useState(100);
-  const { planets, planetIndex, mod, click, pathname } = useSelector(
+  const { planets, planetIndex, mod, moons, isMoon, planetArray } = useSelector(
     (store) => store.planets
   );
-  const { stars, isSun } = useSelector((store) => store.stars);
-
+  const { isSun } = useSelector((store) => store.stars);
   let location = useLocation();
-
   const handleClickLeft = () => {
     let val = index - 1;
-    if (click) {
-      if (location.pathname === "/sun" || isSun) {
-        if (val === -1) {
-          setIndex(planets.length - 1);
-        } else {
-          setIndex(val);
-        }
+    if (location.pathname === "/sun" || isSun) {
+      if (val === -1) {
+        setIndex(planetArray.length - 1);
       } else {
+        setIndex(val);
+      }
+    } else {
+      if (!isSun) {
         if (val === -1) {
-          planetIndex !== planets.length - 1
-            ? setIndex(planets.length - 1)
-            : setIndex(planets.length - 2);
+          planetIndex !== planetArray.length - 1
+            ? setIndex(planetArray.length - 1)
+            : setIndex(planetArray.length - 2);
         } else {
           planetIndex === val
             ? val === 0
-              ? setIndex(planets.length - 1)
+              ? setIndex(planetArray.length - 1)
               : setIndex(val - 1)
             : setIndex(val);
         }
@@ -49,19 +47,19 @@ const ComparePlanet = () => {
 
   const handleClickRight = () => {
     let val = index + 1;
-    if (click) {
-      if (location.pathname === "/sun" || isSun) {
-        if (val === planets.length) {
-          setIndex(0);
-        } else {
-          setIndex(val);
-        }
+    if (location.pathname === "/sun" || isSun) {
+      if (val === planets.length) {
+        setIndex(0);
       } else {
-        if (val === planets.length) {
+        setIndex(val);
+      }
+    } else {
+      if (!isSun) {
+        if (val === planetArray.length) {
           planetIndex === 0 ? setIndex(1) : setIndex(0);
         } else {
           planetIndex === val
-            ? val === planets.length - 1
+            ? val === planetArray.length - 1
               ? setIndex(0)
               : setIndex(val + 1)
             : setIndex(val);
@@ -69,6 +67,7 @@ const ComparePlanet = () => {
       }
     }
   };
+
   useEffect(() => {
     location.pathname === "/sun"
       ? setIndex(0)
@@ -78,18 +77,20 @@ const ComparePlanet = () => {
   }, []);
 
   useEffect(() => {
-    pathname === "/solarsystem" && setHeight("100%");
+    location.pathname === "/solarsystem" && setHeight("100%");
     if (location.pathname === "/sun" || isSun) {
       console.log("1.");
 
-      if (stars[planetIndex].radius > planets[index].radius) {
+      if (planetArray[planetIndex].radius > planets[index].radius) {
         let newRadius =
-          radiusLeft / (stars[planetIndex].radius / planets[index].radius);
+          radiusLeft /
+          (planetArray[planetIndex].radius / planets[index].radius);
         setRadiusRightPlanet(newRadius);
         setRadiusLeftPlanet(100);
-      } else if (stars[planetIndex].radius < planets[index].radius) {
+      } else if (planetArray[planetIndex].radius < planets[index].radius) {
         let newRadius =
-          radiusRight / (stars[index].radius / planets[planetIndex].radius);
+          radiusRight /
+          (planetArray[index].radius / planets[planetIndex].radius);
         setRadiusRightPlanet(100);
         setRadiusLeftPlanet(newRadius);
       } else {
@@ -98,14 +99,16 @@ const ComparePlanet = () => {
       }
     } else {
       console.log("2.");
-      if (planets[planetIndex].radius > planets[index].radius) {
+      if (planetArray[planetIndex].radius > planetArray[index].radius) {
         let newRadius =
-          radiusLeft / (planets[planetIndex].radius / planets[index].radius);
+          radiusLeft /
+          (planetArray[planetIndex].radius / planetArray[index].radius);
         setRadiusRightPlanet(newRadius);
         setRadiusLeftPlanet(100);
-      } else if (planets[planetIndex].radius < planets[index].radius) {
+      } else if (planetArray[planetIndex].radius < planetArray[index].radius) {
         let newRadius =
-          radiusRight / (planets[index].radius / planets[planetIndex].radius);
+          radiusRight /
+          (planetArray[index].radius / planetArray[planetIndex].radius);
         setRadiusRightPlanet(100);
         setRadiusLeftPlanet(newRadius);
       } else {
@@ -113,15 +116,25 @@ const ComparePlanet = () => {
         setRadiusLeftPlanet(100);
       }
     }
-  });
-  const matches = useMediaQuery('(max-width:1025px)');
-
-  console.log("compare mod", mod);
+  }, [
+    index,
+    isSun,
+    location.pathname,
+    planetArray,
+    planetIndex,
+    planets,
+    radiusLeft,
+    radiusRight,
+  ]);
+  const matches = useMediaQuery("(max-width:1025px)");
   return (
     <div className={style.container} style={{ height: `${height}` }}>
       <div
         className={style.canvas_left}
-        style={{ width: mod ?  matches ? "100%": "50%" : "100%",height: mod ?  matches ? "50%": "100%" : "100%" }}
+        style={{
+          width: mod ? (matches ? "100%" : "50%") : "100%",
+          height: mod ? (matches ? "65%" : "100%") : "100%",
+        }}
       >
         <Canvas
           shadows
@@ -149,37 +162,37 @@ const ComparePlanet = () => {
           <div
             className={style.name_left}
             style={{
-              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[
-                planetIndex
-              ].color,
+              color: planetArray[planetIndex].color,
             }}
           >
-            {
-              (pathname === "/sun" ? stars : isSun ? stars : planets)[
-                planetIndex
-              ].name
-            }
+            {planetArray[planetIndex].name}
           </div>
           <div
             className={style.radius_left}
             style={{
-              color: (pathname === "/sun" ? stars : isSun ? stars : planets)[
-                planetIndex
-              ].color,
+              color: planetArray[planetIndex].color,
             }}
           >
-            {
-              (pathname === "/sun" ? stars : isSun ? stars : planets)[
-                planetIndex
-              ].radius
-            }
+            {planetArray[planetIndex].radius}
             <span>KM</span>
           </div>
+          {isMoon && (
+            <div
+              className={style.planet_moon_left}
+              style={{ color: planetArray[planetIndex].color }}
+            >
+              {planetArray[planetIndex].planet}
+            </div>
+          )}
         </div>
       </div>
       <div
         className={style.canvas_right}
-        style={{ display: mod ? "block" : "none" ,height: mod ?  matches ? "50%": "100%" : "100%",width: mod ?  matches ? "100%": "50%" : "100%"}}
+        style={{
+          display: mod ? "block" : "none",
+          height: mod ? (matches ? "35%" : "100%") : "100%",
+          width: mod ? (matches ? "100%" : "50%") : "100%",
+        }}
       >
         <Canvas
           shadows
@@ -203,17 +216,25 @@ const ComparePlanet = () => {
         <div className={style.card_right_container}>
           <div
             className={style.name_right}
-            style={{ color: planets[index].color }}
+            style={{ color: (isMoon ? moons : planets)[index].color }}
           >
-            {planets[index].name}
+            {(isMoon ? moons : planets)[index].name}
           </div>
           <div
             className={style.radius_right}
-            style={{ color: planets[index].color }}
+            style={{ color: (isMoon ? moons : planets)[index].color }}
           >
-            {planets[index].radius}
+            {(isMoon ? moons : planets)[index].radius}
             <span>KM</span>
           </div>
+          {isMoon && (
+            <div
+              className={style.planet_moon_right}
+              style={{ color: moons[index].color }}
+            >
+              {moons[index].planet}
+            </div>
+          )}
         </div>
         <button className={style.button_left} onClick={() => handleClickLeft()}>
           {arrowButtonLeft()}

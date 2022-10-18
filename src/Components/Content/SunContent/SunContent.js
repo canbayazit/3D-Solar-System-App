@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { starTexture } from "../../../Constant/planet_image/image";
+import { setImage, setPathname, setPlanetArray, setPlanetIndex, setTexture } from "../../../Store/PlanetSlice";
+import { setIsSun } from "../../../Store/StarSlice";
 import style from "./style.module.scss";
 
 const SunContent = () => {
+  const { stars } = useSelector((store) => store.stars);
+      const dispatch=useDispatch();
+      console.log("girdi sun aa")
+      const location=useLocation();
+    useEffect(() => {       
+      dispatch(setPlanetArray(stars));
+      dispatch(setPlanetIndex(0));
+      dispatch(setIsSun(true));
+      dispatch(setTexture(starTexture[0].texture));
+      dispatch(setImage(starTexture[0].image));    
+      dispatch(setPathname(location.pathname));
+      console.log("girdi sun")
+    }, [dispatch, location.pathname, stars]);
+
+
   return (
-    <div className={style.container}>
+    <div className={style.container} id="content">
       <fieldset className={style.fieldset}>
         <legend>Our Solar System</legend>
         <h2>Sun</h2>

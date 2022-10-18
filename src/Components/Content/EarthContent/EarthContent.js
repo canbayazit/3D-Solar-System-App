@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { textures } from "../../../Constant/planet_image/image";
+import { setImage, setPlanetArray, setPlanetIndex, setTexture } from "../../../Store/PlanetSlice";
+import { setIsSun } from "../../../Store/StarSlice";
 import style from "./style.module.scss";
 
 const EarthContent = () => {
+  const { planets } = useSelector((store) => store.planets);
+  const dispatch=useDispatch();
+  const location = useLocation();
+  useEffect(() => {
+    let i = 0;
+    while (i < planets.length) {
+      let text = location.pathname.slice(1);
+      if (planets[i].name.toLowerCase()===text) {
+           dispatch(setPlanetIndex(i));
+           dispatch(setPlanetArray(planets));
+           dispatch(setTexture(textures[i].texture));
+           dispatch(setImage(textures[i].image));
+           dispatch(setIsSun(false));
+           break;
+      }
+      i++;
+    }
+  }, [])
+  
+  
   return (
     <div className={style.container} id="content">
       <fieldset className={style.fieldset}>

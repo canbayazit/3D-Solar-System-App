@@ -1,22 +1,41 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
-import { textures, starTexture } from "../../Constant/planet_image/image";
-import { arrowLeft, arrowRight, closeButton, detailToggle, moon } from "../../Assets/svg/svg";
+import {
+  arrowLeft,
+  arrowRight,
+  closeButton,
+  detailToggle,
+  moon,
+} from "../../Assets/svg/svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setMod } from "../../Store/PlanetSlice";
+import {
+  setClick,
+  setMod,
+  setPlanetArray,
+  setPlanetIndex,
+} from "../../Store/PlanetSlice";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import { setIsSun } from "../../Store/StarSlice";
 
 const CardContainer = () => {
-  const { planets, planetIndex, click, mod, pathname } = useSelector(
-    (store) => store.planets
-  );
-  const { stars, isSun } = useSelector((store) => store.stars);
+  const {
+    earthIndex,
+    cardImage,
+    planetIndex,
+    click,
+    mod,
+    pathname,
+    isMoon,
+    planetArray,
+    planets,
+    moons,
+  } = useSelector((store) => store.planets);
+  const { isSun, stars } = useSelector((store) => store.stars);
   const dispatch = useDispatch();
-  let location = useLocation();
-  const [open, setOpen] = useState(false)
+  const location = useLocation();
+  const [open, setOpen] = useState(false);
   const openComparison = () => {
     dispatch(setMod(true));
   };
@@ -24,32 +43,92 @@ const CardContainer = () => {
     dispatch(setMod(false));
   };
   const CloseCard = () => {
+    dispatch(setPlanetArray(planets));
     dispatch(setClick(false));
     dispatch(setIsSun(false));
     setOpen(false);
-  }; 
+  };
   const setToggle = () => {
     setOpen(true);
     dispatch(setClick(true));
-    console.log("clicked")
   };
-  const matches = useMediaQuery('(max-width:1025px)');
-
-  useEffect(() => {
-    pathname!=='/solarsystem' && (matches ===false && dispatch(setClick(true)));
-     setOpen(false) ;
-  }, [])
-  
-  console.log("click card", click);
+  const matches = useMediaQuery("(max-width:1025px)");
+  console.log("planetArray card container", planetArray);
+  console.log("planetIndex card container", planetIndex);
+  console.log("isSun card", isSun);
   console.log("pathname card", pathname);
   console.log("location.pathname card", location.pathname);
+  const statList = [
+    {
+      id: 1,
+      value: planetArray[planetIndex].lengthYear,
+      info:
+        planetIndex <= earthIndex
+          ? "EARTH DAYS"
+          : isSun
+          ? "MILLION EARTH YEARS"
+          : "EARTH YEARS",
+      label: "Length of Year",
+      display: location.pathname === "/moons" ? "none" : "block",
+      color: planetArray[planetIndex].color,
+    },
+    {
+      id: 2,
+      value: isSun
+        ? planetArray[planetIndex].radius
+        : planetArray[planetIndex].distance,
+      info: isSun ? "KM" : "AU",
+      label: isSun ? "Radius" : "Distance from Sun",
+      display: location.pathname === "/moons" ? "none" : "block",
+      color: planetArray[planetIndex].color,
+    },
+    {
+      id: 3,
+      value: null,
+      info: planetArray[planetIndex].namesake,
+      label: "Namesake",
+      display: "block",
+      color: "",
+    },
+    {
+      id: 4,
+      value:
+        location.pathname === "/moons"
+          ? ""
+          : isSun
+          ? planetArray[planetIndex].planets.units
+          : planetArray[planetIndex].moons.units,
+      info: moon(),
+      label: isSun ? "Planets" : "Moons",
+      display: location.pathname === "/moons" ? "none" : "block",
+      color: planetArray[planetIndex].color,
+    },
+    {
+      id: 5,
+      value:
+        location.pathname === "/moons" ? planetArray[planetIndex].planet : "",
+      info: null,
+      label: "Planet's Moon",
+      display: location.pathname === "/moons" ? "block" : "none",
+      color: planetArray[planetIndex].color,
+    },
+  ];
+ 
+
+  useEffect(() => {
+    pathname !== "/solarsystem" &&
+      matches === false &&
+      dispatch(setClick(true));
+    setOpen(false);
+  }, []);
+
   return (
     <>
       <div
         className={style.comparison_mode_container}
         style={{
           display: mod ? "flex" : "none",
-          top: pathname !== '/solarsystem' ? `${85}px` : "0",
+          top: pathname !== "/solarsystem" ? `${85}px` : "0",
         }}
       >
         <button
@@ -59,30 +138,48 @@ const CardContainer = () => {
           <span>X</span> Close Comparison Mode
         </button>
       </div>
-      <div className={style.detail_toggle_container} style={{display:pathname === '/solarsystem' ? (click ?  matches ? open ? "none": "flex" :"none" : "none") : (matches ? open ? "none":"flex":"none")}}>
-          <h1>{location.pathname === "/sun"
-              ? stars[planetIndex].name.toUpperCase()
-              : isSun
-                ? stars[planetIndex].name.toUpperCase()
-                : planets[planetIndex].name.toUpperCase()}</h1>
-          <button className={style.detail_toggle} onClick={() => setToggle()}>
-            {detailToggle()}
-          </button>
+      <div
+        className={style.detail_toggle_container}
+        style={{
+          display:
+            pathname === "/solarsystem"
+              ? click
+                ? matches
+                  ? open
+                    ? "none"
+                    : "flex"
+                  : "none"
+                : "none"
+              : matches
+              ? open
+                ? "none"
+                : "flex"
+              : "none",
+        }}
+      >
+        <h1>{planetArray[planetIndex].name.toUpperCase()}</h1>
+        <button className={style.detail_toggle} onClick={() => setToggle()}>
+          {detailToggle()}
+        </button>
       </div>
       <div
         className={
-          pathname !== '/solarsystem'
+          location.pathname !== "/solarsystem"
             ? style.card_container
             : style.card_container_3d
         }
         style={
-          pathname !== '/solarsystem'
+          location.pathname !== "/solarsystem"
             ? click
-              ? matches ? {display:open ?  (mod ? "none" : "block") :"none"} : { display: mod ? "none" : "block"}
+              ? matches
+                ? { display: open ? (mod ? "none" : "block") : "none" }
+                : { display: mod ? "none" : "block" }
               : { display: "none" }
             : click
-              ? matches ? {display:open ?  (mod ? "none" : "block") :"none"} : { display: mod ? "none" : "block", height: "100%" }
-              : { display: "none" }
+            ? matches
+              ? { display: open ? (mod ? "none" : "block") : "none" }
+              : { display: mod ? "none" : "block", height: "100%" }
+            : { display: "none" }
         }
       >
         <div className={style.close_button_container}>
@@ -92,122 +189,42 @@ const CardContainer = () => {
         </div>
         <div className={style.image_container}>
           <img
-            src={
-              location.pathname === "/sun"
-                ? starTexture[planetIndex].image
-                : isSun
-                  ? starTexture[planetIndex].image
-                  : textures[planetIndex].image
-            }
+            src={cardImage}
             className={style.image}
-          ></img>
+            style={{ width: location.pathname==="/moons" ? "63%" :"85%"}}
+          />
         </div>
         <div className={style.description_container}>
           <p className={style.description}>
-            {location.pathname === "/sun"
-              ? stars[planetIndex].description
-              : isSun
-                ? stars[planetIndex].description
-                : planets[planetIndex].description}
+            {planetArray[planetIndex].description}
           </p>
         </div>
-
-        <div className={style.stats_container}>
-          <div className={style.length_year_container}>
-            <div
-              className={style.length_year}
-              style={{
-                color:
-                  location.pathname === "/sun"
-                    ? stars[planetIndex].color
-                    : isSun
-                      ? stars[planetIndex].color
-                      : planets[planetIndex].color,
-              }}
-            >
-              {location.pathname === "/sun"
-                ? stars[planetIndex].lengthYear
-                : planets[planetIndex].lengthYear}{" "}
-              <span>
-                {location.pathname === "/sun"
-                  ? "MILLION EARTH YEARS"
-                  : isSun
-                    ? "MILLION EARTH YEARS"
-                    : "EARTH DAYS"}
-              </span>
-            </div>
-            <div className={style.label}>Length of Year</div>
-          </div>
-
-          <div className={style.distance_container}>
-            <div
-              className={style.distance}
-              style={{
-                color:
-                  location.pathname === "/sun"
-                    ? stars[planetIndex].color
-                    : isSun
-                      ? stars[planetIndex].color
-                      : planets[planetIndex].color,
-              }}
-            >
-              {location.pathname === "/sun"
-                ? stars[planetIndex].radius
-                : isSun
-                  ? stars[planetIndex].radius
-                  : planets[planetIndex].distance}{" "}
-              <span>{location.pathname === "/sun" ? "KM" : isSun ? "KM" : "AU"}</span>
-            </div>
-            <div className={style.label}>
-              {location.pathname === "/sun"
-                ? "Radius"
-                : isSun
-                  ? "Radius"
-                  : "Distance from Sun"}
-            </div>
-          </div>
-          <div className={style.namesake_container}>
-            <div className={style.namesake}>
-              {location.pathname === "/sun"
-                ? stars[planetIndex].namesake
-                : isSun
-                  ? stars[planetIndex].namesake
-                  : planets[planetIndex].namesake}
-            </div>
-            <div className={style.label}>Namesake</div>
-          </div>
-          <div className={style.moons_units_container}>
-            <div
-              className={style.moons_units}
-              style={{
-                color:
-                  location.pathname === "/sun"
-                    ? stars[planetIndex].color
-                    : isSun
-                      ? stars[planetIndex].color
-                      : planets[planetIndex].color,
-              }}
-            >
-              {location.pathname === "/sun"
-                ? stars[planetIndex].planets.units
-                : isSun
-                  ? stars[planetIndex].planets.units
-                  : planets[planetIndex].moons.units}
-              <span>{moon(planets[planetIndex].color)}</span>
-            </div>
-            <div className={style.label}>
-              {location.pathname === "/sun" ? "Planets" : isSun ? "Planets" : "Moons"}
-            </div>
-          </div>
+        <div className={style.stats_container} >
+          {statList.map((item, index) => {
+            console.log("item.value", item.value);
+            return (
+              <div
+                key={item.id}
+                className={style.stats}
+                style={{ display: item.display }}
+              >
+                <div className={style.stat_item} style={{ color: item.color }}>
+                  <span className={style.value}>{item.value}</span>
+                  <span className={style.info}>{item.info}</span>
+                </div>
+                <div className={style.label}>{item.label}</div>
+              </div>
+            );
+          })}
         </div>
         <div className={style.button_container}>
           <button className={style.button} onClick={() => openComparison()}>
             <span className={style.left}>
-              {arrowLeft(isSun ? stars[planetIndex].color : planets[planetIndex].color)}
+              {arrowLeft(planetArray[planetIndex].color)}
             </span>
             <span>COMPARE SIZE</span>
             <span className={style.right}>
-              {arrowRight(isSun ? stars[planetIndex].color : planets[planetIndex].color)}
+              {arrowRight(planetArray[planetIndex].color)}
             </span>
           </button>
         </div>

@@ -2,21 +2,35 @@ import { useMediaQuery } from "@mui/material";
 import { Bounds } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useEffect } from "react";
-import { Provider, useSelector } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import CardContainer from "../../Components/Card/CardContainer";
 import ComparePlanet from "../../Components/ComparePlanet/ComparePlanet";
 import MediaContainer from "../../Components/Media/MediaContainer";
 import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import Search from "../../Components/Search/Search";
 import { store } from "../../Store";
+import { setPathname, setPlanetArray, setPlanetIndex } from "../../Store/PlanetSlice";
+import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 const SolarSystem = () => {
-  const { mod } = useSelector((store) => store.planets);
-
+  const { mod,planets } = useSelector((store) => store.planets);
+  const dispatch=useDispatch();
+  const location=useLocation();
   const matches = useMediaQuery('(max-width:1025px)');
   useEffect(() => {
     matches===false && document.body.requestFullscreen();
   }, []);
+  useEffect(() => {
+
+      dispatch(setPlanetArray(planets));
+      dispatch(setPlanetIndex(0));
+      dispatch(setIsSun(false));
+      dispatch(setPathname(location.pathname));
+
+    console.log("use EFFECT ASDAS")
+
+  }, []); 
   // useEffect(() => {
   //   planets.filter((item) => item.name.toLowerCase()).includes(text) ? setStatus(true): setStatus(false)
   //   console.log(status)
