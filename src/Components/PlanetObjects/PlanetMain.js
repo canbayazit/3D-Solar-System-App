@@ -4,19 +4,19 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import {
-  textures,  
-} from "../../Constant/planet_image/image";
+import { textures } from "../../Constant/planet_image/image";
 import * as THREE from "three";
 import { useSelector } from "react-redux";
+import Phobos from "../3DModel/Phobos";
+
 const PlanetMain = (props) => {
   const [args, setArgs] = useState();
-  const { planetIndex, mod,texture,planetArray } = useSelector(
+  const { planetIndex, mod, texture, planetArray } = useSelector(
     (store) => store.planets
   );
-  const map =useLoader(TextureLoader, texture);
+  const map = useLoader(TextureLoader, texture);
   const ringMap =
-  planetArray[planetIndex].name === "Saturn" &&
+    planetArray[planetIndex].name === "Saturn" &&
     useLoader(TextureLoader, textures[planetIndex].ring);
 
   useEffect(() => {
@@ -27,13 +27,13 @@ const PlanetMain = (props) => {
   const ringNeptuneOuterRef = useRef();
   const ringNeptuneInnerRef = useRef();
   useEffect(() => {
-      planetArray[planetIndex].name === "Neptune"
+    planetArray[planetIndex].name === "Neptune"
       ? (ringNeptuneOuterRef.current.visible = true)
       : (ringNeptuneOuterRef.current.visible = false);
-     planetArray[planetIndex].name === "Neptune"
+    planetArray[planetIndex].name === "Neptune"
       ? (ringNeptuneInnerRef.current.visible = true)
       : (ringNeptuneInnerRef.current.visible = false);
-      planetArray[planetIndex].name === "Saturn"
+    planetArray[planetIndex].name === "Saturn"
       ? (ringSaturnRef.current.visible = true)
       : (ringSaturnRef.current.visible = false);
   });
@@ -60,6 +60,10 @@ const PlanetMain = (props) => {
         autoRotate={false}
         screenSpacePanning={false}
       ></OrbitControls>
+ {/* { planetArray[planetIndex].name ==="Phobos"
+                  ?
+             
+                  : */}
       <group>
         <mesh ref={planetMainRef} position={[0, 0, 0]}>
           <sphereGeometry
@@ -99,6 +103,7 @@ const PlanetMain = (props) => {
           <meshStandardMaterial map={ringMap} side={THREE.DoubleSide} />
         </mesh>
       </group>
+
     </>
   );
 };

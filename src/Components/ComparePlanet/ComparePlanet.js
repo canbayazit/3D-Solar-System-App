@@ -9,6 +9,8 @@ import PlanetMain from "../PlanetObjects/PlanetMain";
 import style from "./style.module.scss";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
+import Phobos from "../3DModel/Phobos";
+import Deimos from "../3DModel/Deimos";
 
 const ComparePlanet = () => {
   const [index, setIndex] = useState(0);
@@ -150,7 +152,13 @@ const ComparePlanet = () => {
           <Suspense fallback={null}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
-                <PlanetMain radius={radiusLeft} />
+                {planetArray[planetIndex].name === "Phobos" ? (
+                  <Phobos radius={radiusLeft} />
+                ) : planetArray[planetIndex].name === "Deimos" ? (
+                  <Deimos radius={radiusLeft}/>
+                ) : (
+                  <PlanetMain radius={radiusLeft} />
+                )}
               </Provider>
             </Bounds>
           </Suspense>
@@ -208,7 +216,13 @@ const ComparePlanet = () => {
           <Suspense fallback={null}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
-                <Planet index={index} radius={radiusRight} />
+              {planetArray[index].name === "Phobos" ? (
+                  <Phobos radius={radiusRight} />
+                ) : planetArray[index].name === "Deimos" ? (
+                  <Deimos radius={radiusRight} />
+                ) : (
+                  <Planet index={index} radius={radiusRight} />
+                )}                
               </Provider>
             </Bounds>
           </Suspense>

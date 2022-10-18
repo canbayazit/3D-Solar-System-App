@@ -12,7 +12,6 @@ const Home = () => {
     <div className={style.container}>
       <Header />
       <HomeSection />
-      <Dashboard/>
       <More />
       <HomeContent />
       <Footer />

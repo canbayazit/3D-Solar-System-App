@@ -113,7 +113,6 @@ const CardContainer = () => {
       color: planetArray[planetIndex].color,
     },
   ];
- 
 
   useEffect(() => {
     pathname !== "/solarsystem" &&
@@ -191,7 +190,7 @@ const CardContainer = () => {
           <img
             src={cardImage}
             className={style.image}
-            style={{ width: location.pathname==="/moons" ? "63%" :"85%"}}
+            style={{ width: location.pathname === "/moons" ? "63%" : "85%" }}
           />
         </div>
         <div className={style.description_container}>
@@ -199,9 +198,8 @@ const CardContainer = () => {
             {planetArray[planetIndex].description}
           </p>
         </div>
-        <div className={style.stats_container} >
+        <div className={style.stats_container}>
           {statList.map((item, index) => {
-            console.log("item.value", item.value);
             return (
               <div
                 key={item.id}
@@ -210,7 +208,15 @@ const CardContainer = () => {
               >
                 <div className={style.stat_item} style={{ color: item.color }}>
                   <span className={style.value}>{item.value}</span>
-                  <span className={style.info}>{item.info}</span>
+                  <span
+                    className={style.info}
+                    style={{
+                      fontSize: item.label === "Namesake" ? "0.35em" : "0.4em",
+                      marginLeft: item.label === "Namesake" && "-10px",
+                    }}
+                  >
+                    {item.info}
+                  </span>
                 </div>
                 <div className={style.label}>{item.label}</div>
               </div>
