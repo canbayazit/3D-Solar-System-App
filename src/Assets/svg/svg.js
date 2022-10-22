@@ -222,16 +222,16 @@ export const arrowButtonLeft = () => (
   </svg>
 );
 
-export const arrowDown = () => (
+export const arrowDown = (color) => (
   <svg
     width="8"
     height="15"
     viewBox="0 0 13 30"
-    style={{ transform: `rotate(-90deg)` }}
+    style={{ transform: `rotate(-90deg)`}}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 29L1.5 16L12 1.5" stroke="#000" strokeWidth="4" />
+    <path d="M12 29L1.5 16L12 1.5" stroke={color} strokeWidth="4" />
   </svg>
 );
 

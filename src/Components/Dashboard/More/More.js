@@ -33,7 +33,7 @@ const More = () => {
       <div className={style.more} id={"more"} >
         <Link activeClass="active" to="content" spy={true} smooth={true} offset={-90} duration={500}>
         <span>MORE</span>
-        <span>{arrowDown()}</span>
+        <span>{arrowDown("#000")}</span>
         </Link>
       
       </div>

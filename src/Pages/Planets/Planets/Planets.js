@@ -5,6 +5,7 @@ import Footer from "../../../Components/Footer/Footer";
 import PlanetMainSection from "../../../Components/Section/PlanetMainSection/PlanetMainSection";
 import PlanetContent from "../../../Components/Content/PlanetsContent/PlanetContent";
 import PlanetCardContainer from "../../../Components/PlanetCard/PlanetCardContainer";
+import StickyHeadTable from "../../../Components/Table/Table";
 
 const Planets = () => {
   return (
@@ -12,6 +13,7 @@ const Planets = () => {
       <Header />
       <PlanetMainSection />
       <PlanetContent />
+      <StickyHeadTable/>
       <PlanetCardContainer />
       <Footer />
     </div>

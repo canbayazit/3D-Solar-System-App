@@ -2,15 +2,19 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 // import image from "../../../Assets/img/solar_system_img.jpg";
-import { useDispatch } from "react-redux";
-import { setClick, setHeaderStatus, setPathname } from "../../../Store/PlanetSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setClick, setHeaderStatus, setPathname, setPlanetArray, setPlanetIndex } from "../../../Store/PlanetSlice";
 import { useNavigate } from "react-router-dom";
 const HomeSection = () => {
-
+  const { planets } = useSelector(
+    (store) => store.planets
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(setHeaderStatus(false));
+    dispatch(setPlanetArray(planets));
+    dispatch(setPlanetIndex(0));
   }, []);
   
   const handleClick = () => {
