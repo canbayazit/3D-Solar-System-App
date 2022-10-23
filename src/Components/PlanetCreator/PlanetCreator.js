@@ -1,7 +1,8 @@
+/* eslint-disable no-sequences */
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-undef */
-import { OrbitControls, Stars, Text, useBounds } from "@react-three/drei";
+import { OrbitControls, Stars, Text } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -12,24 +13,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setClick, setImage, setPlanetArray, setPlanetIndex, setPositionX, setPositionZ, setRadius, setTexture } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 const PlanetCreator = () => {
-  const [id, setID] = useState(null);
   const [distance, setDistance] = useState();
   const [value, setValue] = useState(50);
-
-  const sunMap = useLoader(TextureLoader, sunTexture);
-
   const dispatch = useDispatch();
-  const { planets, click,positionX, positionZ,speedStatus,rad,planetIndex } = useSelector((store) => store.planets);
   const { stars, isSun } = useSelector((store) => store.stars);
-
-  const api = useBounds();
+  const { planets, click,positionX, positionZ,speedStatus,rad,planetIndex } = useSelector((store) => store.planets);
+  const sunMap = useLoader(TextureLoader, sunTexture);
   const planetOrbitRef = useRef([]);
   const targetOrbitRef = useRef([]);
   const targetRef = useRef([]);
   const targetGroupRef = useRef([]);
   const textRef = useRef([]);
   const planetRef = useRef([]);
-  const targetRingRef = useRef([]);
   const ringRef = useRef([]);
   const ringOuterRef = useRef([]);
   const ringOrbitRef = useRef([]);
@@ -38,20 +33,14 @@ const PlanetCreator = () => {
   const sunTextRef = useRef();
   const sunRef = useRef();
   const orbitControls = useRef();
-
   const handlePlanetClick = (index, rad,e) => {
     dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
     dispatch(setRadius(rad));
     dispatch(setPlanetArray(planets));
     dispatch(setTexture(textures[index].texture));
-    dispatch(setImage(textures[index].image));
-    // dispatch(setPosition(position));
-     // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position);
-    // orbitControls.current.target.set(Math.cos(angles)*position, 0, -1*Math.sin(angles)*position)
-    // orbitControls.current.update();
+    dispatch(setImage(textures[index].image));  
   };
-
   const handleStarClick = (index) => {
     dispatch(setClick(true));
     dispatch(setIsSun(true));
@@ -81,21 +70,8 @@ const PlanetCreator = () => {
       ? (ringRef.current.visible = true)
       : (ringRef.current.visible = false);
   }, [dispatch, rad, planets, planetIndex, isSun]);
-  // console.log("position", position);
-  // console.log("position/500", position / 500);
-  // useFrame(state=>{
-  //   if (click) {
-  //     // console.log("click içinde planet Index",planetIndex)
-  //     // console.log("click içinde planet Index",planetRef.current[planetIndex].position)
-  //     state.camera.lookAt(planetRef.current[planetIndex].position);
-  //     state.camera.position.lerp(vec.set(planetRef.current[planetIndex].position.x,planetRef.current[planetIndex].position.y,planetRef.current[planetIndex].position.z-450),0.5);
-  //     state.camera.updateProjectionMatrix();
-  //   }
-  // })
 
-  useFrame(({ clock, camera, state, delta }) => {
-    // const elapsedTime = clock.getElapsedTime();
-    // earthRef.current.rotation.y = elapsedTime / 6;
+  useFrame(({camera }) => { 
     let speed = speedStatus ? click ? 0 : 0.002 : 0;
     planetRef.current[0].rotation.y +=0.001;
     planetRef.current[1].rotation.y +=0.001;
@@ -104,8 +80,7 @@ const PlanetCreator = () => {
     planetRef.current[4].rotation.y +=0.001;
     planetRef.current[5].rotation.y +=0.001;
     planetRef.current[6].rotation.y +=0.001;
-    planetRef.current[7].rotation.y +=0.001;
-    
+    planetRef.current[7].rotation.y +=0.001;    
     sunTextRef.current.quaternion.copy(camera.quaternion);
     sunTextRef.current.rotation.copy(camera.rotation);
     planetOrbitRef.current[0].rotation.y += speed;
@@ -148,47 +123,6 @@ const PlanetCreator = () => {
     targetRef.current[7].rotation.y -= speed / 8;
     targetGroupRef.current[7].quaternion.copy(camera.quaternion);
     targetGroupRef.current[7].rotation.copy(camera.rotation);
-
-    // ringOrbitRef.current[0].quaternion.copy(camera.quaternion);
-    // ringOrbitRef.current[0].rotation.copy(camera.rotation);
-
-    // planetOrbitRef.current[5].rotation.y += index===0 ? 0 :  0.0001;
-    // targetOrbitRef.current[5].rotation.y +=  index===0 ? 0 :  0.0001;
-    // targetRef.current[5].rotation.y -= index===0 ? 0 :  0.0001;
-    // targetGroupRef.current[5].quaternion.copy(camera.quaternion);
-    // targetGroupRef.current[5].rotation.copy(camera.rotation);
-    // planetOrbitRef.current[3].rotation.y += 0.001;
-    // targetOrbitRef.current[3].rotation.y += 0.001;
-    // targetRef.current[3].rotation.y -= 0.001;
-    // targetGroupRef.current[3].quaternion.copy(camera.quaternion);
-    // targetGroupRef.current[3].rotation.copy(camera.rotation);
-    // targetRef.current.rotation.z = camera.quaternion._z;
-    // targetRef.current.rotation.x = camera.quaternion._x;
-    // if (isClicked) {
-    //   // camera.position.set();
-    //   camera.lookAt([105,0,0]);
-    // }
-    // targetRef.current.rotation.y+=0.1
-    // merkurRef.current.rotation.y += 0.0005;
-    // targetRef.current.rotation.y -= 0.001;
-    // targetRef.current.position.setFromMatrixPosition( targetRef.matrixWorld )
-    // targetRef.current.position.copy(camera.position);
-    // textRef.current.quaternion.copy(camera.quaternion);
-    // textRef.current.rotation.copy(camera.rotation);
-    // targetRef.current.quaternion.copy(camera.quaternion);
-    // targetRef.current.rotation.copy(camera.rotation);
-    // console.log("target",targetRef.current.quaternion);
-    // console.log("camera",camera.quaternion);
-    // console.log("target",abcRef.current.rotation);
-    // console.log("camera",camera.rotation);
-    // targetRef.current.rotation.x=0;
-    // targetRef.current.rotation.y=0;
-    // targetRef.current.rotation.z=0;
-    // targetRef.current.quaternion._x.copy(camera.quaternion._x);
-    // opacityRef.current.opacity = Math.abs(camera.position.x) / 100 + 0.1;
-    // opacityRef.current.opacity = Math.abs(camera.position.y) / 100 + 0.1;
-    // opacityRef.current.opacity = Math.abs(camera.position.z) / 100 + 0.1;
-    // opacityRef.current.opacity <= 0.60 ? opacityRef.current.opacity=0 :  opacityRef.current.opacity = Math.abs(camera.position.x) / 100 + 0.1;
 
     let constant = 40000;
     let distanceSun = Math.sqrt(
@@ -445,42 +379,9 @@ const PlanetCreator = () => {
              
               >
                 <mesh ref={(el) => (targetGroupRef.current[index] = el)}>
-                  {/* <mesh ref={(el) => (targetRingRef.current[index] = el)}>
-                    
-                    <ringGeometry args={[((1000*item.radius)/695500)+30, ((1000*item.radius)/695500)+35, 500]} />
-                    <meshBasicMaterial
-                      ref={opacityRef}
-                      color={item.color}
-                      opacity={id === index + 1 ? 1 : 0.8}
-                      transparent
-                      side={THREE.DoubleSide}
-                    />
-                   
-                  </mesh> */}
-                  {/* <mesh
-                    ref={(el) => (targetRing2Ref.current[index] = el)}
-                    onClick={(e) => (
-                      e.stopPropagation(),
-                      e.button === 0 &&
-                        api.refresh(targetRing2Ref.current[index]).fit(),
-                      setPosition(1000 * item.distance),
-                      setClicked(true),
-                      setIndex(index)
-                    )}
-                  >
-                    <ringGeometry args={click ? [0, 0, 0]: [0, 4.5, 55]}></ringGeometry>
-                    <meshStandardMaterial
-                      ref={opacityRef}
-                      opacity={0}
-                      transparent
-                      side={THREE.DoubleSide}
-                    />
-                  </mesh> */}
-                  <mesh                    
+                                    <mesh                    
                   onClick={(e) => (
-                    e.stopPropagation(),
-                    // e.delta <= 2 &&
-                    //   api.refresh(planetRef.current[planetIndex]).fit(),
+                    e.stopPropagation(),                    
                     handlePlanetClick(index, 2000 * item.distance,e.object.position)
                     )}
                   >

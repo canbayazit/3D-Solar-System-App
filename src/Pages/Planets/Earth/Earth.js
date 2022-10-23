@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import EarthContent from "../../../Components/Content/EarthContent/EarthContent";
 import More from "../../../Components/Dashboard/More/More";
 import Footer from "../../../Components/Footer/Footer";

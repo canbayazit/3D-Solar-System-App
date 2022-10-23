@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { textures } from "../../Constant/planet_image/image";
-import { setClick, setImage, setPlanetArray, setPlanetIndex, setPositionX, setRadius, setTexture } from "../../Store/PlanetSlice";
+import { setClick, setImage, setPlanetArray, setPlanetIndex, setRadius, setTexture } from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 import style from "./style.module.scss";
 
@@ -23,7 +23,6 @@ const Search = () => {
     dispatch(setPlanetArray(planets));
     dispatch(setTexture(textures[id-1].texture));
     dispatch(setImage(textures[id-1].image));
-    // dispatch(setPositionX(position));
     setText("");
   };
   return (

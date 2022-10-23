@@ -8,10 +8,9 @@ import { useFrame } from "@react-three/fiber";
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF("/Phobos.gltf");
-  const { planetIndex, mod, texture, planetArray } = useSelector(
+  const {  mod } = useSelector(
     (store) => store.planets
   );
-  console.log("mod", mod);
   const moonRef = useRef();
 
   useFrame(() => {

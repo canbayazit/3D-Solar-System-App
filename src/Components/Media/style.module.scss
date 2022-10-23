@@ -9,7 +9,7 @@
         position: absolute;
         right: 20px;
         top: 20px;
-        z-index: 998;
+        z-index: 999;
         button{
             background: transparent;
             border: none;
@@ -20,28 +20,109 @@
             }
         }
     }
-    .media_button{
+    .media_container{     
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: row;
+        flex-direction: column;
+        width: 100%;
         z-index: 998;
-        h3{
-            color: #fff;
-        }
-        audio{
-          margin-left: 3em;
-        }
-        button{
-            background-color: transparent;
-            border: none;
-            margin-left: 50px;
-            margin-top: 20px;
-            opacity: 0.6;
-            cursor: pointer;
-            &:hover{
-                opacity: 1;
+        .speed_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            span{           
+                h3{
+                    margin-right: 1rem;
+                    color: #fff;
+                }
             }
+            
+            button{
+                background-color: transparent;
+                border: none;            
+                opacity: 0.6;
+                cursor: pointer;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
+       .audio_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            audio{
+                margin-top: 1rem;
+            }
+       }
+    }
+    .detail_toggle_container{
+        position: absolute;
+        top: 15px;
+        display: none;
+        justify-content: center;
+        background-color: transparent;
+        opacity: .75;
+        z-index: 999;
+        .detail_toggle{
+            background-color: transparent;
+            cursor: pointer;
+            border: none;            
+        }
+    }
+}
+
+// @media only screen and (max-width: 1025px){
+//     .container{
+//         .media_container{   
+//             flex-direction: column;  
+//             .speed_container{
+//                 span{
+                    
+//                     h3{                
+//                     }
+//                 }                
+//                 button{                    
+//                     &:hover{
+                       
+//                     }
+//                 }
+//             }
+//            .audio_container{              
+//                 audio{
+                 
+//                 }
+//            }
+//         }
+//     }
+// }
+
+@media only screen and (max-width: 439px){
+    .container{
+        .media_container{    
+            .speed_container{
+                flex-direction: column;                                   
+                span{
+                     width: 100%;
+                    margin-bottom: 1rem;
+                    h3{                
+                    }
+                }                
+                button{     
+                     width: 100%;
+                                   
+                    &:hover{
+                       
+                    }
+                }
+            }
+           .audio_container{              
+                audio{
+                 
+                }
+           }
         }
     }
 }

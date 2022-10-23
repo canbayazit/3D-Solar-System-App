@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-sequences */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ import {
   setHeaderStatus,
   setImage,
   setIsMoon,
+  setMod,
   setPathname,
   setPlanetArray,
   setPlanetIndex,
@@ -70,7 +72,6 @@ const PlanetCardContainer = () => {
     list.add(`${style.active}`);
     setActive(true); 
     let prevButton = active ? null : document.getElementById(buttonID);
-    console.log("card useEFfect" )
     const wrapper = document.getElementById("wrapper");
     wrapper.addEventListener("click", (e) => {
       const isButton = e.target.nodeName === "BUTTON";
@@ -83,9 +84,10 @@ const PlanetCardContainer = () => {
     });
     window.fullScreen && document.exitFullscreen();
   }, []);
-  // buttonList[indexButton].array
+
   const handleClick = (item,index,image,texture) => {
     dispatch(setHeaderStatus(true));
+    dispatch(setMod(false));
     dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
     dispatch(setPlanetArray(buttonList[indexButton].array));

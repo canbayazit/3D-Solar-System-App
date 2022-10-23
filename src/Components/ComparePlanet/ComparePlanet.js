@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Bounds } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useEffect, useState } from "react";
@@ -11,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Phobos from "../3DModel/Phobos";
 import Deimos from "../3DModel/Deimos";
+import Loader from "../Loading/Loading";
 
 const ComparePlanet = () => {
   const [index, setIndex] = useState(0);
@@ -81,8 +83,6 @@ const ComparePlanet = () => {
   useEffect(() => {
     location.pathname === "/solarsystem" && setHeight("100%");
     if (location.pathname === "/sun" || isSun) {
-      console.log("1.");
-
       if (planetArray[planetIndex].radius > planets[index].radius) {
         let newRadius =
           radiusLeft /
@@ -100,7 +100,6 @@ const ComparePlanet = () => {
         setRadiusLeftPlanet(100);
       }
     } else {
-      console.log("2.");
       if (planetArray[planetIndex].radius > planetArray[index].radius) {
         let newRadius =
           radiusLeft /
@@ -149,13 +148,13 @@ const ComparePlanet = () => {
             position: [5, 0, 10],
           }}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loader />}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
                 {planetArray[planetIndex].name === "Phobos" ? (
                   <Phobos radius={radiusLeft} />
                 ) : planetArray[planetIndex].name === "Deimos" ? (
-                  <Deimos radius={radiusLeft}/>
+                  <Deimos radius={radiusLeft} />
                 ) : (
                   <PlanetMain radius={radiusLeft} />
                 )}
@@ -213,16 +212,18 @@ const ComparePlanet = () => {
             position: [5, 0, 10],
           }}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={<Loader />}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
-              {planetArray[index].name === "Phobos" ? (
+                {location.pathname === "/sun" ? (
+                  <Planet index={index} radius={radiusRight} />
+                ) : planetArray[index].name === "Phobos" ? (
                   <Phobos radius={radiusRight} />
                 ) : planetArray[index].name === "Deimos" ? (
                   <Deimos radius={radiusRight} />
                 ) : (
                   <Planet index={index} radius={radiusRight} />
-                )}                
+                )}
               </Provider>
             </Bounds>
           </Suspense>

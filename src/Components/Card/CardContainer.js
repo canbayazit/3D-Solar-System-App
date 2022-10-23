@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
@@ -13,7 +14,6 @@ import {
   setClick,
   setMod,
   setPlanetArray,
-  setPlanetIndex,
 } from "../../Store/PlanetSlice";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
@@ -27,12 +27,10 @@ const CardContainer = () => {
     click,
     mod,
     pathname,
-    isMoon,
     planetArray,
-    planets,
-    moons,
+    planets, 
   } = useSelector((store) => store.planets);
-  const { isSun, stars } = useSelector((store) => store.stars);
+  const { isSun } = useSelector((store) => store.stars);
   const dispatch = useDispatch();
   const location = useLocation();
   const [open, setOpen] = useState(false);
@@ -53,11 +51,6 @@ const CardContainer = () => {
     dispatch(setClick(true));
   };
   const matches = useMediaQuery("(max-width:1025px)");
-  console.log("planetArray card container", planetArray);
-  console.log("planetIndex card container", planetIndex);
-  console.log("isSun card", isSun);
-  console.log("pathname card", pathname);
-  console.log("location.pathname card", location.pathname);
   const statList = [
     {
       id: 1,

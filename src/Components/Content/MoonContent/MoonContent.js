@@ -1,27 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { moonTexture } from "../../../Constant/planet_image/image";
-import { setImage, setPathname, setPlanetArray, setPlanetIndex, setTexture } from "../../../Store/PlanetSlice";
-import { setIsSun } from "../../../Store/StarSlice";
+import React from "react";
 import style from "./style.module.scss";
-
 const MoonContent = () => {
-  // const { moons } = useSelector((store) => store.planets);
-  // const location = useLocation();
-  // const dispatch=useDispatch();
-  // useEffect(() => {
-  //   dispatch(setPlanetArray(moons));
-  //   dispatch(setPlanetIndex(0));
-  //   dispatch(setTexture(moonTexture[0].texture));
-  //   dispatch(setImage(moonTexture[0].image));
-  //   dispatch(setIsSun(false));
-  //   dispatch(setPathname(location.pathname));
-  // console.log("çalıştıııııı")
-
-  // }, [])
-  
-
   return (
     <div className={style.container} id="content">
       <fieldset className={style.fieldset}>

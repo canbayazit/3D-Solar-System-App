@@ -4,22 +4,13 @@ import { useLocation } from "react-router-dom";
 import { arrowDown } from "../../../Assets/svg/svg";
 import style from "./style.module.scss";
 import { Link } from 'react-scroll'
+import { useMediaQuery } from "@mui/material";
 const More = () => {
   const {  planetIndex, pathname,planetArray } = useSelector(
     (store) => store.planets
   );
   const location = useLocation();
-  const handleMore = (e) => {
-    e.preventDefault();
-    const target = document.getElementById("more");
-    const elDistanceToTop =
-      window.pageYOffset + target.getBoundingClientRect().top;
-    window.scrollTo(0, elDistanceToTop);
-  console.log("window.pageYOffset",window.pageYOffset)
-  console.log("target.getBoundingClientRect().top",target.getBoundingClientRect().top)
-
-  };
-  
+  const matches = useMediaQuery("(max-width:1025px)")  
   return (
     <div
       className={style.container}
@@ -31,7 +22,7 @@ const More = () => {
       }}
     >
       <div className={style.more} id={"more"} >
-        <Link activeClass="active" to="content" spy={true} smooth={true} offset={-90} duration={500}>
+        <Link activeClass="active" to="content" spy={true} smooth={true} offset={matches?-85:-90} duration={500}>
         <span>MORE</span>
         <span>{arrowDown("#000")}</span>
         </Link>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMediaQuery } from "@mui/material";
 import { Bounds } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -6,6 +7,7 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import CardContainer from "../../Components/Card/CardContainer";
 import ComparePlanet from "../../Components/ComparePlanet/ComparePlanet";
+import Loader from "../../Components/Loading/Loading";
 import MediaContainer from "../../Components/Media/MediaContainer";
 import PlanetCreator from "../../Components/PlanetCreator/PlanetCreator";
 import Search from "../../Components/Search/Search";
@@ -22,22 +24,11 @@ const SolarSystem = () => {
     matches===false && document.body.requestFullscreen();
   }, []);
   useEffect(() => {
-
       dispatch(setPlanetArray(planets));
       dispatch(setPlanetIndex(0));
       dispatch(setIsSun(false));
       dispatch(setPathname(location.pathname));
-
-    console.log("use EFFECT ASDAS")
-
   }, []); 
-  // useEffect(() => {
-  //   planets.filter((item) => item.name.toLowerCase()).includes(text) ? setStatus(true): setStatus(false)
-  //   console.log(status)
-  //   console.log("text",text)
-
-  //   console.log("includes",planets.filter((item) => item.name.toLowerCase()))
-  // }, [text]);
 
   return (
     <div className={style.container}>
@@ -61,7 +52,7 @@ const SolarSystem = () => {
           >
            
             <axesHelper args={[2500, 2500, 2500]} />
-            <Suspense fallback={null}>
+            <Suspense fallback={<Loader/>}>
               <Bounds fit clip observe margin={0.2}>
                 <Provider store={store}>
                   <PlanetCreator />

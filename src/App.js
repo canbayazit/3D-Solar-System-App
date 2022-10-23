@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
@@ -31,7 +32,6 @@ function App() {
       dispatch(getPlanets());
       dispatch(getStars());      
     }
-    console.log("USE EFFECT APP JS ")
   }, []) 
   ScrollToTop();
   return (

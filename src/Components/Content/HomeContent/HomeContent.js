@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import style from "./style.module.scss";
 import solarSystem from "../../../Assets/img/solarsystemm.png";

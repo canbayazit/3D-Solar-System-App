@@ -1,11 +1,9 @@
-import { useMediaQuery } from "@mui/material";
 import React from "react";
 import Dashboard from "../../Dashboard/Dashboard";
 import useScroll from "../../Function/ScrollFunction";
 import style from "./style.module.scss";
 
 const PlanetMainSection = () => {
-  const matches = useMediaQuery('(max-width:835px)');
   const value = useScroll(1);
   return (
     <>

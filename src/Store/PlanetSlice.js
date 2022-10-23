@@ -20,7 +20,7 @@ const initialState = {
   rad: 0,
   mod: false,
   pathname: "",
-  speedStatus: false,
+  speedStatus: true,
   isMoon: false,
 };
 
@@ -98,6 +98,7 @@ const planetSlice = createSlice({
     [getPlanets.fulfilled]: (state, action) => {
       state.loading = false;
       state.planets = action.payload.planets;
+      state.planetArray = action.payload.planets;
       state.moons = action.payload.moons;
     },
     [getPlanets.rejected]: (state, action) => {

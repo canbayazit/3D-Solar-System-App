@@ -7,8 +7,6 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { textures } from "../../Constant/planet_image/image";
 import * as THREE from "three";
 import { useSelector } from "react-redux";
-import Phobos from "../3DModel/Phobos";
-
 const PlanetMain = (props) => {
   const [args, setArgs] = useState();
   const { planetIndex, mod, texture, planetArray } = useSelector(
@@ -18,7 +16,6 @@ const PlanetMain = (props) => {
   const ringMap =
     planetArray[planetIndex].name === "Saturn" &&
     useLoader(TextureLoader, textures[planetIndex].ring);
-
   useEffect(() => {
     mod ? setArgs(props.radius) : setArgs(100);
   }, [mod, props.radius]);
@@ -60,10 +57,6 @@ const PlanetMain = (props) => {
         autoRotate={false}
         screenSpacePanning={false}
       ></OrbitControls>
- {/* { planetArray[planetIndex].name ==="Phobos"
-                  ?
-             
-                  : */}
       <group>
         <mesh ref={planetMainRef} position={[0, 0, 0]}>
           <sphereGeometry

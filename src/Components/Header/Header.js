@@ -53,6 +53,7 @@ const Header = () => {
     dispatch(setIsSun(false));
     dispatch(setPlanetIndex(0)); 
     dispatch(setPlanetArray(planets));
+    dispatch(setMod(false));
   }
   const handleClick = (pathname) => {
     if (pathname === "/solarsystem") {
@@ -64,6 +65,7 @@ const Header = () => {
       dispatch(setPlanetArray(planets));
       dispatch(setPathname("/solarsystem"));
     } else if(pathname === "/moons"){ 
+      dispatch(setMod(false));
       dispatch(setPlanetIndex(0)); 
       dispatch(setIsMoon(true));
       dispatch(setIsSun(false));

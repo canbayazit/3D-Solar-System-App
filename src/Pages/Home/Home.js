@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import HomeContent from "../../Components/Content/HomeContent/HomeContent";
 import Dashboard from "../../Components/Dashboard/Dashboard";
 import More from "../../Components/Dashboard/More/More";
@@ -7,11 +7,12 @@ import Header from "../../Components/Header/Header";
 import HomeSection from "../../Components/Section/HomeSection/HomeSection";
 import style from "./style.module.scss";
 
-const Home = () => {
+const Home = () => { 
   return (
     <div className={style.container}>
       <Header />
       <HomeSection />
+      <Dashboard/>
       <More />
       <HomeContent />
       <Footer />
