@@ -1,5 +1,5 @@
 import { useMediaQuery } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { closeButton, playButton, playMusic } from "../../Assets/svg/svg";
@@ -12,10 +12,8 @@ const MediaContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [play, setPlay] = useState(false);
-  const [open, setOpen] = useState(true);
   const matches = useMediaQuery("(max-width:1025px)");
   const { speedStatus,click } = useSelector((store) => store.planets);
-  const audio = new Audio(sound);
   const handleClick = () => {
     dispatch(setClick(false));
     dispatch(setIsSun(false));
@@ -27,14 +25,7 @@ const MediaContainer = () => {
     dispatch(setSpeed(!speedStatus));
     setPlay(!play);
   };  
-  const handleMusicPlay = (open) => {
-    if (audio.paused ) {
-      audio.play();
-    } else if (!audio.paused) {
-      audio.pause();
-    }
-    setOpen(!open);
-  };
+  
 
   return (
     <div className={style.container}>
@@ -42,8 +33,11 @@ const MediaContainer = () => {
         <button onClick={() => handleClick()}>{closeButton()}</button>
       </div>
       <div className={style.media_button} style={{display:click ? "none" : "block"}}>
+        <h3>Start Orbital Rotation</h3>
         <button onClick={() => handlePlay()}>{playButton(play) }</button>
-        <button onClick={() => handleMusicPlay(open)}>{playMusic(open) }</button>
+        <audio controls autoPlay>
+          <source src={sound} type="audio/mpeg" />
+        </audio>
       </div>
     </div>
   );

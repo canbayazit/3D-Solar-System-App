@@ -21,8 +21,17 @@
         }
     }
     .media_button{
-      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
         z-index: 998;
+        h3{
+            color: #fff;
+        }
+        audio{
+          margin-left: 3em;
+        }
         button{
             background-color: transparent;
             border: none;
