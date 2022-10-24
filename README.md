@@ -4,7 +4,7 @@ A web project that provides information about our sun, planets and moons in our 
 
 ## Click to See the Application
 
-### Application Demo : [Click to See the App](https://solarsystemapp.netlify.app/)
+### Application Demo : [Click to See](https://solarsystemapp.netlify.app/)
 
 ## USED TECHNOLOGIES
 
