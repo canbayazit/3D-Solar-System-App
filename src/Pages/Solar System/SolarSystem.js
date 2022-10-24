@@ -27,6 +27,7 @@ const SolarSystem = () => {
     dispatch(setPlanetIndex(0));
     dispatch(setIsSun(false));
     dispatch(setPathname(location.pathname));
+    document.body.requestFullscreen();
   }, []);
 
   return (

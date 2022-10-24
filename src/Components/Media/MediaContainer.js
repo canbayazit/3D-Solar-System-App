@@ -27,6 +27,7 @@ const MediaContainer = () => {
       dispatch(setIsSun(false));
       dispatch(setMod(false));
       navigate("/");
+      !matches && document.exitFullscreen();
     } else {
       setOpen(false);    
     }
