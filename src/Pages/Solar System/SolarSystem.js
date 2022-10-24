@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useMediaQuery } from "@mui/material";
 import { Bounds } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useEffect } from "react";
@@ -22,12 +23,13 @@ const SolarSystem = () => {
   const { mod, planets } = useSelector((store) => store.planets);
   const dispatch = useDispatch();
   const location = useLocation();
+  const matches = useMediaQuery("(max-width:1025px)");
   useEffect(() => {
     dispatch(setPlanetArray(planets));
     dispatch(setPlanetIndex(0));
     dispatch(setIsSun(false));
     dispatch(setPathname(location.pathname));
-    document.body.requestFullscreen();
+    !matches && document.body.requestFullscreen();
   }, []);
 
   return (
