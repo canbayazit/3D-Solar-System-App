@@ -4,9 +4,9 @@ A web project that provides information about our sun, planets and moons in our 
 
 ## Uygulamayı Denemek İçin Tıklayın
 
-Uygulamanın Demosu : [Click to See the App](https://solarsystemapp.netlify.app/)
+### Application Demo : [Click to See the App](https://solarsystemapp.netlify.app/)
 
-## KULLANILAN YAPILAR
+## USED TECHNOLOGIES
 
 * React ve React Hooks
 * React Router for Routing
