@@ -1,6 +1,6 @@
 # SOLAR SYSTEM WEB APPLICATION
 
-A web project that provides information about our sun, planets and moons in our Solar System and simulates them in a 3D space plane.
+A web Capstone Project that provides information about our sun, planets and moons in our Solar System and simulates them in a 3D space plane for Kodluyoruz Front-End Bootcamp
 
 ## Click to See the Application
 
