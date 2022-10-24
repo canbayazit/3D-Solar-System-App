@@ -2,7 +2,7 @@
 
 A web project that provides information about our sun, planets and moons in our Solar System and simulates them in a 3D space plane.
 
-## Uygulamayı Denemek İçin Tıklayın
+## Click to See the Application
 
 ### Application Demo : [Click to See the App](https://solarsystemapp.netlify.app/)
 
