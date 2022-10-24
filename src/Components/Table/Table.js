@@ -78,18 +78,12 @@ export default function StickyHeadTable() {
     setID(cell.id);
   };
   const handleSortValue = (a, b) => {
-    console.log("typeof value", typeof value);
     if (
       id > 4
         ? typeof a[value].number === "number"
         : typeof a[value] === "number"
     ) {
       if (sort) {
-        console.log("a", a); // a
-        console.log("b", b);
-        console.log("value", value);
-        console.log("a[value]", a[value]);
-        console.log("sort", sort);
         return id > 4
           ? parseFloat(a[value].number * 10 ** a[value].exponent).toExponential(
               2

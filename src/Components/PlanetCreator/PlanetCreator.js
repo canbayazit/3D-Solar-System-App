@@ -10,14 +10,31 @@ import sunTexture from "../../Assets/img/PlanetsTexture/sunmap2.png";
 import * as THREE from "three";
 import { starTexture, textures } from "../../Constant/planet_image/image";
 import { useDispatch, useSelector } from "react-redux";
-import { setClick, setImage, setPlanetArray, setPlanetIndex, setPositionX, setPositionZ, setRadius, setTexture } from "../../Store/PlanetSlice";
+import {
+  setClick,
+  setImage,
+  setPlanetArray,
+  setPlanetIndex,
+  setPositionX,
+  setPositionZ,
+  setRadius,
+  setTexture,
+} from "../../Store/PlanetSlice";
 import { setIsSun } from "../../Store/StarSlice";
 const PlanetCreator = () => {
   const [distance, setDistance] = useState();
   const [value, setValue] = useState(50);
   const dispatch = useDispatch();
   const { stars, isSun } = useSelector((store) => store.stars);
-  const { planets, click,positionX, positionZ,speedStatus,rad,planetIndex } = useSelector((store) => store.planets);
+  const {
+    planets,
+    click,
+    positionX,
+    positionZ,
+    speedStatus,
+    rad,
+    planetIndex,
+  } = useSelector((store) => store.planets);
   const sunMap = useLoader(TextureLoader, sunTexture);
   const planetOrbitRef = useRef([]);
   const targetOrbitRef = useRef([]);
@@ -33,13 +50,13 @@ const PlanetCreator = () => {
   const sunTextRef = useRef();
   const sunRef = useRef();
   const orbitControls = useRef();
-  const handlePlanetClick = (index, rad,e) => {
+  const handlePlanetClick = (index, rad, e) => {
     dispatch(setClick(true));
     dispatch(setPlanetIndex(index));
     dispatch(setRadius(rad));
     dispatch(setPlanetArray(planets));
     dispatch(setTexture(textures[index].texture));
-    dispatch(setImage(textures[index].image));  
+    dispatch(setImage(textures[index].image));
   };
   const handleStarClick = (index) => {
     dispatch(setClick(true));
@@ -53,12 +70,12 @@ const PlanetCreator = () => {
   };
 
   useEffect(() => {
-    let angles = planetOrbitRef.current[planetIndex].rotation.y
-    dispatch(setPositionX(isSun ? 0 : Math.cos(angles)*rad))
-    dispatch(setPositionZ(isSun ? 0 : -1*Math.sin(angles)*rad))
+    let angles = planetOrbitRef.current[planetIndex].rotation.y;
+    dispatch(setPositionX(isSun ? 0 : Math.cos(angles) * rad));
+    dispatch(setPositionZ(isSun ? 0 : -1 * Math.sin(angles) * rad));
     setValue(50);
     planets.map((item, index) => {
-      index === planets.length - 1 && setDistance(2000 * item.distance );
+      index === planets.length - 1 && setDistance(2000 * item.distance);
     });
     planets.name === "Neptune"
       ? (ringOuterRef.current.visible = true)
@@ -71,16 +88,16 @@ const PlanetCreator = () => {
       : (ringRef.current.visible = false);
   }, [dispatch, rad, planets, planetIndex, isSun]);
 
-  useFrame(({camera }) => { 
-    let speed = speedStatus ? click ? 0 : 0.002 : 0;
-    planetRef.current[0].rotation.y +=0.001;
-    planetRef.current[1].rotation.y +=0.001;
-    planetRef.current[2].rotation.y +=0.001;
-    planetRef.current[3].rotation.y +=0.001;
-    planetRef.current[4].rotation.y +=0.001;
-    planetRef.current[5].rotation.y +=0.001;
-    planetRef.current[6].rotation.y +=0.001;
-    planetRef.current[7].rotation.y +=0.001;    
+  useFrame(({ camera }) => {
+    let speed = speedStatus ? (click ? 0 : 0.002) : 0;
+    planetRef.current[0].rotation.y += 0.001;
+    planetRef.current[1].rotation.y += 0.001;
+    planetRef.current[2].rotation.y += 0.001;
+    planetRef.current[3].rotation.y += 0.001;
+    planetRef.current[4].rotation.y += 0.001;
+    planetRef.current[5].rotation.y += 0.001;
+    planetRef.current[6].rotation.y += 0.001;
+    planetRef.current[7].rotation.y += 0.001;
     sunTextRef.current.quaternion.copy(camera.quaternion);
     sunTextRef.current.rotation.copy(camera.rotation);
     planetOrbitRef.current[0].rotation.y += speed;
@@ -248,8 +265,8 @@ const PlanetCreator = () => {
         enableRotate={true}
         autoRotate={false}
         screenSpacePanning={false}
-        target={(click ? [positionX, 0, positionZ]: [0, 0, 0] )}
-        maxDistance={click ? isSun ? 600 :300 : 120000}
+        target={click ? [positionX, 0, positionZ] : [0, 0, 0]}
+        maxDistance={click ? (isSun ? 600 : 300) : 120000}
         minDistance={click ? 170 : 450}
       />
       {stars.map((item, index) => (
@@ -281,7 +298,10 @@ const PlanetCreator = () => {
               color="#fff"
               ref={sunTextRef}
               visible={isSun ? false : true}
-              onClick={(e) =>(e.stopPropagation(), handleStarClick(index, 2000 * item.distance))}
+              onClick={(e) => (
+                e.stopPropagation(),
+                handleStarClick(index, 2000 * item.distance)
+              )}
             >
               {item.name}
             </Text>
@@ -319,11 +339,11 @@ const PlanetCreator = () => {
           useLoader(TextureLoader, textures[index].ring);
         return (
           <group key={item.id}>
-            <group ref={(el) => (planetOrbitRef.current[index] = el)} >
+            <group ref={(el) => (planetOrbitRef.current[index] = el)}>
               <mesh
                 ref={(el) => (planetRef.current[index] = el)}
                 position={[2000 * item.distance, 0, 0]}
-                castShadow                
+                castShadow
               >
                 <sphereGeometry args={[35, 50, 50]} />
                 <meshStandardMaterial map={planetMap} />
@@ -374,15 +394,16 @@ const PlanetCreator = () => {
               <mesh
                 ref={(el) => (targetRef.current[index] = el)}
                 position={[2000 * item.distance, 0, 0]}
-                onPointerOver={(e) => (e.stopPropagation(), setID(item.id))}
-                onPointerOut={(e) => (e.stopPropagation(), setID(null))}
-             
               >
                 <mesh ref={(el) => (targetGroupRef.current[index] = el)}>
-                                    <mesh                    
-                  onClick={(e) => (
-                    e.stopPropagation(),                    
-                    handlePlanetClick(index, 2000 * item.distance,e.object.position)
+                  <mesh
+                    onClick={(e) => (
+                      e.stopPropagation(),
+                      handlePlanetClick(
+                        index,
+                        2000 * item.distance,
+                        e.object.position
+                      )
                     )}
                   >
                     <Text

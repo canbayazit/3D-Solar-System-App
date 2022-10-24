@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Phobos from "../3DModel/Phobos";
 import Deimos from "../3DModel/Deimos";
-import Loader from "../Loading/Loading";
+import PlanetLoading from "../Loading/PlanetLoading/PlanetLoading";
 
 const ComparePlanet = () => {
   const [index, setIndex] = useState(0);
@@ -148,7 +148,7 @@ const ComparePlanet = () => {
             position: [5, 0, 10],
           }}
         >
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<PlanetLoading />}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
                 {planetArray[planetIndex].name === "Phobos" ? (
@@ -212,7 +212,7 @@ const ComparePlanet = () => {
             position: [5, 0, 10],
           }}
         >
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<PlanetLoading />}>
             <Bounds fit clip observe margin={0.2}>
               <Provider store={store}>
                 {location.pathname === "/sun" ? (
