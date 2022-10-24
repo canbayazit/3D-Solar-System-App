@@ -24,7 +24,7 @@ A web project that provides information about our sun, planets and moons in our 
 
 # FIGMA
 
-[Click to See the Design](https://www.figma.com/file/sJf0a77kNKMoXpnqkhCvkC/Solar-System?node-id=0%3A1)
+### [Click to See the Design](https://www.figma.com/file/sJf0a77kNKMoXpnqkhCvkC/Solar-System?node-id=0%3A1)
 
 # SOME IMAGES IN THE PROJECT
 
