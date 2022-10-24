@@ -40,12 +40,7 @@ const Header = () => {
       id: 3,
       name: "Moons",
       link: "/moons",
-    },
-    {
-      id: 4,
-      name: "Asteroids & Comets",
-      link: "/asteroids-comets",
-    },
+    },    
   ];
   const handleLogoClick=()=>{
     dispatch(setMod(false));
